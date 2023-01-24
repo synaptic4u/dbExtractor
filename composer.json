@@ -1,0 +1,18 @@
+{
+    "name": "synaptic4u/db-extractor",
+    "description": "App too parse vhosts and extract data from corresponding databases.",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Synaptic4u\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Emile De Wilde",
+            "email": "emile@synaptic4u.co.za"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
