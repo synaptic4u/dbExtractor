@@ -37,6 +37,7 @@ class App
     public function __construct()
     {
         try {
+            $error = null;
             $start = microtime(true);
             
             $this->vhost_list = [];
@@ -46,37 +47,47 @@ class App
             ];
 
             $this->file_reader = new FileReader();
-
             $this->file_writer = new FileWriter();
 
             $this->config = $this->readConfig();
             // var_dump($this->config);
             
             if($this->config === null){
-                // EXITS APP WITH CUSTOM ERROR MESSAGE & PREVENTS DISPLAYING FULL DEV ERROR
-                // TOGGLE WITH COMMENT!
-                throw new Exception("ERROR: The configuration file is faulty!".PHP_EOL);
+                $error = "ERROR: The configuration file is faulty!".PHP_EOL;
+                throw new Exception($error);
             }
 
             $this->vhost_list = $this->parseVHosts();
+            // var_dump($this->vhost_list);
+            
+            if($this->vhost_list === null){
+                $error = "ERROR: The Virtual Host list couldn't be compiled!".PHP_EOL;
+                throw new Exception($error);
+            }
 
             $this->db_list = $this->parseVHostFiles($this->vhost_list);
+            // var_dump($this->db_list);
+            
+            if($this->db_list === null){
+                $error = "ERROR: The DataBase list could not be compiled!".PHP_EOL;
+                throw new Exception($error);
+            }
             
         } catch (Exception $e) {
-            // Errors currently print to screen
+            
             $this->error([
                 'Location' => __METHOD__.'()',
                 'error' => $e->__toString(),
             ]);
 
         }finally{
+            
             print_r(PHP_EOL."Application has exited.".PHP_EOL);
         }
     }
 
-    private function parseVHostFiles(){
-        
-
+    private function parseVHostFiles(){   
+        return (new Parser($this->config))->parseVHosts($this->vhost_list);
     }
 
     private function parseVHosts(){
@@ -116,6 +127,7 @@ class App
 
             $hosts = null;
         }finally{
+            
             return $hosts;
         }
     }
@@ -166,12 +178,13 @@ class App
             
             $config = null;
         }finally{
+            
             return $config;
         }
     }
 
     private function writeToFileJSON(string $filename, mixed $content)
-    {
+    {   
         $this->file_writer->writeToFile(new FileWriterArray(), $filename, $content);
     }
 
