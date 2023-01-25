@@ -6,6 +6,10 @@ use Synaptic4u\Logs\Activity;
 use Synaptic4u\Logs\Error;
 use Synaptic4u\Logs\Log;
 
+/**
+ * Class FileWriterText
+ * Writes content to file as received, no formatting.
+ */
 class FileWriterText implements IFileWriter
 {
     public function appendToFile(string $path, $content)

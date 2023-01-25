@@ -14,7 +14,8 @@ use Synaptic4u\Files\Writer\FileWriterText;
  */
 class Activity implements ILog
 {
-    protected $path;
+    private $path;
+    private $file_writer;
 
     /**
      * Assignes log path to local variable.

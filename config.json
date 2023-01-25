@@ -6,7 +6,9 @@
     "vhost": {
         "Description": "Nginx Virtual Hosts Base Directory path: Include a trailing forward slash. Include the suffix to search for passed as an array.",
         "dir_path": "/etc/apache2/sites-available/",
-        "search_suffix": []
+        "search_suffix": [
+            "conf"
+        ]
     },
     "log": {
         "Description": "Logging for application audit. This will log everything apart from reports and progress logs. Errors automatically log.",
@@ -16,5 +18,12 @@
         "Description": "MySQL ONLY! Root Database Login credentials. If you want to compare db's from vhosts to actual databases in the server.",
         "enabled": false,
         "mysql": "'db_root_config.json"
+    },
+    "target_server": {
+        "Description": "The target server where the db's will be inserted. Direct transport to Mysql Server.",
+        "ip_address": null,
+        "port": null,
+        "username": null,
+        "password": null
     }
 }

@@ -34,7 +34,7 @@ class Extractor
      *
      * @return mixed : Returns a std::Class object of results
      */
-    public function readTablesList(): mixed
+    public function readTablesList()
     {
         return $this->model->readTablesList();
     }
@@ -46,7 +46,7 @@ class Extractor
      *
      * @return mixed : array containing the table's column names with logid column removed
      */
-    public function readTableColumns($table): mixed
+    public function readTableColumns($table)
     {
         return $this->model->readTableColumns($table);
     }
@@ -59,7 +59,7 @@ class Extractor
      *
      * @return array : array containing table name, row count and success status
      */
-    public function createTable($table): array
+    public function createTable($table)
     {
         return $this->model->createTable($table);
     }
@@ -72,7 +72,7 @@ class Extractor
      *
      * @return int : The last inserted ID
      */
-    public function insertLog(array $columns, string $alias): int
+    public function insertLog(array $columns, string $alias)
     {
         return $this->model->insertLog($columns, $alias);
     }
@@ -85,7 +85,7 @@ class Extractor
      *
      * @return int : The last inserted ID
      */
-    public function dumpLog(string $line, string $file): int
+    public function dumpLog(string $line, string $file)
     {
         return $this->model->dumpLog($line, $file);
     }
@@ -95,7 +95,7 @@ class Extractor
      *
      * @return mixed : Return the query's status
      */
-    public function createLogDump(): mixed
+    public function createLogDump()
     {
         return $this->model->createLogDump();
     }

@@ -3,7 +3,10 @@
 namespace Synaptic4u\Logs;
 
 use Exception;
+
+use Synaptic4u\Files\Reader\FileReader;
 use Synaptic4u\Files\Writer\FileWriter;
+use Synaptic4u\Files\Writer\FileWriterArray;
 use Synaptic4u\Files\Writer\FileWriterText;
 
 /**
@@ -14,7 +17,8 @@ use Synaptic4u\Files\Writer\FileWriterText;
  */
 class Error implements ILog
 {
-    protected $path;
+    private $path;
+    private $file_writer;
 
     /**
      * Assignes log path to local variable.

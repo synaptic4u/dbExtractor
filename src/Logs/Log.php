@@ -8,13 +8,6 @@ use Exception;
  * Class::Log :
  * Builds the log message.
  * Passes log message to the received ILog instance.
- *
- * Log::construct() :
- * Saves paramaters to local variables.
- * Calls the Log::writeLog() method.
- *
- * Log::buildMessage() :
- * Builds the log message with timestamp and encodes arrays.
  */
 class Log
 {
@@ -44,7 +37,7 @@ class Log
      *
      * @return string : Log message string
      */
-    protected function buildMessage(array $msg): string
+    protected function buildMessage(array $msg)
     {
         $date = date('Y-m-d H:i:s');
 

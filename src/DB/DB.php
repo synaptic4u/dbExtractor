@@ -38,7 +38,7 @@ class DB
         }
     }
 
-    public function query($params, $sql): mixed
+    public function query($params, $sql)
     {
         try {
             $stmt = null;
@@ -76,17 +76,17 @@ class DB
         }
     }
 
-    public function getLastId(): int
+    public function getLastId()
     {
         return $this->lastinsertid;
     }
 
-    public function getrowCount(): int
+    public function getrowCount()
     {
         return $this->rowcount;
     }
 
-    public function getStatus(): mixed
+    public function getStatus()
     {
         return $this->status;
     }

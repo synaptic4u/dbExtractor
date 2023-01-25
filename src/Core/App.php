@@ -6,6 +6,7 @@ use Exception;
 use Synaptic4u\Files\Reader\FileReader;
 use Synaptic4u\Files\Writer\FileWriter;
 use Synaptic4u\Files\Writer\FileWriterArray;
+use Synaptic4u\Files\Writer\FileWriterText;
 use Synaptic4u\Crawler\Crawler;
 use Synaptic4u\Logs\Activity;
 use Synaptic4u\Logs\Error;
@@ -19,14 +20,16 @@ use Synaptic4u\Structure\Structure;
  */
 class App
 {
+    // Class Objects
     private $crawler;
-    private $vhosts;
-    private $options;
-    private $config;
-    private $tree;
-    private $flat_tree;
     private $file_reader;
     private $file_writer;
+
+    // Data Structs
+    private $vhost_list;
+    private $db_list;
+    private $config;
+    
     private $parser;
     private $report;
     private $result;
@@ -35,46 +38,29 @@ class App
     {
         try {
             $start = microtime(true);
-
+            
+            $this->vhost_list = [];
             $this->report = [
                 'app_timer' => [],
                 'summary' => [],
             ];
-
-            $this->vhosts = [];
 
             $this->file_reader = new FileReader();
 
             $this->file_writer = new FileWriter();
 
             $this->config = $this->readConfig();
+            // var_dump($this->config);
             
             if($this->config === null){
                 // EXITS APP WITH CUSTOM ERROR MESSAGE & PREVENTS DISPLAYING FULL DEV ERROR
                 // TOGGLE WITH COMMENT!
                 throw new Exception("ERROR: The configuration file is faulty!".PHP_EOL);
             }
-            // var_dump($this->config);
-            
-            $this->crawler = new Crawler($this->config->vhost->search_suffix);
 
-            $this->vhosts = $this->crawler->crawl($this->config->vhost->dir_path, []);
+            $this->vhost_list = $this->parseVHosts();
 
-            $this->log([
-                'Location' => __METHOD__.'()',
-                'vhosts' => json_encode($this->vhosts, JSON_PRETTY_PRINT),
-            ]);
-
-            // var_dump($this->vhosts);
-
-            $this->vhosts = $this->crawler->flattenTree($this->vhosts);
-            
-            // var_dump($this->vhosts);
-            
-            $this->log([
-                'Location' => __METHOD__.'()',
-                'vhosts' => json_encode($this->vhosts, JSON_PRETTY_PRINT),
-            ]);
+            $this->db_list = $this->parseVHostFiles($this->vhost_list);
             
         } catch (Exception $e) {
             // Errors currently print to screen
@@ -88,6 +74,51 @@ class App
         }
     }
 
+    private function parseVHostFiles(){
+        
+
+    }
+
+    private function parseVHosts(){
+
+        try{
+
+            $hosts = [];
+
+            $this->crawler = new Crawler($this->config->vhost->search_suffix);
+
+            $vhosts = $this->crawler->crawl($this->config->vhost->dir_path, []);
+
+            $this->log([
+                'Location' => __METHOD__.' 1',
+                'vhosts' => json_encode($vhosts, JSON_PRETTY_PRINT),
+            ]);
+
+            var_dump($vhosts);
+
+            $vhosts = $this->crawler->flattenArray($vhosts);
+            
+            $this->writeToFileJSON('/reports/vhost_list.txt', [
+                "Time Stamp" => date('Y-m-d H:i:s'),
+                "vhost" => $vhosts,
+            ]);
+            
+            $this->log([
+                'Location' => __METHOD__.' 2',
+                'vhosts' => json_encode($vhosts, JSON_PRETTY_PRINT),
+            ]);
+        }catch(Exception $e){
+
+            $this->error([
+                'Location' => __METHOD__.'()',
+                'error' => $e->__toString(),
+            ]);
+
+            $hosts = null;
+        }finally{
+            return $hosts;
+        }
+    }
 
     private function readConfig()
     {
@@ -139,23 +170,14 @@ class App
         }
     }
 
-    private function writeTree()
+    private function writeToFileJSON(string $filename, mixed $content)
     {
-        $this->file_writer->writeToFile(new FileWriterArray(), '/structure_files/tree.txt', $this->tree);
-
-        $this->file_writer->writeToFile(new FileWriterArray(), '/structure_files/flattened.txt', $this->flat_tree);
+        $this->file_writer->writeToFile(new FileWriterArray(), $filename, $content);
     }
 
-
-    private function buildStructure()
+    private function writeToFileText(string $filename, mixed $content)
     {
-        $structure = new Structure($this->config, $this->options);
-        $structure->parse();
-    }
-
-    private function loadLogs(): array
-    {
-        return $this->parser->loadLogs($this->flat_tree);
+        $this->file_writer->writeToFile(new FileWriterText(), $filename, $content);
     }
 
     /**

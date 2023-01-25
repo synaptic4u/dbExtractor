@@ -6,6 +6,11 @@ use Synaptic4u\Logs\Activity;
 use Synaptic4u\Logs\Error;
 use Synaptic4u\Logs\Log;
 
+/**
+ *  Class: FileWriterArray
+ *  Writes content to file with JSON encoded formatting.
+ *  Must provide full file path with file type suffix.
+ */
 class FileWriterArray implements IFileWriter
 {
     public function appendToFile(string $path, $params)

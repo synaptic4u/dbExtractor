@@ -36,6 +36,7 @@ class Crawler
                 while (($file = readdir($dh)) !== false) {
             
                     if ('.' !== $file) {
+                        
                         if ('..' !== $file) {
 
                             $newfile = $path.$file;
@@ -51,17 +52,17 @@ class Crawler
                             //     "path_clean" => $path_clean,
                             //     "file_clean" => $file_clean,
                             //     "filematch" => $this->file_match_case,
-                            //     "substring" => substr($newfile, strripos($newfile, '.')),
-                            //     "inarray" => (in_array(substr($newfile, strripos($newfile, '.')), $this->file_match_case))  ? "true":"false"
+                            //     "substring" => substr($newfile, strripos($newfile, '.')+1),
+                            //     "inarray" => (in_array(substr($newfile, strripos($newfile, '.')+1), $this->file_match_case))  ? "true":"false"
                             // ]);
 
                             if (is_dir($newpath)) {
+
                                 $tree[$path_clean][$file_clean] = $this->crawl($newpath, []);
                             } else {
-                                if (in_array(substr($newfile, strripos($newfile, '.')), $this->file_match_case)) {
-                                    $tree[$path_clean][$file_clean] = $newfile;
-                                }
-                                if (in_array(substr($newfile, strripos($newfile, '.')), $this->file_match_case)) {
+
+                                if (in_array(substr($newfile, strripos($newfile, '.')+1), $this->file_match_case)) {
+                                    
                                     $tree[$path_clean][$file_clean] = $newfile;
                                 }
                             }
@@ -79,18 +80,18 @@ class Crawler
     /**
      * Method flattens a multi-dimensional array into a associative single dimensional array.
      *
-     * @param array $tree : Associative multi-dimensional array
+     * @param array $array : Associative multi-dimensional array
      *
      * @return array : Single dimensional associative array
      */
-    public function flattenTree(array $tree)
+    public function flattenArray(array $array)
     {
-        $flat_tree = [];
-        array_walk_recursive($tree, function ($value, $key) use (&$flat_tree) {
-            $flat_tree[$key] = $value;
+        $flat_array = [];
+        array_walk_recursive($array, function ($value, $key) use (&$flat_array) {
+            $flat_array[$key] = $value;
         });
 
-        return $flat_tree;
+        return $flat_array;
     }
 
     /**

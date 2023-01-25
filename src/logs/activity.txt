@@ -1,316 +1,5 @@
 
-2023-01-24 20:38:51
-Location: Synaptic4u\Core\App::readConfig()
-config_path: /home/mila/Repos/dbExtractor/config.json
-config: {
-    "report": {
-        "Description": "Report batch gruoping size. Do you want report summaries based upon per 100 \/ 1000 or 100000. ",
-        "batch_size": 1000
-    },
-    "vhost": {
-        "Description": "Nginx Virtual Hosts Base Directory path: Include a trailing forward slash. Include the suffix to search for passed as an array.",
-        "dir_path": "",
-        "search_suffix": [
-            ".conf",
-            ".xxxx"
-        ]
-    },
-    "log": {
-        "Description": "Logging for application audit. This will log everything apart from reports and progress logs. Errors automatically log.",
-        "enabled": true
-    },
-    "root_db_login": {
-        "Description": "MySQL ONLY! Root Database Login credentials. If you want to compare db's from vhosts to actual databases in the server.",
-        "enabled": false,
-        "mysql": "'db_root_config.json"
-    }
-}
-
-2023-01-24 20:38:51
-Location: Synaptic4u\Core\App::__construct()
-dir path = null: false
-dir path length check: false
-dir path length: 0
-suffix length check: false
-suffix length: 2
-vhosts: []
-
-2023-01-24 20:38:51
-Location: Synaptic4u\Core\App::__construct()
-vhosts: []
-
-2023-01-24 20:38:51
-Location: Synaptic4u\Core\App::__construct()
-vhosts: []
-
-2023-01-24 20:39:33
-Location: Synaptic4u\Core\App::readConfig()
-config_path: /home/mila/Repos/dbExtractor/config.json
-config: {
-    "report": {
-        "Description": "Report batch gruoping size. Do you want report summaries based upon per 100 \/ 1000 or 100000. ",
-        "batch_size": 1000
-    },
-    "vhost": {
-        "Description": "Nginx Virtual Hosts Base Directory path: Include a trailing forward slash. Include the suffix to search for passed as an array.",
-        "dir_path": "",
-        "search_suffix": [
-            ".conf",
-            ".xxxx"
-        ]
-    },
-    "log": {
-        "Description": "Logging for application audit. This will log everything apart from reports and progress logs. Errors automatically log.",
-        "enabled": true
-    },
-    "root_db_login": {
-        "Description": "MySQL ONLY! Root Database Login credentials. If you want to compare db's from vhosts to actual databases in the server.",
-        "enabled": false,
-        "mysql": "'db_root_config.json"
-    }
-}
-
-2023-01-24 20:43:51
-Location: Synaptic4u\Core\App::readConfig()
-config_path: /home/mila/Repos/dbExtractor/config.json
-config: {
-    "report": {
-        "Description": "Report batch gruoping size. Do you want report summaries based upon per 100 \/ 1000 or 100000. ",
-        "batch_size": 1000
-    },
-    "vhost": {
-        "Description": "Nginx Virtual Hosts Base Directory path: Include a trailing forward slash. Include the suffix to search for passed as an array.",
-        "dir_path": "",
-        "search_suffix": [
-            ".conf",
-            ".xxxx"
-        ]
-    },
-    "log": {
-        "Description": "Logging for application audit. This will log everything apart from reports and progress logs. Errors automatically log.",
-        "enabled": true
-    },
-    "root_db_login": {
-        "Description": "MySQL ONLY! Root Database Login credentials. If you want to compare db's from vhosts to actual databases in the server.",
-        "enabled": false,
-        "mysql": "'db_root_config.json"
-    }
-}
-
-2023-01-24 20:45:06
-Location: Synaptic4u\Core\App::readConfig()
-config_path: /home/mila/Repos/dbExtractor/config.json
-config: {
-    "report": {
-        "Description": "Report batch gruoping size. Do you want report summaries based upon per 100 \/ 1000 or 100000. ",
-        "batch_size": 1000
-    },
-    "vhost": {
-        "Description": "Nginx Virtual Hosts Base Directory path: Include a trailing forward slash. Include the suffix to search for passed as an array.",
-        "dir_path": "",
-        "search_suffix": [
-            ".conf",
-            ".xxxx"
-        ]
-    },
-    "log": {
-        "Description": "Logging for application audit. This will log everything apart from reports and progress logs. Errors automatically log.",
-        "enabled": true
-    },
-    "root_db_login": {
-        "Description": "MySQL ONLY! Root Database Login credentials. If you want to compare db's from vhosts to actual databases in the server.",
-        "enabled": false,
-        "mysql": "'db_root_config.json"
-    }
-}
-
-2023-01-24 20:45:19
-Location: Synaptic4u\Core\App::readConfig()
-config_path: /home/mila/Repos/dbExtractor/config.json
-config: {
-    "report": {
-        "Description": "Report batch gruoping size. Do you want report summaries based upon per 100 \/ 1000 or 100000. ",
-        "batch_size": 1000
-    },
-    "vhost": {
-        "Description": "Nginx Virtual Hosts Base Directory path: Include a trailing forward slash. Include the suffix to search for passed as an array.",
-        "dir_path": "",
-        "search_suffix": [
-            ".conf",
-            ".xxxx"
-        ]
-    },
-    "log": {
-        "Description": "Logging for application audit. This will log everything apart from reports and progress logs. Errors automatically log.",
-        "enabled": true
-    },
-    "root_db_login": {
-        "Description": "MySQL ONLY! Root Database Login credentials. If you want to compare db's from vhosts to actual databases in the server.",
-        "enabled": false,
-        "mysql": "'db_root_config.json"
-    }
-}
-
-2023-01-24 20:47:36
-Location: Synaptic4u\Core\App::readConfig()
-config_path: /home/mila/Repos/dbExtractor/config.json
-config: {
-    "report": {
-        "Description": "Report batch gruoping size. Do you want report summaries based upon per 100 \/ 1000 or 100000. ",
-        "batch_size": 1000
-    },
-    "vhost": {
-        "Description": "Nginx Virtual Hosts Base Directory path: Include a trailing forward slash. Include the suffix to search for passed as an array.",
-        "dir_path": "",
-        "search_suffix": [
-            ".conf",
-            ".xxxx"
-        ]
-    },
-    "log": {
-        "Description": "Logging for application audit. This will log everything apart from reports and progress logs. Errors automatically log.",
-        "enabled": true
-    },
-    "root_db_login": {
-        "Description": "MySQL ONLY! Root Database Login credentials. If you want to compare db's from vhosts to actual databases in the server.",
-        "enabled": false,
-        "mysql": "'db_root_config.json"
-    }
-}
-
-2023-01-24 20:48:05
-Location: Synaptic4u\Core\App::readConfig()
-config_path: /home/mila/Repos/dbExtractor/config.json
-config: {
-    "report": {
-        "Description": "Report batch gruoping size. Do you want report summaries based upon per 100 \/ 1000 or 100000. ",
-        "batch_size": 1000
-    },
-    "vhost": {
-        "Description": "Nginx Virtual Hosts Base Directory path: Include a trailing forward slash. Include the suffix to search for passed as an array.",
-        "dir_path": "",
-        "search_suffix": [
-            ".conf",
-            ".xxxx"
-        ]
-    },
-    "log": {
-        "Description": "Logging for application audit. This will log everything apart from reports and progress logs. Errors automatically log.",
-        "enabled": true
-    },
-    "root_db_login": {
-        "Description": "MySQL ONLY! Root Database Login credentials. If you want to compare db's from vhosts to actual databases in the server.",
-        "enabled": false,
-        "mysql": "'db_root_config.json"
-    }
-}
-
-2023-01-24 20:49:20
-Location: Synaptic4u\Core\App::readConfig()
-config_path: /home/mila/Repos/dbExtractor/config.json
-config: {
-    "report": {
-        "Description": "Report batch gruoping size. Do you want report summaries based upon per 100 \/ 1000 or 100000. ",
-        "batch_size": 1000
-    },
-    "vhost": {
-        "Description": "Nginx Virtual Hosts Base Directory path: Include a trailing forward slash. Include the suffix to search for passed as an array.",
-        "dir_path": "",
-        "search_suffix": [
-            ".conf",
-            ".xxxx"
-        ]
-    },
-    "log": {
-        "Description": "Logging for application audit. This will log everything apart from reports and progress logs. Errors automatically log.",
-        "enabled": true
-    },
-    "root_db_login": {
-        "Description": "MySQL ONLY! Root Database Login credentials. If you want to compare db's from vhosts to actual databases in the server.",
-        "enabled": false,
-        "mysql": "'db_root_config.json"
-    }
-}
-
-2023-01-24 20:49:57
-Location: Synaptic4u\Core\App::readConfig()
-config_path: /home/mila/Repos/dbExtractor/config.json
-config: {
-    "report": {
-        "Description": "Report batch gruoping size. Do you want report summaries based upon per 100 \/ 1000 or 100000. ",
-        "batch_size": 1000
-    },
-    "vhost": {
-        "Description": "Nginx Virtual Hosts Base Directory path: Include a trailing forward slash. Include the suffix to search for passed as an array.",
-        "dir_path": "",
-        "search_suffix": [
-            ".conf",
-            ".xxxx"
-        ]
-    },
-    "log": {
-        "Description": "Logging for application audit. This will log everything apart from reports and progress logs. Errors automatically log.",
-        "enabled": true
-    },
-    "root_db_login": {
-        "Description": "MySQL ONLY! Root Database Login credentials. If you want to compare db's from vhosts to actual databases in the server.",
-        "enabled": false,
-        "mysql": "'db_root_config.json"
-    }
-}
-
-2023-01-24 20:50:36
-Location: Synaptic4u\Core\App::readConfig()
-config_path: /home/mila/Repos/dbExtractor/config.json
-config: {
-    "report": {
-        "Description": "Report batch gruoping size. Do you want report summaries based upon per 100 \/ 1000 or 100000. ",
-        "batch_size": 1000
-    },
-    "vhost": {
-        "Description": "Nginx Virtual Hosts Base Directory path: Include a trailing forward slash. Include the suffix to search for passed as an array.",
-        "dir_path": "",
-        "search_suffix": [
-            ".conf",
-            ".xxxx"
-        ]
-    },
-    "log": {
-        "Description": "Logging for application audit. This will log everything apart from reports and progress logs. Errors automatically log.",
-        "enabled": true
-    },
-    "root_db_login": {
-        "Description": "MySQL ONLY! Root Database Login credentials. If you want to compare db's from vhosts to actual databases in the server.",
-        "enabled": false,
-        "mysql": "'db_root_config.json"
-    }
-}
-
-2023-01-24 20:53:51
-Location: Synaptic4u\Core\App::readConfig()
-config_path: /home/mila/Repos/dbExtractor/config.json
-config: {
-    "report": {
-        "Description": "Report batch gruoping size. Do you want report summaries based upon per 100 \/ 1000 or 100000. ",
-        "batch_size": 1000
-    },
-    "vhost": {
-        "Description": "Nginx Virtual Hosts Base Directory path: Include a trailing forward slash. Include the suffix to search for passed as an array.",
-        "dir_path": "\/etc\/apache2\/sites-available\/",
-        "search_suffix": []
-    },
-    "log": {
-        "Description": "Logging for application audit. This will log everything apart from reports and progress logs. Errors automatically log.",
-        "enabled": true
-    },
-    "root_db_login": {
-        "Description": "MySQL ONLY! Root Database Login credentials. If you want to compare db's from vhosts to actual databases in the server.",
-        "enabled": false,
-        "mysql": "'db_root_config.json"
-    }
-}
-
-2023-01-24 20:54:57
+2023-01-25 21:49:08
 Location: Synaptic4u\Core\App::readConfig()
 config_path: /home/mila/Repos/dbExtractor/config.json
 config: {
@@ -322,8 +11,7 @@ config: {
         "Description": "Nginx Virtual Hosts Base Directory path: Include a trailing forward slash. Include the suffix to search for passed as an array.",
         "dir_path": "\/etc\/apache2\/sites-available\/",
         "search_suffix": [
-            ".conf",
-            ".xxxx"
+            "conf"
         ]
     },
     "log": {
@@ -334,10 +22,17 @@ config: {
         "Description": "MySQL ONLY! Root Database Login credentials. If you want to compare db's from vhosts to actual databases in the server.",
         "enabled": false,
         "mysql": "'db_root_config.json"
+    },
+    "target_server": {
+        "Description": "The target server where the db's will be inserted. Direct transport to Mysql Server.",
+        "ip_address": null,
+        "port": null,
+        "username": null,
+        "password": null
     }
 }
 
-2023-01-24 20:54:57
+2023-01-25 21:49:08
 Location: Synaptic4u\Core\App::__construct()
 vhosts: {
     "\/etc\/apache2\/sites_available\/": {
@@ -352,7 +47,7 @@ vhosts: {
     }
 }
 
-2023-01-24 20:54:57
+2023-01-25 21:49:08
 Location: Synaptic4u\Core\App::__construct()
 vhosts: {
     "app.synaptic4u.local.conf": "\/etc\/apache2\/sites-available\/app.synaptic4u.local.conf",
@@ -363,76 +58,4 @@ vhosts: {
     "default_ssl.conf": "\/etc\/apache2\/sites-available\/default-ssl.conf",
     "dev.synaptic4u.local.conf": "\/etc\/apache2\/sites-available\/dev.synaptic4u.local.conf",
     "mila.local.conf": "\/etc\/apache2\/sites-available\/mila.local.conf"
-}
-
-2023-01-24 20:55:08
-Location: Synaptic4u\Core\App::readConfig()
-config_path: /home/mila/Repos/dbExtractor/config.json
-config: {
-    "report": {
-        "Description": "Report batch gruoping size. Do you want report summaries based upon per 100 \/ 1000 or 100000. ",
-        "batch_size": 1000
-    },
-    "vhost": {
-        "Description": "Nginx Virtual Hosts Base Directory path: Include a trailing forward slash. Include the suffix to search for passed as an array.",
-        "dir_path": "\/etc\/apache2\/sites-available\/",
-        "search_suffix": []
-    },
-    "log": {
-        "Description": "Logging for application audit. This will log everything apart from reports and progress logs. Errors automatically log.",
-        "enabled": true
-    },
-    "root_db_login": {
-        "Description": "MySQL ONLY! Root Database Login credentials. If you want to compare db's from vhosts to actual databases in the server.",
-        "enabled": false,
-        "mysql": "'db_root_config.json"
-    }
-}
-
-2023-01-24 20:55:26
-Location: Synaptic4u\Core\App::readConfig()
-config_path: /home/mila/Repos/dbExtractor/config.json
-config: {
-    "report": {
-        "Description": "Report batch gruoping size. Do you want report summaries based upon per 100 \/ 1000 or 100000. ",
-        "batch_size": 1000
-    },
-    "vhost": {
-        "Description": "Nginx Virtual Hosts Base Directory path: Include a trailing forward slash. Include the suffix to search for passed as an array.",
-        "dir_path": "\/etc\/apache2\/sites-available\/",
-        "search_suffix": []
-    },
-    "log": {
-        "Description": "Logging for application audit. This will log everything apart from reports and progress logs. Errors automatically log.",
-        "enabled": true
-    },
-    "root_db_login": {
-        "Description": "MySQL ONLY! Root Database Login credentials. If you want to compare db's from vhosts to actual databases in the server.",
-        "enabled": false,
-        "mysql": "'db_root_config.json"
-    }
-}
-
-2023-01-24 20:57:16
-Location: Synaptic4u\Core\App::readConfig()
-config_path: /home/mila/Repos/dbExtractor/config.json
-config: {
-    "report": {
-        "Description": "Report batch gruoping size. Do you want report summaries based upon per 100 \/ 1000 or 100000. ",
-        "batch_size": 1000
-    },
-    "vhost": {
-        "Description": "Nginx Virtual Hosts Base Directory path: Include a trailing forward slash. Include the suffix to search for passed as an array.",
-        "dir_path": "\/etc\/apache2\/sites-available\/",
-        "search_suffix": []
-    },
-    "log": {
-        "Description": "Logging for application audit. This will log everything apart from reports and progress logs. Errors automatically log.",
-        "enabled": true
-    },
-    "root_db_login": {
-        "Description": "MySQL ONLY! Root Database Login credentials. If you want to compare db's from vhosts to actual databases in the server.",
-        "enabled": false,
-        "mysql": "'db_root_config.json"
-    }
 }
