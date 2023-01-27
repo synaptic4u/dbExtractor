@@ -40,7 +40,7 @@ class App
             $error = null;
             $start = microtime(true);
             
-            $this->vhost_list = [];
+            $this->vhost_list = null;
             $this->report = [
                 'app_timer' => [],
                 'summary' => [],
@@ -58,15 +58,15 @@ class App
             }
 
             $this->vhost_list = $this->parseVHosts();
-            // var_dump($this->vhost_list);
+            var_dump($this->vhost_list);
             
             if($this->vhost_list === null){
                 $error = "ERROR: The Virtual Host list couldn't be compiled!".PHP_EOL;
                 throw new Exception($error);
             }
 
-            $this->db_list = $this->parseVHostFiles($this->vhost_list);
-            // var_dump($this->db_list);
+            $this->db_list = $this->parseVHostFiles();
+            var_dump($this->db_list);
             
             if($this->db_list === null){
                 $error = "ERROR: The DataBase list could not be compiled!".PHP_EOL;
@@ -86,7 +86,8 @@ class App
         }
     }
 
-    private function parseVHostFiles(){   
+    private function parseVHostFiles(){  
+        
         return (new Parser($this->config))->parseVHosts($this->vhost_list);
     }
 
@@ -94,20 +95,20 @@ class App
 
         try{
 
-            $hosts = [];
+            $vhosts = [];
 
             $this->crawler = new Crawler($this->config->vhost->search_suffix);
 
             $vhosts = $this->crawler->crawl($this->config->vhost->dir_path, []);
+            // var_dump($vhosts);
 
-            $this->log([
-                'Location' => __METHOD__.' 1',
-                'vhosts' => json_encode($vhosts, JSON_PRETTY_PRINT),
-            ]);
-
-            var_dump($vhosts);
+            // $this->log([
+            //     'Location' => __METHOD__.' 1',
+            //     'vhosts' => json_encode($vhosts, JSON_PRETTY_PRINT),
+            // ]);
 
             $vhosts = $this->crawler->flattenArray($vhosts);
+            // var_dump($vhosts);
             
             $this->writeToFileJSON('/reports/vhost_list.txt', [
                 "Time Stamp" => date('Y-m-d H:i:s'),
@@ -125,10 +126,10 @@ class App
                 'error' => $e->__toString(),
             ]);
 
-            $hosts = null;
+            $vhosts = null;
         }finally{
             
-            return $hosts;
+            return $vhosts;
         }
     }
 
@@ -142,31 +143,38 @@ class App
 
             $config = $this->file_reader->readJSONFile($config_path, 1);
             
-            $this->log([
-                'Location' => __METHOD__.'()',
-                'config_path' => $config_path,
-                'config' => json_encode($config, JSON_PRETTY_PRINT)
-            ]);
-
-            if(($config->vhost->dir_path === null) || (strlen($config->vhost->dir_path) < 2)){
-                $error = "The configuration file is faulty!".PHP_EOL.
-                         "       VHost directory path cannot be empty.";
-                throw new Exception($error);
-            }
-            if(sizeof($config->vhost->search_suffix) === 0){
-                $error = "The configuration file is faulty!".PHP_EOL.
-                         "       VHost search suffix cannot be empty.";
-                throw new Exception($error);
-            }
+            // $this->log([
+            //     'Location' => __METHOD__.' 1',
+            //     'config_path' => $config_path,
+            //     'config' => json_encode($config, JSON_PRETTY_PRINT)
+            // ]);
 
             // $this->log([
-            //     'Location' => __METHOD__.'()',
+            //     'Location' => __METHOD__.' DEBUG',
             //     'dir path = null' => ($config->vhost->dir_path === null) ? "true":"false",
             //     'dir path length check' => (strlen($config->vhost->dir_path) > 0) ? "true":"false",
             //     'dir path length' => strlen($config->vhost->dir_path),
             //     'suffix length check' => (sizeof($config->vhost->search_suffix) === 0) ? "true":"false",
             //     'suffix length' => sizeof($config->vhost->search_suffix),
             // ]);
+
+            if(($config->vhost->dir_path === null) || (strlen($config->vhost->dir_path) < 2)){
+                $error = "The configuration file is faulty!".PHP_EOL.
+                         "       VHost directory path cannot be empty.";
+                throw new Exception($error);
+            }
+            
+            if(sizeof($config->vhost->search_suffix) === 0){
+                $error = "The configuration file is faulty!".PHP_EOL.
+                         "       VHost search suffix cannot be empty.";
+                throw new Exception($error);
+            }
+
+            $this->log([
+                'Location' => __METHOD__.' 2',
+                'config_path' => $config_path,
+                'config' => json_encode($config, JSON_PRETTY_PRINT)
+            ]);
         }catch(Exception $e){
     
             $this->error([

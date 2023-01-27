@@ -3,10 +3,11 @@
 namespace Synaptic4u\Parser;
 
 use DateTime;
-use Synaptic4u\Files\Reader\FileReader;
-use Synaptic4u\Log\Activity;
-use Synaptic4u\Log\Error;
+use Exception;
 use Synaptic4u\Log\Log;
+use Synaptic4u\Log\Error;
+use Synaptic4u\Log\Activity;
+use Synaptic4u\Files\Reader\FileReader;
 
 class Parser
 {
@@ -17,21 +18,43 @@ class Parser
 
     public function __construct($config)
     {
-        $this->db_list = [];
-        $this->db_cred = [
-            "host" => null,
-            "ip" => null,
-            "db" => null,
-            "username" => null,
-            "password" => null,
-        ];
+        try{
 
-        $this->config = $config;
-        $this->file_reader = new FileReader();
+            $this->db_list = [];
+            $this->db_cred = [
+                "host" => null,
+                "ip" => null,
+                "db" => null,
+                "username" => null,
+                "password" => null,
+            ];
+            $this->config = $config;
+            
+            $this->log([
+                'Location' => __METHOD__.'()',
+                'config' => json_encode($this->config, JSON_PRETTY_PRINT),
+                'db_list' => json_encode($this->db_list, JSON_PRETTY_PRINT),
+                'db_cred' => json_encode($this->db_cred, JSON_PRETTY_PRINT),
+            ]);
+
+            $this->file_reader = new FileReader();
+        }catch(Exception $e){
+                        
+            $this->error([
+                'Location' => __METHOD__.'()',
+                'error' => $e->__toString(),
+            ]);
+        }
     }
 
-    public function parseVHosts(array $vhosts)
+    public function parseVHosts($vhosts)
     {
+
+
+        $this->log([
+            'Location' => __METHOD__.'()',
+            'vhosts' => json_encode($vhosts, JSON_PRETTY_PRINT),
+        ]);
 
         foreach($vhosts as $name => $vhost){
             $row = [];

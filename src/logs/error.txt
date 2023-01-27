@@ -1,0 +1,152 @@
+
+2023-01-27 19:29:46
+Location: Synaptic4u\Core\App::__construct()
+error: Exception: ERROR: The DataBase list could not be compiled!
+ in /home/mila/Repos/dbExtractor/src/Core/App.php:73
+Stack trace:
+#0 /home/mila/Repos/dbExtractor/app.php(14): Synaptic4u\Core\App->__construct()
+#1 {main}
+
+2023-01-27 19:30:20
+Location: Synaptic4u\Core\App::__construct()
+error: Exception: ERROR: The DataBase list could not be compiled!
+ in /home/mila/Repos/dbExtractor/src/Core/App.php:73
+Stack trace:
+#0 /home/mila/Repos/dbExtractor/app.php(14): Synaptic4u\Core\App->__construct()
+#1 {main}
+
+2023-01-27 19:36:44
+Location: Synaptic4u\Core\App::__construct()
+error: Exception: ERROR: The DataBase list could not be compiled!
+ in /home/mila/Repos/dbExtractor/src/Core/App.php:73
+Stack trace:
+#0 /home/mila/Repos/dbExtractor/app.php(14): Synaptic4u\Core\App->__construct()
+#1 {main}
+
+2023-01-27 19:41:34
+Location: Synaptic4u\Core\App::__construct()
+error: Exception: ERROR: The DataBase list could not be compiled!
+ in /home/mila/Repos/dbExtractor/src/Core/App.php:73
+Stack trace:
+#0 /home/mila/Repos/dbExtractor/app.php(14): Synaptic4u\Core\App->__construct()
+#1 {main}
+
+2023-01-27 19:42:24
+Location: Synaptic4u\Core\App::__construct()
+error: Exception: ERROR: The DataBase list could not be compiled!
+ in /home/mila/Repos/dbExtractor/src/Core/App.php:73
+Stack trace:
+#0 /home/mila/Repos/dbExtractor/app.php(14): Synaptic4u\Core\App->__construct()
+#1 {main}
+
+2023-01-27 19:43:51
+Location: Synaptic4u\Core\App::__construct()
+error: Exception: ERROR: The DataBase list could not be compiled!
+ in /home/mila/Repos/dbExtractor/src/Core/App.php:73
+Stack trace:
+#0 /home/mila/Repos/dbExtractor/app.php(14): Synaptic4u\Core\App->__construct()
+#1 {main}
+
+2023-01-27 19:44:32
+Location: Synaptic4u\Core\App::__construct()
+error: Exception: ERROR: The DataBase list could not be compiled!
+ in /home/mila/Repos/dbExtractor/src/Core/App.php:73
+Stack trace:
+#0 /home/mila/Repos/dbExtractor/app.php(14): Synaptic4u\Core\App->__construct()
+#1 {main}
+
+2023-01-27 19:44:55
+Location: Synaptic4u\Core\App::__construct()
+error: Exception: ERROR: The DataBase list could not be compiled!
+ in /home/mila/Repos/dbExtractor/src/Core/App.php:73
+Stack trace:
+#0 /home/mila/Repos/dbExtractor/app.php(14): Synaptic4u\Core\App->__construct()
+#1 {main}
+
+2023-01-27 19:46:22
+Location: Synaptic4u\Core\App::__construct()
+error: Exception: ERROR: The DataBase list could not be compiled!
+ in /home/mila/Repos/dbExtractor/src/Core/App.php:73
+Stack trace:
+#0 /home/mila/Repos/dbExtractor/app.php(14): Synaptic4u\Core\App->__construct()
+#1 {main}
+
+2023-01-27 19:50:55
+Location: Synaptic4u\Core\App::__construct()
+error: Exception: ERROR: The DataBase list could not be compiled!
+ in /home/mila/Repos/dbExtractor/src/Core/App.php:73
+Stack trace:
+#0 /home/mila/Repos/dbExtractor/app.php(14): Synaptic4u\Core\App->__construct()
+#1 {main}
+
+2023-01-27 20:14:21
+Location: Synaptic4u\Core\App::__construct()
+error: Exception: ERROR: The DataBase list could not be compiled!
+ in /home/mila/Repos/dbExtractor/src/Core/App.php:73
+Stack trace:
+#0 /home/mila/Repos/dbExtractor/app.php(14): Synaptic4u\Core\App->__construct()
+#1 {main}
+
+2023-01-27 20:15:26
+Location: Synaptic4u\Core\App::__construct()
+error: Exception: ERROR: The DataBase list could not be compiled!
+ in /home/mila/Repos/dbExtractor/src/Core/App.php:73
+Stack trace:
+#0 /home/mila/Repos/dbExtractor/app.php(14): Synaptic4u\Core\App->__construct()
+#1 {main}
+
+2023-01-27 20:16:05
+Location: Synaptic4u\Core\App::__construct()
+error: Exception: ERROR: The DataBase list could not be compiled!
+ in /home/mila/Repos/dbExtractor/src/Core/App.php:73
+Stack trace:
+#0 /home/mila/Repos/dbExtractor/app.php(14): Synaptic4u\Core\App->__construct()
+#1 {main}
+
+2023-01-27 20:16:09
+Location: Synaptic4u\Core\App::__construct()
+error: Exception: ERROR: The DataBase list could not be compiled!
+ in /home/mila/Repos/dbExtractor/src/Core/App.php:73
+Stack trace:
+#0 /home/mila/Repos/dbExtractor/app.php(14): Synaptic4u\Core\App->__construct()
+#1 {main}
+
+2023-01-27 20:16:30
+Location: Synaptic4u\Core\App::__construct()
+error: Exception: ERROR: The DataBase list could not be compiled!
+ in /home/mila/Repos/dbExtractor/src/Core/App.php:73
+Stack trace:
+#0 /home/mila/Repos/dbExtractor/app.php(14): Synaptic4u\Core\App->__construct()
+#1 {main}
+
+2023-01-27 20:16:53
+Location: Synaptic4u\Core\App::__construct()
+error: Exception: ERROR: The DataBase list could not be compiled!
+ in /home/mila/Repos/dbExtractor/src/Core/App.php:73
+Stack trace:
+#0 /home/mila/Repos/dbExtractor/app.php(14): Synaptic4u\Core\App->__construct()
+#1 {main}
+
+2023-01-27 20:18:09
+Location: Synaptic4u\Core\App::__construct()
+error: Exception: ERROR: The DataBase list could not be compiled!
+ in /home/mila/Repos/dbExtractor/src/Core/App.php:73
+Stack trace:
+#0 /home/mila/Repos/dbExtractor/app.php(14): Synaptic4u\Core\App->__construct()
+#1 {main}
+
+2023-01-27 20:26:06
+Location: Synaptic4u\Core\App::__construct()
+error: Exception: ERROR: The DataBase list could not be compiled!
+ in /home/mila/Repos/dbExtractor/src/Core/App.php:73
+Stack trace:
+#0 /home/mila/Repos/dbExtractor/app.php(14): Synaptic4u\Core\App->__construct()
+#1 {main}
+
+2023-01-27 20:28:45
+Location: Synaptic4u\Core\App::__construct()
+error: Exception: ERROR: The DataBase list could not be compiled!
+ in /home/mila/Repos/dbExtractor/src/Core/App.php:73
+Stack trace:
+#0 /home/mila/Repos/dbExtractor/app.php(14): Synaptic4u\Core\App->__construct()
+#1 {main}

@@ -1,0 +1,240 @@
+
+2023-01-27 20:26:06
+Location: Synaptic4u\Core\App::readConfig 2
+config_path: /home/mila/Repos/dbExtractor/config.json
+config: {
+    "report": {
+        "Description": "Report batch gruoping size. Do you want report summaries based upon per 100 \/ 1000 or 100000. ",
+        "batch_size": 1000
+    },
+    "vhost": {
+        "Description": "Nginx Virtual Hosts Base Directory path: Include a trailing forward slash. Include the suffix to search for passed as an array.",
+        "dir_path": "\/etc\/apache2\/sites-available\/",
+        "search_suffix": [
+            "conf"
+        ]
+    },
+    "log": {
+        "Description": "Logging for application audit. This will log everything apart from reports and progress logs. Errors automatically log.",
+        "enabled": true
+    },
+    "root_db_login": {
+        "Description": "MySQL ONLY! Root Database Login credentials. If you want to compare db's from vhosts to actual databases in the server.",
+        "enabled": false,
+        "mysql": "'db_root_config.json"
+    },
+    "target_server": {
+        "Description": "The target server where the db's will be inserted. Direct transport to Mysql Server.",
+        "ip_address": null,
+        "port": null,
+        "username": null,
+        "password": null
+    }
+}
+
+2023-01-27 20:26:06
+Location: Synaptic4u\Core\App::parseVHosts 2
+vhosts: {
+    "app.synaptic4u.local.conf": "\/etc\/apache2\/sites-available\/app.synaptic4u.local.conf",
+    "api.synaptic4u.local.conf": "\/etc\/apache2\/sites-available\/api.synaptic4u.local.conf",
+    "000_default.conf": "\/etc\/apache2\/sites-available\/000-default.conf",
+    "ums.synaptic4u.local.conf": "\/etc\/apache2\/sites-available\/ums.synaptic4u.local.conf",
+    "puttingtracker.local.conf": "\/etc\/apache2\/sites-available\/puttingtracker.local.conf",
+    "default_ssl.conf": "\/etc\/apache2\/sites-available\/default-ssl.conf",
+    "dev.synaptic4u.local.conf": "\/etc\/apache2\/sites-available\/dev.synaptic4u.local.conf",
+    "mila.local.conf": "\/etc\/apache2\/sites-available\/mila.local.conf"
+}
+
+2023-01-27 20:26:06
+Location: Synaptic4u\Parser\Parser::__construct()
+config: {
+    "report": {
+        "Description": "Report batch gruoping size. Do you want report summaries based upon per 100 \/ 1000 or 100000. ",
+        "batch_size": 1000
+    },
+    "vhost": {
+        "Description": "Nginx Virtual Hosts Base Directory path: Include a trailing forward slash. Include the suffix to search for passed as an array.",
+        "dir_path": "\/etc\/apache2\/sites-available\/",
+        "search_suffix": [
+            "conf"
+        ]
+    },
+    "log": {
+        "Description": "Logging for application audit. This will log everything apart from reports and progress logs. Errors automatically log.",
+        "enabled": true
+    },
+    "root_db_login": {
+        "Description": "MySQL ONLY! Root Database Login credentials. If you want to compare db's from vhosts to actual databases in the server.",
+        "enabled": false,
+        "mysql": "'db_root_config.json"
+    },
+    "target_server": {
+        "Description": "The target server where the db's will be inserted. Direct transport to Mysql Server.",
+        "ip_address": null,
+        "port": null,
+        "username": null,
+        "password": null
+    }
+}
+db_list: []
+db_cred: {
+    "host": null,
+    "ip": null,
+    "db": null,
+    "username": null,
+    "password": null
+}
+
+2023-01-27 20:26:06
+Location: Synaptic4u\Core\App::parseVHostFiles()
+config: {
+    "report": {
+        "Description": "Report batch gruoping size. Do you want report summaries based upon per 100 \/ 1000 or 100000. ",
+        "batch_size": 1000
+    },
+    "vhost": {
+        "Description": "Nginx Virtual Hosts Base Directory path: Include a trailing forward slash. Include the suffix to search for passed as an array.",
+        "dir_path": "\/etc\/apache2\/sites-available\/",
+        "search_suffix": [
+            "conf"
+        ]
+    },
+    "log": {
+        "Description": "Logging for application audit. This will log everything apart from reports and progress logs. Errors automatically log.",
+        "enabled": true
+    },
+    "root_db_login": {
+        "Description": "MySQL ONLY! Root Database Login credentials. If you want to compare db's from vhosts to actual databases in the server.",
+        "enabled": false,
+        "mysql": "'db_root_config.json"
+    },
+    "target_server": {
+        "Description": "The target server where the db's will be inserted. Direct transport to Mysql Server.",
+        "ip_address": null,
+        "port": null,
+        "username": null,
+        "password": null
+    }
+}
+vhost_list: {
+    "app.synaptic4u.local.conf": "\/etc\/apache2\/sites-available\/app.synaptic4u.local.conf",
+    "api.synaptic4u.local.conf": "\/etc\/apache2\/sites-available\/api.synaptic4u.local.conf",
+    "000_default.conf": "\/etc\/apache2\/sites-available\/000-default.conf",
+    "ums.synaptic4u.local.conf": "\/etc\/apache2\/sites-available\/ums.synaptic4u.local.conf",
+    "puttingtracker.local.conf": "\/etc\/apache2\/sites-available\/puttingtracker.local.conf",
+    "default_ssl.conf": "\/etc\/apache2\/sites-available\/default-ssl.conf",
+    "dev.synaptic4u.local.conf": "\/etc\/apache2\/sites-available\/dev.synaptic4u.local.conf",
+    "mila.local.conf": "\/etc\/apache2\/sites-available\/mila.local.conf"
+}
+
+2023-01-27 20:26:06
+Location: Synaptic4u\Parser\Parser::parseVHosts()
+vhosts: {
+    "app.synaptic4u.local.conf": "\/etc\/apache2\/sites-available\/app.synaptic4u.local.conf",
+    "api.synaptic4u.local.conf": "\/etc\/apache2\/sites-available\/api.synaptic4u.local.conf",
+    "000_default.conf": "\/etc\/apache2\/sites-available\/000-default.conf",
+    "ums.synaptic4u.local.conf": "\/etc\/apache2\/sites-available\/ums.synaptic4u.local.conf",
+    "puttingtracker.local.conf": "\/etc\/apache2\/sites-available\/puttingtracker.local.conf",
+    "default_ssl.conf": "\/etc\/apache2\/sites-available\/default-ssl.conf",
+    "dev.synaptic4u.local.conf": "\/etc\/apache2\/sites-available\/dev.synaptic4u.local.conf",
+    "mila.local.conf": "\/etc\/apache2\/sites-available\/mila.local.conf"
+}
+
+2023-01-27 20:28:45
+Location: Synaptic4u\Core\App::readConfig 2
+config_path: /home/mila/Repos/dbExtractor/config.json
+config: {
+    "report": {
+        "Description": "Report batch gruoping size. Do you want report summaries based upon per 100 \/ 1000 or 100000. ",
+        "batch_size": 1000
+    },
+    "vhost": {
+        "Description": "Nginx Virtual Hosts Base Directory path: Include a trailing forward slash. Include the suffix to search for passed as an array.",
+        "dir_path": "\/etc\/apache2\/sites-available\/",
+        "search_suffix": [
+            "conf"
+        ]
+    },
+    "log": {
+        "Description": "Logging for application audit. This will log everything apart from reports and progress logs. Errors automatically log.",
+        "enabled": true
+    },
+    "root_db_login": {
+        "Description": "MySQL ONLY! Root Database Login credentials. If you want to compare db's from vhosts to actual databases in the server.",
+        "enabled": false,
+        "mysql": "'db_root_config.json"
+    },
+    "target_server": {
+        "Description": "The target server where the db's will be inserted. Direct transport to Mysql Server.",
+        "ip_address": null,
+        "port": null,
+        "username": null,
+        "password": null
+    }
+}
+
+2023-01-27 20:28:45
+Location: Synaptic4u\Core\App::parseVHosts 2
+vhosts: {
+    "app.synaptic4u.local.conf": "\/etc\/apache2\/sites-available\/app.synaptic4u.local.conf",
+    "api.synaptic4u.local.conf": "\/etc\/apache2\/sites-available\/api.synaptic4u.local.conf",
+    "000_default.conf": "\/etc\/apache2\/sites-available\/000-default.conf",
+    "ums.synaptic4u.local.conf": "\/etc\/apache2\/sites-available\/ums.synaptic4u.local.conf",
+    "puttingtracker.local.conf": "\/etc\/apache2\/sites-available\/puttingtracker.local.conf",
+    "default_ssl.conf": "\/etc\/apache2\/sites-available\/default-ssl.conf",
+    "dev.synaptic4u.local.conf": "\/etc\/apache2\/sites-available\/dev.synaptic4u.local.conf",
+    "mila.local.conf": "\/etc\/apache2\/sites-available\/mila.local.conf"
+}
+
+2023-01-27 20:28:45
+Location: Synaptic4u\Parser\Parser::__construct()
+config: {
+    "report": {
+        "Description": "Report batch gruoping size. Do you want report summaries based upon per 100 \/ 1000 or 100000. ",
+        "batch_size": 1000
+    },
+    "vhost": {
+        "Description": "Nginx Virtual Hosts Base Directory path: Include a trailing forward slash. Include the suffix to search for passed as an array.",
+        "dir_path": "\/etc\/apache2\/sites-available\/",
+        "search_suffix": [
+            "conf"
+        ]
+    },
+    "log": {
+        "Description": "Logging for application audit. This will log everything apart from reports and progress logs. Errors automatically log.",
+        "enabled": true
+    },
+    "root_db_login": {
+        "Description": "MySQL ONLY! Root Database Login credentials. If you want to compare db's from vhosts to actual databases in the server.",
+        "enabled": false,
+        "mysql": "'db_root_config.json"
+    },
+    "target_server": {
+        "Description": "The target server where the db's will be inserted. Direct transport to Mysql Server.",
+        "ip_address": null,
+        "port": null,
+        "username": null,
+        "password": null
+    }
+}
+db_list: []
+db_cred: {
+    "host": null,
+    "ip": null,
+    "db": null,
+    "username": null,
+    "password": null
+}
+
+2023-01-27 20:28:45
+Location: Synaptic4u\Parser\Parser::parseVHosts()
+vhosts: {
+    "app.synaptic4u.local.conf": "\/etc\/apache2\/sites-available\/app.synaptic4u.local.conf",
+    "api.synaptic4u.local.conf": "\/etc\/apache2\/sites-available\/api.synaptic4u.local.conf",
+    "000_default.conf": "\/etc\/apache2\/sites-available\/000-default.conf",
+    "ums.synaptic4u.local.conf": "\/etc\/apache2\/sites-available\/ums.synaptic4u.local.conf",
+    "puttingtracker.local.conf": "\/etc\/apache2\/sites-available\/puttingtracker.local.conf",
+    "default_ssl.conf": "\/etc\/apache2\/sites-available\/default-ssl.conf",
+    "dev.synaptic4u.local.conf": "\/etc\/apache2\/sites-available\/dev.synaptic4u.local.conf",
+    "mila.local.conf": "\/etc\/apache2\/sites-available\/mila.local.conf"
+}
