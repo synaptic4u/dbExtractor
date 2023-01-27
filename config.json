@@ -4,8 +4,8 @@
         "batch_size": 1000
     },
     "vhost": {
-        "Description": "Nginx Virtual Hosts Base Directory path: Include a trailing forward slash. Include the suffix to search for passed as an array.",
-        "dir_path": "/etc/apache2/sites-available/",
+        "Description": "Nginx Virtual Hosts Base Directory path -> Include a trailing forward slash. Include the suffix to search for passed as an array.",
+        "dir_path": "/etc/nginx/conf.d/",
         "search_suffix": [
             "conf"
         ]
