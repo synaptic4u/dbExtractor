@@ -3,22 +3,22 @@
 namespace Synaptic4u\Files\Reader;
 
 use Exception;
-use Synaptic4u\Logs\Activity;
-use Synaptic4u\Logs\Error;
-use Synaptic4u\Logs\Log;
+use Synaptic4u\Log\Activity;
+use Synaptic4u\Log\Error;
+use Synaptic4u\Log\Log;
 
 class FileReader
 {
     /**
-     * Calls FileReader::readLogFile.
+     * Calls FileReader::readArrayFile.
      *
      * @param string $file : file path
      *
      * @return array : array of file contents separated by "\n"
      */
-    public function parseFile(string $file): array
+    public function parseFile(string $file)
     {
-        return $this->readLogFile($file);
+        return $this->readArrayFile($file);
     }
 
     /**
@@ -30,7 +30,7 @@ class FileReader
      *
      * @return mixed : Returns std::Class object
      */
-    public function readJSONFile(string $file, int $dir_include = 0): mixed
+    public function readJSONFile(string $file, int $dir_include = 0)
     {        
         if (0 === $dir_include) {
             $file = dirname(__FILE__, 3).$file;
@@ -46,7 +46,7 @@ class FileReader
      *
      * @return string : string with minimal whitespace
      */
-    public function stringClear(string $string): string
+    public function stringClear(string $string)
     {
         return str_replace(
             '     ',
@@ -72,20 +72,20 @@ class FileReader
     }
 
     /**
-     * Retrieves the contents from a log file returned as a array.
+     * Retrieves the contents from a file returned as a array.
      *
      * @param string $file : file path
      *
      * @return array : file contents separated into array
      */
-    private function readLogFile(string $file): array
+    private function readArrayFile(string $file)
     {
         $rows = [];
 
         try {
-            $log_txt = file_get_contents($file);
+            $txt = file_get_contents($file);
 
-            $rows = explode("\n", $log_txt);
+            $rows = explode("\n", $txt);
         } catch (Exception $e) {
             $this->error([
                 'Location' => __METHOD__.'()',

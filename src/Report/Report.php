@@ -4,9 +4,9 @@ namespace Synaptic4u\Report;
 
 
 use Synaptic4u\DB\DB;
-use Synaptic4u\Logs\Log;
-use Synaptic4u\Logs\Error;
-use Synaptic4u\Logs\Activity;
+use Synaptic4u\Log\Log;
+use Synaptic4u\Log\Error;
+use Synaptic4u\Log\Activity;
 
 class Report{
 

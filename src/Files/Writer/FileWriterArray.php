@@ -2,9 +2,9 @@
 
 namespace Synaptic4u\Files\Writer;
 
-use Synaptic4u\Logs\Activity;
-use Synaptic4u\Logs\Error;
-use Synaptic4u\Logs\Log;
+use Synaptic4u\Log\Activity;
+use Synaptic4u\Log\Error;
+use Synaptic4u\Log\Log;
 
 /**
  *  Class: FileWriterArray

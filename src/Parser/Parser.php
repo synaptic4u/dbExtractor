@@ -4,9 +4,9 @@ namespace Synaptic4u\Parser;
 
 use DateTime;
 use Synaptic4u\Files\Reader\FileReader;
-use Synaptic4u\Logs\Activity;
-use Synaptic4u\Logs\Error;
-use Synaptic4u\Logs\Log;
+use Synaptic4u\Log\Activity;
+use Synaptic4u\Log\Error;
+use Synaptic4u\Log\Log;
 
 class Parser
 {
@@ -32,6 +32,33 @@ class Parser
 
     public function parseVHosts(array $vhosts)
     {
+
+        foreach($vhosts as $name => $vhost){
+            $row = [];
+        
+            $rows = $this->file_reader->parseFile($vhost);
+
+            $nu_rows = sizeof($rows);
+
+            if ($nu_rows > 0) {
+                foreach ($rows as $key => $row) {
+                    
+                    $line = $this->file_reader->stringClear($row);
+
+                    var_dump($line);
+                    
+                    if (substr_count($line, "root", 0, strlen($line)) > 0) {
+                        var_dump($line);
+
+                    } else {
+                        --$nu_rows;
+                    }
+                }
+            }
+
+            $rows = null;
+    
+        }
         
     }
 

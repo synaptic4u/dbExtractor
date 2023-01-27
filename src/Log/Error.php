@@ -1,6 +1,6 @@
 <?php
 
-namespace Synaptic4u\Logs;
+namespace Synaptic4u\Log;
 
 use Exception;
 

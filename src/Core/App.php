@@ -8,9 +8,9 @@ use Synaptic4u\Files\Writer\FileWriter;
 use Synaptic4u\Files\Writer\FileWriterArray;
 use Synaptic4u\Files\Writer\FileWriterText;
 use Synaptic4u\Crawler\Crawler;
-use Synaptic4u\Logs\Activity;
-use Synaptic4u\Logs\Error;
-use Synaptic4u\Logs\Log;
+use Synaptic4u\Log\Activity;
+use Synaptic4u\Log\Error;
+use Synaptic4u\Log\Log;
 use Synaptic4u\Parser\Parser;
 use Synaptic4u\Structure\Structure;
 

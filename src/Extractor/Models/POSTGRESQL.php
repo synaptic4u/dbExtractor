@@ -3,9 +3,9 @@
 namespace Synaptic4u\Tables\Models;
 
 use Synaptic4u\DB\DB;
-use Synaptic4u\Logs\Activity;
-use Synaptic4u\Logs\Error;
-use Synaptic4u\Logs\Log;
+use Synaptic4u\Log\Activity;
+use Synaptic4u\Log\Error;
+use Synaptic4u\Log\Log;
 
 /**
  * NOT IN USE -> Just copied from MySQL class. Still to be developed.
