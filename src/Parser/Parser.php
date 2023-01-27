@@ -50,15 +50,16 @@ class Parser
     public function parseVHosts($vhosts)
     {
 
-
         $this->log([
-            'Location' => __METHOD__.'()',
+            'Location' => __METHOD__.' 1',
             'vhosts' => json_encode($vhosts, JSON_PRETTY_PRINT),
         ]);
 
         foreach($vhosts as $name => $vhost){
-            $row = [];
-        
+            
+            $rows = [];
+            $nu_rows = [];
+
             $rows = $this->file_reader->parseFile($vhost);
 
             $nu_rows = sizeof($rows);
@@ -77,6 +78,8 @@ class Parser
                         --$nu_rows;
                     }
                 }
+            }else{
+                
             }
 
             $rows = null;
