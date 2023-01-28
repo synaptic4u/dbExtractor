@@ -38,6 +38,16 @@ class Parser
         }
     }
 
+    public function confirmVHostFiles($vhost_detail_list){
+        try{
+
+        }catch(Exception $e){
+
+        }finally{
+
+        }
+    }
+
     public function parseVHostFiles($vhosts)
     {
         try{
@@ -89,26 +99,30 @@ class Parser
                         
                         $line = $this->file_reader->stringClear($row);
 
-                        print_r(substr_count($line, "root ", 0, strlen($line)).PHP_EOL);
-                        print_r(substr_count($line, "server_name", 0, strlen($line)).PHP_EOL);
-                        print_r(
-                            (strrpos($line, "root ", 0) > 0) ? 
-                                str_replace(";", "", substr($line, strrpos($line, "root ", 0)+5, strlen($line))) : 
-                                null.PHP_EOL
-                        );
-                        print_r(
-                            (strrpos($line, "server_name ", 0) > 0) ? 
-                                str_replace(";", "", substr($line, strrpos($line, "server_name", 0)+11, strlen($line))) : 
-                                null.PHP_EOL
-                        );
-                        
-                        $vhost_detail_list[$name]['vhost_root_dir_path'] = (substr_count($line, "root", 0, strlen($line)) > 0) ? 
-                            $this->file_reader->stringClear(substr($line, strrpos($line, "root", 0), strlen($line))) : 
-                            null;
+                        // $test = [
+                        //     "line" => $line,
+                        //     "root_exists" => (strrpos($line, "root ", 0) > 0) ? "true" : "false",
+                        //     "root_line" => substr($line, strrpos($line, "server_name", 0)+11, strlen($line)),
+                        //     "root_path" => str_replace(";", "", substr($line, strrpos($line, "root ", 0)+5, strlen($line))) ,
+                        //     "server_exists" => (strrpos($line, "server_name ", 0) > 0) ? "true" : "false",
+                        //     "server_line" => substr($line, strrpos($line, "server_name", 0)+11, strlen($line)),
+                        //     "server_path" => str_replace(";", "", str_replace("  ", " ", substr($line, strrpos($line, "server_name", 0)+11, strlen($line)))),
+                        // ];              
+                        // $this->log([
+                        //     'Location' => __METHOD__.' DEBUG',
+                        //     'vhosts' => json_encode($vhosts, JSON_PRETTY_PRINT),
+                        //     'test' => json_encode($test, JSON_PRETTY_PRINT),
+                        // ]);
 
-                        $vhost_detail_list[$name]['vhost_url'] = (substr_count($line, "server_name", 0, strlen($line)) > 0) ? 
-                            $this->file_reader->stringClear(substr($line, strrpos($line, "server_name", 0), strlen($line))) : 
-                            null;
+                        if(strrpos($line, "server_name ", 0) > 0){
+
+                            $vhost_detail_list[$name]['vhost_url'] = str_replace(";", "", str_replace("  ", " ", substr($line, strrpos($line, "server_name", 0)+11, strlen($line))));
+                        }
+
+                        if(strrpos($line, "root ", 0) > 0){
+
+                            $vhost_detail_list[$name]['vhost_root_dir_path'] = str_replace(";", "", substr($line, strrpos($line, "root ", 0)+5, strlen($line)));
+                        }           
                     }
                 }else{
                     
@@ -117,7 +131,6 @@ class Parser
 
                 $rows = null;
             }
-
 
             $this->log([
                 'Location' => __METHOD__.' 2',

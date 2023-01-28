@@ -6,21 +6,18 @@ use Exception;
 use Synaptic4u\Log\Activity;
 use Synaptic4u\Log\Error;
 use Synaptic4u\Log\Log;
+use Synaptic4u\DB\DB;
 
 class Extractor
 {
-    protected $model;
-
-    /**
-     * Initialises Model class.
-     *
-     * @param mixed $options
-     */
+    private $db;
+    
     public function __construct($options)
     {
         try {
-            $model = __NAMESPACE__.'\\Models\\'.$options['DB'];
-            $this->model = new $model($options);
+            
+            $this->db = new DB();
+            
         } catch (Exception $e) {
             $this->error([
                 'Location' => __METHOD__.'()',
@@ -29,75 +26,42 @@ class Extractor
         }
     }
 
-    /**
-     * Reads a list of all the tables from the database.
-     *
-     * @return mixed : Returns a std::Class object of results
-     */
+    public function confirmVHostDB($vhost_detail_list){
+        
+    }
+
     public function readTablesList()
     {
-        return $this->model->readTablesList();
+
+        $table_list = [];
+        
+        $sql = 'show tables where 1=?;';
+
+        $result = $this->db->query([1], $sql);
+
+        foreach ($result as $res) {
+            $table_list[] = $res[0];
+        }
+
+        return $table_list;
+        // print_r(json_encode($table_list, JSON_PRETTY_PRINT).PHP_EOL);
     }
 
-    /**
-     * Reads all the column names from the given table.
-     *
-     * @param mixed $table : a std::Class object
-     *
-     * @return mixed : array containing the table's column names with logid column removed
-     */
     public function readTableColumns($table)
     {
-        return $this->model->readTableColumns($table);
-    }
+        $columns = [];
+        
+        $sql = 'show columns from '.$table->alias.' where 1=?;';
 
-    /**
-     * Creates the table in the database.
-     * Column names are dynamically allocated from the $table->columns property.
-     *
-     * @param [type] $table : std::Class object containing the table's alias and columns
-     *
-     * @return array : array containing table name, row count and success status
-     */
-    public function createTable($table)
-    {
-        return $this->model->createTable($table);
-    }
+        $result = $this->db->query([1], $sql);
 
-    /**
-     * Creates a MySQL insert statements dynamically.
-     *
-     * @param array  $columns : Associative array of table's column names and field content
-     * @param string $alias   : Table name
-     *
-     * @return int : The last inserted ID
-     */
-    public function insertLog(array $columns, string $alias)
-    {
-        return $this->model->insertLog($columns, $alias);
-    }
+        foreach ($result as $res) {
+            $columns[] = $res[0];
+        }
 
-    /**
-     * Creates insert statement for log_dump table.
-     *
-     * @param string $line : Field contents (log file row or entire log file)
-     * @param string $file : full path name of file
-     *
-     * @return int : The last inserted ID
-     */
-    public function dumpLog(string $line, string $file)
-    {
-        return $this->model->dumpLog($line, $file);
-    }
+        array_shift($columns);
 
-    /**
-     * Creates the log_dump table.
-     *
-     * @return mixed : Return the query's status
-     */
-    public function createLogDump()
-    {
-        return $this->model->createLogDump();
+        return $columns;
     }
 
     /**

@@ -3,16 +3,17 @@
 namespace Synaptic4u\Core;
 
 use Exception;
+use Synaptic4u\Log\Log;
+use Synaptic4u\Log\Error;
+use Synaptic4u\Log\Activity;
+use Synaptic4u\Parser\Parser;
+use Synaptic4u\Crawler\Crawler;
+use Synaptic4u\Extractor\Extractor;
+use Synaptic4u\Structure\Structure;
 use Synaptic4u\Files\Reader\FileReader;
 use Synaptic4u\Files\Writer\FileWriter;
-use Synaptic4u\Files\Writer\FileWriterArray;
 use Synaptic4u\Files\Writer\FileWriterText;
-use Synaptic4u\Crawler\Crawler;
-use Synaptic4u\Log\Activity;
-use Synaptic4u\Log\Error;
-use Synaptic4u\Log\Log;
-use Synaptic4u\Parser\Parser;
-use Synaptic4u\Structure\Structure;
+use Synaptic4u\Files\Writer\FileWriterArray;
 
 /**
  * Class::App :
@@ -58,7 +59,7 @@ class App
             }
 
             $this->vhost_list = $this->parseVHosts();
-            var_dump($this->vhost_list);
+            // var_dump($this->vhost_list);
             
             if($this->vhost_list === null){
                 $error = "ERROR: The Virtual Host List couldn't be compiled!".PHP_EOL;
@@ -66,12 +67,14 @@ class App
             }
 
             $this->vhost_detail_list = $this->parseVHostFiles();
-            var_dump($this->vhost_detail_list);
+            // var_dump($this->vhost_detail_list);
             
             if($this->vhost_detail_list === null){
                 $error = "ERROR: The Virtual Host Detailed List could not be compiled!".PHP_EOL;
                 throw new Exception($error);
             }
+
+            $this->vhost_detail_list = $this->confirmVHostDB();
             
         } catch (Exception $e) {
             
@@ -84,6 +87,10 @@ class App
             
             print_r(PHP_EOL."Application has exited.".PHP_EOL);
         }
+    }
+
+    private function confirmVHostDB(){
+        return (new Extractor($this->config))->confirmVHostDB($this->vhost_detail_list);
     }
 
     private function parseVHostFiles(){  
