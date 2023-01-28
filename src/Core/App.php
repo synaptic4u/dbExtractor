@@ -51,7 +51,6 @@ class App
             $this->file_writer = new FileWriter();
 
             $this->config = $this->readConfig();
-            // var_dump($this->config);
             
             if($this->config === null){
                 $error = "ERROR: The configuration file is faulty!".PHP_EOL;
@@ -59,7 +58,6 @@ class App
             }
 
             $this->vhost_list = $this->parseVHosts();
-            // var_dump($this->vhost_list);
             
             if($this->vhost_list === null){
                 $error = "ERROR: The Virtual Host List couldn't be compiled!".PHP_EOL;
@@ -67,7 +65,6 @@ class App
             }
 
             $this->vhost_detail_list = $this->parseVHostFiles();
-            // var_dump($this->vhost_detail_list);
             
             if($this->vhost_detail_list === null){
                 $error = "ERROR: The Virtual Host Detailed List could not be compiled!".PHP_EOL;
@@ -76,6 +73,19 @@ class App
 
             $this->vhost_detail_list = $this->confirmVHostFiles();
             
+            $this->log([
+                'Location' => __METHOD__.' 1',
+                'vhost_detail_list' => json_encode($this->vhost_detail_list, JSON_PRETTY_PRINT),
+            ]);
+
+            $this->vhost_detail_list = $this->getDataDetails();
+            
+            $this->log([
+                'Location' => __METHOD__.' 1',
+                'vhost_detail_list' => json_encode($this->vhost_detail_list, JSON_PRETTY_PRINT),
+            ]);
+
+
         } catch (Exception $e) {
             
             $this->error([
@@ -87,6 +97,10 @@ class App
             
             print_r(PHP_EOL."Application has exited.".PHP_EOL);
         }
+    }
+
+    private function getDataDetails(){
+        return (new Extractor($this->config))->getDataDetails($this->vhost_detail_list);
     }
 
     private function confirmVHostFiles(){

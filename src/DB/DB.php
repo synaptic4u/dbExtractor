@@ -76,6 +76,22 @@ class DB
         }
     }
 
+    public function getTableRowCount($table){
+
+        $count = 0;
+
+        $sql = 'select count(*) as rowcount from '.$table.' where 1 = ?;';
+
+        $result = $this->query([1], $sql);
+
+
+        foreach ($result as $res) {
+            $count = $res->rowcount;
+        }
+
+        return $count;
+    }
+
     public function getTablesList()
     {
 
@@ -91,23 +107,6 @@ class DB
 
         return $table_list;
         // print_r(json_encode($table_list, JSON_PRETTY_PRINT).PHP_EOL);
-    }
-
-    public function getTableColumns($table)
-    {
-        $columns = [];
-        
-        $sql = 'show columns from '.$table.' where 1=?;';
-
-        $result = $this->query([1], $sql);
-
-        foreach ($result as $res) {
-            $columns[] = $res[0];
-        }
-
-        array_shift($columns);
-
-        return $columns;
     }
 
     public function getDBList($table)
