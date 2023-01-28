@@ -17,7 +17,7 @@
     "root_db_login": {
         "Description": "MySQL ONLY! Root Database Login credentials. If you want to compare db's from vhosts to actual databases in the server.",
         "enabled": false,
-        "mysql": "'db_root_config.json"
+        "config_name": "db_root_config.json"
     },
     "target_server": {
         "Description": "The target server where the db's will be inserted. Direct transport to Mysql Server.",

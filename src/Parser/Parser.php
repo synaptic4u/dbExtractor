@@ -23,7 +23,7 @@ class Parser
             $this->config = $config;
             
             $this->log([
-                'Location' => __METHOD__.'()',
+                'Location' => __METHOD__,
                 'config' => json_encode($this->config, JSON_PRETTY_PRINT),
                 'result' => json_encode($this->result, JSON_PRETTY_PRINT),
             ]);
@@ -32,7 +32,7 @@ class Parser
         }catch(Exception $e){
                         
             $this->error([
-                'Location' => __METHOD__.'()',
+                'Location' => __METHOD__,
                 'error' => $e->__toString(),
             ]);
         }
@@ -41,8 +41,18 @@ class Parser
     public function confirmVHostFiles($vhost_detail_list){
         try{
 
-        }catch(Exception $e){
+            $this->log([
+                'Location' => __METHOD__,
+                'vhost_detail_list' => json_encode($vhost_detail_list, JSON_PRETTY_PRINT),
+            ]);
 
+            
+        }catch(Exception $e){
+                        
+            $this->error([
+                'Location' => __METHOD__,
+                'error' => $e->__toString(),
+            ]);
         }finally{
 
         }
@@ -142,7 +152,7 @@ class Parser
             $rows = null;
 
             $this->error([
-                'Location' => __METHOD__.'()',
+                'Location' => __METHOD__,
                 'error' => $e->__toString(),
             ]);
         }finally{

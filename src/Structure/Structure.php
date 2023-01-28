@@ -36,9 +36,9 @@ class Structure
             $model = __NAMESPACE__.'\\Models\\'.$options['DB'];
             $this->model = new $model($options);
 
-            $this->tables = new Tables($options);
+            // $this->tables = new Tables($options);
 
-            $this->table_list = $this->tables->readTablesList();
+            // $this->table_list = $this->tables->readTablesList();
         } catch (Exception $e) {
             $this->error([
                 'Location' => __METHOD__.'()',

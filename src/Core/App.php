@@ -74,12 +74,12 @@ class App
                 throw new Exception($error);
             }
 
-            // $this->vhost_detail_list = $this->confirmVHostDB();
+            $this->vhost_detail_list = $this->confirmVHostFiles();
             
         } catch (Exception $e) {
             
             $this->error([
-                'Location' => __METHOD__.'()',
+                'Location' => __METHOD__,
                 'error' => $e->__toString(),
             ]);
 
@@ -89,8 +89,8 @@ class App
         }
     }
 
-    private function confirmVHostDB(){
-        return (new Extractor($this->config))->confirmVHostDB($this->vhost_detail_list);
+    private function confirmVHostFiles(){
+        return (new Parser($this->config))->confirmVHostFiles($this->vhost_detail_list);
     }
 
     private function parseVHostFiles(){  
@@ -129,7 +129,7 @@ class App
         }catch(Exception $e){
 
             $this->error([
-                'Location' => __METHOD__.'()',
+                'Location' => __METHOD__,
                 'error' => $e->__toString(),
             ]);
 
@@ -185,7 +185,7 @@ class App
         }catch(Exception $e){
     
             $this->error([
-                'Location' => __METHOD__.'()',
+                'Location' => __METHOD__,
                 'error' => $e->__toString(),
             ]);
 

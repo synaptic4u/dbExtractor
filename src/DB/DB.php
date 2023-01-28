@@ -16,10 +16,10 @@ class DB
     protected $status;
     protected $pdo;
 
-    public function __construct()
+    public function __construct($config)
     {
         try {
-            $filepath = dirname(__FILE__, 4).'/db_mysql_config.json';
+            $filepath = dirname(__FILE__, 3).'/'.$config->root_db_login->config_name;
 
             //  Returns associative array.
             $this->conn = json_decode(file_get_contents($filepath), true);
@@ -30,7 +30,7 @@ class DB
             $this->pdo = new PDO($dsn, $this->conn['user'], $this->conn['pass']);
         } catch (Exception $e) {
             $this->error([
-                'Location' => __METHOD__.'()',
+                'Location' => __METHOD__,
                 'error' => $e->__toString(),
             ]);
 
@@ -60,7 +60,7 @@ class DB
             $stmt = null;
         } catch (Exception $e) {
             $this->error([
-                'Location' => __METHOD__.'()',
+                'Location' => __METHOD__,
                 'pdo->errorInfo' => $this->pdo->errorInfo(),
                 'error' => $e->__toString(),
                 'stmt' => $stmt,
@@ -74,6 +74,57 @@ class DB
         } finally {
             return $result;
         }
+    }
+
+    public function getTablesList()
+    {
+
+        $table_list = [];
+        
+        $sql = 'show tables where 1=?;';
+
+        $result = $this->query([1], $sql);
+
+        foreach ($result as $res) {
+            $table_list[] = $res[0];
+        }
+
+        return $table_list;
+        // print_r(json_encode($table_list, JSON_PRETTY_PRINT).PHP_EOL);
+    }
+
+    public function getTableColumns($table)
+    {
+        $columns = [];
+        
+        $sql = 'show columns from '.$table.' where 1=?;';
+
+        $result = $this->query([1], $sql);
+
+        foreach ($result as $res) {
+            $columns[] = $res[0];
+        }
+
+        array_shift($columns);
+
+        return $columns;
+    }
+
+    public function getDBList($table)
+    {
+        $dbs = [];
+        
+        $sql = 'show databases where 1=?;';
+
+        $result = $this->query([1], $sql);
+
+        foreach ($result as $res) {
+            $dbs[] = $res[0];
+        }
+
+        array_shift($dbs);
+
+        return $dbs;
     }
 
     public function getLastId()

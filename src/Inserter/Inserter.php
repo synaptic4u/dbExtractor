@@ -1,6 +1,6 @@
 <?php
 
-namespace Synaptic4u\Extractor;
+namespace Synaptic4u\Inserter;
 
 use Exception;
 use Synaptic4u\Log\Activity;
@@ -8,7 +8,7 @@ use Synaptic4u\Log\Error;
 use Synaptic4u\Log\Log;
 use Synaptic4u\DB\DB;
 
-class Extractor
+class Inserter
 {
     private $db;
     private $config;
@@ -22,28 +22,27 @@ class Extractor
 
                 $this->db = new DB($this->config);
             }
-            
         } catch (Exception $e) {
             $this->error([
-                'Location' => __METHOD__,
+                'Location' => __METHOD__.'()',
                 'error' => $e->__toString(),
             ]);
         }
     }
 
-    public function getTablesList()
+    public function createDB()
     {
-        return $this->db->getTablesList();
+        //
     }
 
-    public function getTableColumns($table)
+    public function runInsertCycle($vhost_detail_list)
     {
-        return $this->db->getTableColumns($table);
+        //
     }
 
-    public function getDBList($table)
+    public function runDBInsert($table)
     {
-        return $this->db->getDBList($table);
+        //
     }
 
     /**
