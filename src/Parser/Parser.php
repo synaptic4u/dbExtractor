@@ -89,8 +89,19 @@ class Parser
                         
                         $line = $this->file_reader->stringClear($row);
 
-                        var_dump($line);
-
+                        print_r(substr_count($line, "root ", 0, strlen($line)).PHP_EOL);
+                        print_r(substr_count($line, "server_name", 0, strlen($line)).PHP_EOL);
+                        print_r(
+                            (strrpos($line, "root ", 0) > 0) ? 
+                                str_replace(";", "", substr($line, strrpos($line, "root ", 0)+5, strlen($line))) : 
+                                null.PHP_EOL
+                        );
+                        print_r(
+                            (strrpos($line, "server_name ", 0) > 0) ? 
+                                str_replace(";", "", substr($line, strrpos($line, "server_name", 0)+11, strlen($line))) : 
+                                null.PHP_EOL
+                        );
+                        
                         $vhost_detail_list[$name]['vhost_root_dir_path'] = (substr_count($line, "root", 0, strlen($line)) > 0) ? 
                             $this->file_reader->stringClear(substr($line, strrpos($line, "root", 0), strlen($line))) : 
                             null;
@@ -106,6 +117,13 @@ class Parser
 
                 $rows = null;
             }
+
+
+            $this->log([
+                'Location' => __METHOD__.' 2',
+                'vhosts' => json_encode($vhosts, JSON_PRETTY_PRINT),
+                'vhost_detail_list' => json_encode($vhost_detail_list, JSON_PRETTY_PRINT),
+            ]);
         }catch(Exception $e){
 
             $rows = null;

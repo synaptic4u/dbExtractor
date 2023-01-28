@@ -61,7 +61,7 @@ class App
             var_dump($this->vhost_list);
             
             if($this->vhost_list === null){
-                $error = "ERROR: The Virtual Host list couldn't be compiled!".PHP_EOL;
+                $error = "ERROR: The Virtual Host List couldn't be compiled!".PHP_EOL;
                 throw new Exception($error);
             }
 
@@ -69,7 +69,7 @@ class App
             var_dump($this->vhost_detail_list);
             
             if($this->vhost_detail_list === null){
-                $error = "ERROR: The DataBase list could not be compiled!".PHP_EOL;
+                $error = "ERROR: The Virtual Host Detailed List could not be compiled!".PHP_EOL;
                 throw new Exception($error);
             }
             
