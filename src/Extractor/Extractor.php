@@ -40,6 +40,8 @@ class Extractor
 
                 $this->db = new DB($vhost['vhost_web_config']);
 
+                var_dump(get_class($this->db));
+
                 $table_list = $this->getTablesList();
                 
                 $vhost_detail_list[$name]['db_details_source']['table_count'] = sizeof($table_list);

@@ -81,7 +81,7 @@ class App
             $this->vhost_detail_list = $this->getDataDetails();
             
             $this->log([
-                'Location' => __METHOD__.' 1',
+                'Location' => __METHOD__.' 2',
                 'vhost_detail_list' => json_encode($this->vhost_detail_list, JSON_PRETTY_PRINT),
             ]);
 

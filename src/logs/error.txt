@@ -1,9 +1,9 @@
 
-2023-01-28 21:59:56
-Location: Synaptic4u\DB\DB::__construct
-error: PDOException: SQLSTATE[HY000] [2002] No such file or directory in /home/mila/Repos/dbExtractor/src/DB/DB.php:30
+2023-01-28 22:53:33
+Location: Synaptic4u\Extractor\Extractor::getDataDetails
+error: PDOException: SQLSTATE[HY000] [1045] Access denied for user 'omni-joomla1'@'localhost' (using password: YES) in /home/mila/Repos/dbExtractor/src/DB/DB.php:47
 Stack trace:
-#0 /home/mila/Repos/dbExtractor/src/DB/DB.php(30): PDO->__construct()
+#0 /home/mila/Repos/dbExtractor/src/DB/DB.php(47): PDO->__construct()
 #1 /home/mila/Repos/dbExtractor/src/Extractor/Extractor.php(41): Synaptic4u\DB\DB->__construct()
 #2 /home/mila/Repos/dbExtractor/src/Core/App.php(103): Synaptic4u\Extractor\Extractor->getDataDetails()
 #3 /home/mila/Repos/dbExtractor/src/Core/App.php(81): Synaptic4u\Core\App->getDataDetails()

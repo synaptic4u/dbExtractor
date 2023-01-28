@@ -13,7 +13,7 @@ class JConfig {
 	public $debug_lang = false;
 	public $debug_lang_const = true;
 	public $dbtype = 'mysql';
-	public $host = 'omnicasa-mysql';
+	public $host = 'localhost';
 	public $user = 'omni-joomla1';
 	public $password = 'omni-joomla1';
 	public $db = 'omnicasa_joomla1';

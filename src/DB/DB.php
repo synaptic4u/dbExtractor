@@ -18,24 +18,46 @@ class DB
 
     public function __construct($config)
     {
-        try {
-            $filepath = dirname(__FILE__, 3).'/'.$config->root_db_login->config_name;
+        // try {
+            $this->conn = null;
 
-            //  Returns associative array.
-            $this->conn = json_decode(file_get_contents($filepath), true);
+            if(isset($config->root_db_login->config_name)){
+                var_dump("YES");
+                $filepath = dirname(__FILE__, 3).'/'.$config->root_db_login->config_name;
+
+                //  Returns associative array.
+                $this->conn = json_decode(file_get_contents($filepath), true);
+
+            }
+            if(isset($config['db'])){
+                $this->conn = [
+                    "host" => $config['host'],
+                    "dbname" => $config['db'],
+                    "user" => $config['user'],
+                    "pass" => $config['password']          
+                ];
+            }
+            if($this->conn === null){
+                throw new Exception("Something wrong with db config");
+            }
 
             $dsn = 'mysql:host='.$this->conn['host'].';dbname='.$this->conn['dbname'];
 
             //  Create PDO instance.
             $this->pdo = new PDO($dsn, $this->conn['user'], $this->conn['pass']);
-        } catch (Exception $e) {
-            $this->error([
-                'Location' => __METHOD__,
-                'error' => $e->__toString(),
-            ]);
 
-            $result = null;
-        }
+            $this->log([
+                'Location' => __METHOD__,
+                'conn' => json_encode($this->conn, JSON_PRETTY_PRINT),
+            ]);
+        // } catch (Exception $e) {
+        //     $this->error([
+        //         'Location' => __METHOD__,
+        //         'error' => $e->__toString(),
+        //     ]);
+
+        //     return null;
+        // }
     }
 
     public function query($params, $sql)

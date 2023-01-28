@@ -219,7 +219,6 @@ class Parser
 
                             $vhost_detail_list[$name]['vhost_url'] = str_replace(";", "", str_replace("  ", " ", substr($line, strrpos($line, "server_name", 0)+11, strlen($line))));
                         }
-
                         if(strrpos($line, "root ", 0) > 0){
 
                             $vhost_detail_list[$name]['vhost_root_dir_path'] = str_replace(";", "", substr($line, strrpos($line, "root ", 0)+5, strlen($line)));
