@@ -74,7 +74,7 @@ class App
                 throw new Exception($error);
             }
 
-            $this->vhost_detail_list = $this->confirmVHostDB();
+            // $this->vhost_detail_list = $this->confirmVHostDB();
             
         } catch (Exception $e) {
             

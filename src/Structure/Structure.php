@@ -8,23 +8,6 @@ use Synaptic4u\Log\Error;
 use Synaptic4u\Log\Log;
 use Synaptic4u\Tables\Tables;
 
-/**
- * Class::Structure :
- * Contains the functionality to read and compare the structure between the config and database.
- *
- * Structure::parse() :
- * Compares DB schema and config structure. Creates non-existant tables.
- *
- * Structure::compareStructure() :
- * Compares the config and db table structure. Reports variance.
- * NB! Still need to write alter table functionality
- *
- * Structure::getRowCount() :
- * Queries the given table for total number of rows.
- *
- * Structure::getMaxLogID() :
- * Queries table for the max primary key : logid.
- */
 class Structure
 {
     protected $config;
