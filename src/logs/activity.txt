@@ -1,5 +1,5 @@
 
-2023-01-28 22:53:33
+2023-01-28 23:39:31
 Location: Synaptic4u\Core\App::readConfig 2
 config_path: /home/mila/Repos/dbExtractor/config.json
 config: {
@@ -32,13 +32,13 @@ config: {
     }
 }
 
-2023-01-28 22:53:33
+2023-01-28 23:39:31
 Location: Synaptic4u\Core\App::parseVHosts 2
 vhosts: {
     "omnicasa.conf": "\/home\/mila\/Repos\/dbExtractor\/testdir\/etc\/nginx\/conf.d\/omnicasa.conf"
 }
 
-2023-01-28 22:53:33
+2023-01-28 23:39:31
 Location: Synaptic4u\Parser\Parser::__construct
 config: {
     "report": {
@@ -71,13 +71,13 @@ config: {
 }
 result: []
 
-2023-01-28 22:53:33
+2023-01-28 23:39:31
 Location: Synaptic4u\Parser\Parser::parseVHostFiles 1
 vhosts: {
     "omnicasa.conf": "\/home\/mila\/Repos\/dbExtractor\/testdir\/etc\/nginx\/conf.d\/omnicasa.conf"
 }
 
-2023-01-28 22:53:33
+2023-01-28 23:39:31
 Location: Synaptic4u\Parser\Parser::parseVHostFiles 2
 vhosts: {
     "omnicasa.conf": "\/home\/mila\/Repos\/dbExtractor\/testdir\/etc\/nginx\/conf.d\/omnicasa.conf"
@@ -121,7 +121,7 @@ vhost_detail_list: {
     }
 }
 
-2023-01-28 22:53:33
+2023-01-28 23:39:31
 Location: Synaptic4u\Parser\Parser::__construct
 config: {
     "report": {
@@ -154,7 +154,7 @@ config: {
 }
 result: []
 
-2023-01-28 22:53:33
+2023-01-28 23:39:31
 Location: Synaptic4u\Parser\Parser::confirmVHostFiles 1
 vhost_detail_list: {
     "omnicasa.conf": {
@@ -195,7 +195,7 @@ vhost_detail_list: {
     }
 }
 
-2023-01-28 22:53:33
+2023-01-28 23:39:31
 Location: Synaptic4u\Parser\Parser::confirmVHostFiles 2
 vhost_detail_list: {
     "omnicasa.conf": {
@@ -236,7 +236,7 @@ vhost_detail_list: {
     }
 }
 
-2023-01-28 22:53:33
+2023-01-28 23:39:31
 Location: Synaptic4u\Core\App::__construct 1
 vhost_detail_list: {
     "omnicasa.conf": {
@@ -277,7 +277,16 @@ vhost_detail_list: {
     }
 }
 
-2023-01-28 22:53:33
+2023-01-28 23:39:31
+Location: Synaptic4u\DB\DB::__construct
+conn: {
+    "host": "localhost",
+    "dbname": "omnicasa_joomla1",
+    "user": "omni-joomla1",
+    "pass": "omni-joomla1"
+}
+
+2023-01-28 23:39:31
 Location: Synaptic4u\Core\App::__construct 2
 vhost_detail_list: {
     "omnicasa.conf": {
@@ -301,13 +310,13 @@ vhost_detail_list: {
             "dbsslca": "",
             "dbsslcipher": ""
         },
-        "db_connect_success": null,
+        "db_connect_success": true,
         "db_dump_success": null,
         "db_dump_path": null,
         "db_insert_success": null,
         "db_details_source": {
-            "table_count": null,
-            "table_list": null,
+            "table_count": 0,
+            "table_list": [],
             "tables": []
         },
         "db_details_target": {

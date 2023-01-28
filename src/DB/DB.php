@@ -15,10 +15,13 @@ class DB
     protected $conn;
     protected $status;
     protected $pdo;
+    protected $error;
 
     public function __construct($config)
     {
-        // try {
+        try {
+            
+            $this->error = null;
             $this->conn = null;
 
             if(isset($config->root_db_login->config_name)){
@@ -50,14 +53,15 @@ class DB
                 'Location' => __METHOD__,
                 'conn' => json_encode($this->conn, JSON_PRETTY_PRINT),
             ]);
-        // } catch (Exception $e) {
-        //     $this->error([
-        //         'Location' => __METHOD__,
-        //         'error' => $e->__toString(),
-        //     ]);
+        } catch (Exception $e) {
+            
+            $this->error = $e->__toString();
 
-        //     return null;
-        // }
+            $this->error([
+                'Location' => __METHOD__,
+                'error' => $e->__toString(),
+            ]);
+        }
     }
 
     public function query($params, $sql)
@@ -146,6 +150,11 @@ class DB
         array_shift($dbs);
 
         return $dbs;
+    }
+
+    public function getError()
+    {
+        return $this->error;
     }
 
     public function getLastId()

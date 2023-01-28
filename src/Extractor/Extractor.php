@@ -40,22 +40,32 @@ class Extractor
 
                 $this->db = new DB($vhost['vhost_web_config']);
 
-                var_dump(get_class($this->db));
+                // var_dump(get_class($this->db));
+                // var_dump($this->db->getError());
 
-                $table_list = $this->getTablesList();
+                if($this->db->getError() != null){
                 
-                $vhost_detail_list[$name]['db_details_source']['table_count'] = sizeof($table_list);
-                $vhost_detail_list[$name]['db_details_source']['table_list'] = $table_list;
+                    $vhost_detail_list[$name]['db_connect_success'] = $this->db->getError();
+                }else{
+                    
+                    $vhost_detail_list[$name]['db_connect_success'] = true;
+                    
+                    $table_list = $this->getTablesList();
+                    
+                    $vhost_detail_list[$name]['db_details_source']['table_count'] = sizeof($table_list);
+                    $vhost_detail_list[$name]['db_details_source']['table_list'] = $table_list;
 
-                foreach($table_list as $table){
+                    foreach($table_list as $table){
 
-                    $row_count = $this->getTableRowCount($table);
+                        $row_count = $this->getTableRowCount($table);
 
-                    $vhost_detail_list[$name]['db_details_source']['tables'][] = [
-                        "name" => $table,
-                        "row_count" => ($row_count > 0) ? $row_count : null,
-                    ];
+                        $vhost_detail_list[$name]['db_details_source']['tables'][] = [
+                            "name" => $table,
+                            "row_count" => ($row_count > 0) ? $row_count : null,
+                        ];
+                    }
                 }
+
             }
             
 
