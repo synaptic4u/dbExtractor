@@ -27,7 +27,7 @@ class App
 
     // Data Structs
     private $vhost_list;
-    private $db_list;
+    private $vhost_detail_list;
     private $config;
     
     private $parser;
@@ -65,10 +65,10 @@ class App
                 throw new Exception($error);
             }
 
-            $this->db_list = $this->parseVHostFiles();
-            var_dump($this->db_list);
+            $this->vhost_detail_list = $this->parseVHostFiles();
+            var_dump($this->vhost_detail_list);
             
-            if($this->db_list === null){
+            if($this->vhost_detail_list === null){
                 $error = "ERROR: The DataBase list could not be compiled!".PHP_EOL;
                 throw new Exception($error);
             }
@@ -88,7 +88,7 @@ class App
 
     private function parseVHostFiles(){  
         
-        return (new Parser($this->config))->parseVHosts($this->vhost_list);
+        return (new Parser($this->config))->parseVHostFiles($this->vhost_list);
     }
 
     private function parseVHosts(){

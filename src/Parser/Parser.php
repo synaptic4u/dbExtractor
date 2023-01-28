@@ -11,30 +11,21 @@ use Synaptic4u\Files\Reader\FileReader;
 
 class Parser
 {
-    protected $file_reader;
-    protected $db_list;
-    protected $db_cred;
-    protected $config;
+    private $file_reader;
+    private $result;
+    private $config;
 
     public function __construct($config)
     {
         try{
 
-            $this->db_list = [];
-            $this->db_cred = [
-                "host" => null,
-                "ip" => null,
-                "db" => null,
-                "username" => null,
-                "password" => null,
-            ];
+            $this->result = [];
             $this->config = $config;
             
             $this->log([
                 'Location' => __METHOD__.'()',
                 'config' => json_encode($this->config, JSON_PRETTY_PRINT),
-                'db_list' => json_encode($this->db_list, JSON_PRETTY_PRINT),
-                'db_cred' => json_encode($this->db_cred, JSON_PRETTY_PRINT),
+                'result' => json_encode($this->result, JSON_PRETTY_PRINT),
             ]);
 
             $this->file_reader = new FileReader();
@@ -47,45 +38,86 @@ class Parser
         }
     }
 
-    public function parseVHosts($vhosts)
+    public function parseVHostFiles($vhosts)
     {
+        try{
 
-        $this->log([
-            'Location' => __METHOD__.' 1',
-            'vhosts' => json_encode($vhosts, JSON_PRETTY_PRINT),
-        ]);
+            $vhost_detail_list = [];
 
-        foreach($vhosts as $name => $vhost){
-            
-            $rows = [];
-            $nu_rows = [];
+            $this->log([
+                'Location' => __METHOD__.' 1',
+                'vhosts' => json_encode($vhosts, JSON_PRETTY_PRINT),
+            ]);
 
-            $rows = $this->file_reader->parseFile($vhost);
+            foreach($vhosts as $name => $vhost){
+                
+                $rows = [];
+                $nu_rows = 0; 
+                $vhost_detail_list[$name] = [
+                    "vhost_conf_path" => $vhost,
+                    "vhost_file_not_empty" => null,
+                    "vhost_url" => null,
+                    "vhost_root_dir_path_exists" => null,
+                    "vhost_root_dir_path" => null,
+                    "dbtype" => null,
+                    "host" => null,
+                    "user" => null,
+                    "password" => null,
+                    "dbprefix" => null,
+                    "db" => null,
+                    "dbencryption" => null,
+                    "dbsslverifyservercert" => null,
+                    "dbsslkey" => null,
+                    "dbsslcert" => null,
+                    "dbsslca" => null,
+                    "dbsslcipher" => null,
+                    "db_connect_success" => null,
+                    "db_dump_success" => null,
+                    "db_dump_path" => null,
+                    "db_insert_success" => null,
+                ];
 
-            $nu_rows = sizeof($rows);
+                $rows = $this->file_reader->parseFile($vhost);
 
-            if ($nu_rows > 0) {
-                foreach ($rows as $key => $row) {
-                    
-                    $line = $this->file_reader->stringClear($row);
+                $nu_rows = sizeof($rows);
 
-                    var_dump($line);
-                    
-                    if (substr_count($line, "root", 0, strlen($line)) > 0) {
+                if ($nu_rows > 0) {
+
+                    $vhost_detail_list[$name]['vhost_file_not_empty'] = $nu_rows;
+
+                    foreach ($rows as $key => $row) {
+                        
+                        $line = $this->file_reader->stringClear($row);
+
                         var_dump($line);
 
-                    } else {
-                        --$nu_rows;
+                        $vhost_detail_list[$name]['vhost_root_dir_path'] = (substr_count($line, "root", 0, strlen($line)) > 0) ? 
+                            $this->file_reader->stringClear(substr($line, strrpos($line, "root", 0), strlen($line))) : 
+                            null;
+
+                        $vhost_detail_list[$name]['vhost_url'] = (substr_count($line, "server_name", 0, strlen($line)) > 0) ? 
+                            $this->file_reader->stringClear(substr($line, strrpos($line, "server_name", 0), strlen($line))) : 
+                            null;
                     }
+                }else{
+                    
+                    $vhost_detail_list[$name]['vhost_file_not_empty'] = null;   
                 }
-            }else{
-                
+
+                $rows = null;
             }
+        }catch(Exception $e){
 
             $rows = null;
-    
+
+            $this->error([
+                'Location' => __METHOD__.'()',
+                'error' => $e->__toString(),
+            ]);
+        }finally{
+
+            return $vhost_detail_list;
         }
-        
     }
 
     /**
@@ -97,7 +129,7 @@ class Parser
      *
      * @return array : Returns cleaned array
      */
-    protected function stringClean(array $columns): array
+    protected function stringClean(array $columns)
     {
         foreach ($columns as $key => $string) {
             $columns[$key] = str_replace('"', '', $string);
@@ -119,7 +151,7 @@ class Parser
      *
      * @return string : Returns cleaned string
      */
-    protected function blobClean(string $blob): string
+    protected function blobClean(string $blob)
     {
         $blob = str_replace('"', '~~~dblquote~~~', $blob);
         $blob = str_replace("'", '~~~sngquote~~~', $blob);
