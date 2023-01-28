@@ -46,6 +46,101 @@ class Parser
                 'vhost_detail_list' => json_encode($vhost_detail_list, JSON_PRETTY_PRINT),
             ]);
 
+            foreach ($vhost_detail_list as $name => $vhost) {
+                
+                $config_file = $vhost['vhost_root_dir_path'].'configuration.php';
+                
+                if(file_exists($config_file)){
+                    
+                    $vhost_detail_list[$name]['vhost_root_dir_path_exists'] = true;
+                    $rows = $this->file_reader->parseFile($config_file);
+
+                    var_dump($rows);
+
+
+                    foreach($rows as $row){
+
+                        $line = $this->file_reader->stringClear($row);
+
+                        if(strrpos($line, '$sitename', 0) > 0){
+
+                            $vhost_detail_list[$name]['vhost_web_config']['sitename'] = str_replace("'", "", str_replace(" ", "", str_replace(";", "", str_replace("=", "", substr($line, strrpos($line, '$sitename', 0)+strlen('$sitename'), strlen($line))))));
+                        }
+
+                        if(strrpos($line, '$dbtype', 0) > 0){
+
+                            $vhost_detail_list[$name]['vhost_web_config']['dbtype'] = str_replace("'", "", str_replace(" ", "", str_replace(";", "", str_replace("=", "", substr($line, strrpos($line, '$dbtype', 0)+strlen('$dbtype'), strlen($line))))));
+                        }
+
+                        if(strrpos($line, '$host', 0) > 0){
+
+                            $vhost_detail_list[$name]['vhost_web_config']['host'] = str_replace("'", "", str_replace(" ", "", str_replace(";", "", str_replace("=", "", substr($line, strrpos($line, '$host', 0)+strlen('$host'), strlen($line))))));
+                        }
+
+                        if(strrpos($line, '$user', 0) > 0){
+
+                            $vhost_detail_list[$name]['vhost_web_config']['user'] = str_replace("'", "", str_replace(" ", "", str_replace(";", "", str_replace("=", "", substr($line, strrpos($line, '$user', 0)+strlen('$user'), strlen($line))))));
+                        }
+
+                        if(strrpos($line, '$password', 0) > 0){
+
+                            $vhost_detail_list[$name]['vhost_web_config']['password'] = str_replace("'", "", str_replace(" ", "", str_replace(";", "", str_replace("=", "", substr($line, strrpos($line, '$password', 0)+strlen('$password'), strlen($line))))));
+                        }
+
+                        if(strrpos($line, '$dbprefix', 0) > 0){
+
+                            $vhost_detail_list[$name]['vhost_web_config']['dbprefix'] = str_replace("'", "", str_replace(" ", "", str_replace(";", "", str_replace("=", "", substr($line, strrpos($line, '$dbprefix', 0)+strlen('$dbprefix'), strlen($line))))));
+                        }
+
+                        if(strrpos($line, '$db = ', 0) > 0){
+
+                            $vhost_detail_list[$name]['vhost_web_config']['db'] = str_replace("'", "", str_replace(" ", "", str_replace(";", "", str_replace("=", "", substr($line, strrpos($line, '$db', 0)+strlen('$db'), strlen($line))))));
+                        }
+
+                        if(strrpos($line, '$dbencryption', 0) > 0){
+
+                            $vhost_detail_list[$name]['vhost_web_config']['dbencryption'] = str_replace("'", "", str_replace(" ", "", str_replace(";", "", str_replace("=", "", substr($line, strrpos($line, '$dbencryption', 0)+strlen('$dbencryption'), strlen($line))))));
+                        }
+
+                        if(strrpos($line, '$dbsslverifyservercert', 0) > 0){
+
+                            $vhost_detail_list[$name]['vhost_web_config']['dbsslverifyservercert'] = str_replace("'", "", str_replace(" ", "", str_replace(";", "", str_replace("=", "", substr($line, strrpos($line, '$dbsslverifyservercert', 0)+strlen('$dbsslverifyservercert'), strlen($line))))));
+                        }
+
+                        if(strrpos($line, '$dbsslkey', 0) > 0){
+
+                            $vhost_detail_list[$name]['vhost_web_config']['dbsslkey'] = str_replace("'", "", str_replace(" ", "", str_replace(";", "", str_replace("=", "", substr($line, strrpos($line, '$dbsslkey', 0)+strlen('$dbsslkey'), strlen($line))))));
+                        }
+
+                        if(strrpos($line, '$dbsslcert', 0) > 0){
+
+                            $vhost_detail_list[$name]['vhost_web_config']['dbsslcert'] = str_replace("'", "", str_replace(" ", "", str_replace(";", "", str_replace("=", "", substr($line, strrpos($line, '$dbsslcert', 0)+strlen('$dbsslcert'), strlen($line))))));
+                        }
+
+                        if(strrpos($line, '$dbsslca', 0) > 0){
+
+                            $vhost_detail_list[$name]['vhost_web_config']['dbsslca'] = str_replace("'", "", str_replace(" ", "", str_replace(";", "", str_replace("=", "", substr($line, strrpos($line, '$dbsslca', 0)+strlen('$dbsslca'), strlen($line))))));
+                        }
+
+                        if(strrpos($line, '$dbsslcipher', 0) > 0){
+
+                            $vhost_detail_list[$name]['vhost_web_config']['dbsslcipher'] = str_replace("'", "", str_replace(" ", "", str_replace(";", "", str_replace("=", "", substr($line, strrpos($line, '$dbsslcipher', 0)+strlen('$dbsslcipher'), strlen($line))))));
+                        }
+
+                        if(strrpos($line, '$dbsslcipher', 0) > 0){
+
+                            $vhost_detail_list[$name]['vhost_web_config']['dbsslcipher'] = str_replace("'", "", str_replace(" ", "", str_replace(";", "", str_replace("=", "", substr($line, strrpos($line, '$dbsslcipher', 0)+strlen('$dbsslcipher'), strlen($line))))));
+                        }
+
+
+                    }
+                }
+            }
+            
+            $this->log([
+                'Location' => __METHOD__,
+                'vhost_detail_list' => json_encode($vhost_detail_list, JSON_PRETTY_PRINT),
+            ]);
             
         }catch(Exception $e){
                         
@@ -79,22 +174,39 @@ class Parser
                     "vhost_url" => null,
                     "vhost_root_dir_path_exists" => null,
                     "vhost_root_dir_path" => null,
-                    "dbtype" => null,
-                    "host" => null,
-                    "user" => null,
-                    "password" => null,
-                    "dbprefix" => null,
-                    "db" => null,
-                    "dbencryption" => null,
-                    "dbsslverifyservercert" => null,
-                    "dbsslkey" => null,
-                    "dbsslcert" => null,
-                    "dbsslca" => null,
-                    "dbsslcipher" => null,
+                    "vhost_web_config" => [
+                        "sitename" => null,
+                        "dbtype" => null,
+                        "host" => null,
+                        "user" => null,
+                        "password" => null,
+                        "dbprefix" => null,
+                        "db" => null,
+                        "dbencryption" => null,
+                        "dbsslverifyservercert" => null,
+                        "dbsslkey" => null,
+                        "dbsslcert" => null,
+                        "dbsslca" => null,
+                        "dbsslcipher" => null,
+                    ],
                     "db_connect_success" => null,
                     "db_dump_success" => null,
                     "db_dump_path" => null,
-                    "db_insert_success" => null,
+                    "db_insert_success" => null,        
+                    "db_details_source" => [
+                        "table_count" => null,
+                        "tables" => [
+                            "name" => null,
+                            "row_count" => null,
+                        ],
+                    ],
+                    "db_details_target" => [
+                        "table_count" => null,
+                        "tables" => [
+                            "name" => null,
+                            "row_count" => null,
+                        ],
+                    ],
                 ];
 
                 $rows = $this->file_reader->parseFile($vhost);
