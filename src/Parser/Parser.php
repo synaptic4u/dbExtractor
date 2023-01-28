@@ -55,7 +55,7 @@ class Parser
                     $vhost_detail_list[$name]['vhost_root_dir_path_exists'] = true;
                     $rows = $this->file_reader->parseFile($config_file);
 
-                    var_dump($rows);
+                    // var_dump($rows);
 
 
                     foreach($rows as $row){
