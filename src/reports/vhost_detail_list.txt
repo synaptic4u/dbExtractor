@@ -1,7 +1,7 @@
 {
-    "Compiled on:": "2023-01-29 16:45:40",
+    "Compiled on:": "2023-01-29 17:30:27",
     "Content": {
-        "omnicasa.conf": {
+        "omnicasa_vhost": {
             "vhost_conf_path": "\/home\/mila\/Repos\/dbExtractor\/testdir\/etc\/nginx\/conf.d\/omnicasa.conf",
             "vhost_file_not_empty": 59,
             "vhost_url": " joomla.omnicasa.local www.omnicasa.local",

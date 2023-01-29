@@ -146,10 +146,10 @@ class App
             $vhosts = $this->crawler->crawl($this->config->vhost->dir_path, []);
             // var_dump($vhosts);
 
-            // $this->log([
-            //     'Location' => __METHOD__.' 1',
-            //     'vhosts' => json_encode($vhosts, JSON_PRETTY_PRINT),
-            // ]);
+            $this->log([
+                'Location' => __METHOD__.' 1',
+                'vhosts' => json_encode($vhosts, JSON_PRETTY_PRINT),
+            ]);
 
             $vhosts = $this->crawler->flattenArray($vhosts);
             // var_dump($vhosts);

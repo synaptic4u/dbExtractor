@@ -1,7 +1,7 @@
 {
-    "Compiled on:": "2023-01-29 16:45:40",
+    "Compiled on:": "2023-01-29 17:30:27",
     "Content": {
-        "omnicasa.conf": {
+        "omnicasa_vhost": {
             "vhost_conf_path": "\/home\/mila\/Repos\/dbExtractor\/testdir\/etc\/nginx\/conf.d\/omnicasa.conf",
             "vhost_file_not_empty": 59,
             "vhost_url": " joomla.omnicasa.local www.omnicasa.local",
@@ -23,9 +23,9 @@
                 "dbsslcipher": ""
             },
             "db_connect_success": true,
-            "db_dump_path": "\/home\/mila\/Repos\/dbExtractor\/mysql_dumps\/omnicasa.conf_1675010740.1661_mysql_dump.sql",
+            "db_dump_path": "\/home\/mila\/Repos\/dbExtractor\/mysql_dumps\/omnicasa_vhost_1675013427.299_mysql_dump.sql",
             "db_dump_success": true,
-            "db_dump_log_path": "\/home\/mila\/Repos\/dbExtractor\/src\/logs\/mysql_logs\/omnicasa.conf_1675010740.1661_mysql_dump.txt",
+            "db_dump_log_path": "\/home\/mila\/Repos\/dbExtractor\/src\/logs\/mysql_logs\/omnicasa_vhost_1675013427.299_mysql_dump.txt",
             "db_dump_log_success": true,
             "db_details_source": {
                 "table_count": 3,
