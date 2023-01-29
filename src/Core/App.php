@@ -42,6 +42,8 @@ class App
             $start = microtime(true);
             
             $this->vhost_list = null;
+            $this->vhost_detail_list = null;
+            
             $this->report = [
                 'app_timer' => [],
                 'summary' => [],
@@ -72,6 +74,8 @@ class App
             }
 
             $this->vhost_detail_list = $this->confirmVHostFiles();
+
+            $this->writeToFileJSON('/reports/vhost_detail_list.txt', $this->vhost_detail_list);
             
             $this->log([
                 'Location' => __METHOD__.' 1',
@@ -79,13 +83,23 @@ class App
             ]);
 
             $this->vhost_detail_list = $this->getDataDetails();
+
+            $this->writeToFileJSON('/reports/vhost_detail_data_list.txt', $this->vhost_detail_list);
             
             $this->log([
                 'Location' => __METHOD__.' 2',
                 'vhost_detail_list' => json_encode($this->vhost_detail_list, JSON_PRETTY_PRINT),
             ]);
 
+            $this->vhost_detail_list = $this->dumpDBs();
 
+            $this->writeToFileJSON('/reports/vhost_detail_data_list.txt', $this->vhost_detail_list);
+
+            
+            $this->log([
+                'Location' => __METHOD__.' 3',
+                'vhost_detail_list' => json_encode($this->vhost_detail_list, JSON_PRETTY_PRINT),
+            ]);
         } catch (Exception $e) {
             
             $this->error([
@@ -99,6 +113,10 @@ class App
         }
     }
 
+    private function dumpDBs(){
+        return (new Extractor($this->config))->dumpDBs($this->vhost_detail_list);
+    }
+
     private function getDataDetails(){
         return (new Extractor($this->config))->getDataDetails($this->vhost_detail_list);
     }
@@ -108,11 +126,11 @@ class App
     }
 
     private function parseVHostFiles(){  
-        
         return (new Parser($this->config))->parseVHostFiles($this->vhost_list);
     }
 
-    private function parseVHosts(){
+    private function parseVHosts()
+    {
 
         try{
 
@@ -131,15 +149,14 @@ class App
             $vhosts = $this->crawler->flattenArray($vhosts);
             // var_dump($vhosts);
             
-            $this->writeToFileJSON('/reports/vhost_list.txt', [
-                "Time Stamp" => date('Y-m-d H:i:s'),
-                "vhost" => $vhosts,
-            ]);
+            $this->writeToFileJSON('/reports/vhost_list.txt', $vhosts);
             
             $this->log([
                 'Location' => __METHOD__.' 2',
                 'vhosts' => json_encode($vhosts, JSON_PRETTY_PRINT),
             ]);
+
+            $this->dumpDBs();
         }catch(Exception $e){
 
             $this->error([
@@ -214,7 +231,10 @@ class App
 
     private function writeToFileJSON(string $filename, mixed $content)
     {   
-        $this->file_writer->writeToFile(new FileWriterArray(), $filename, $content);
+        $this->file_writer->writeToFile(new FileWriterArray(), $filename, [
+            "Compiled on:" => date('Y-m-d H:i:s'),
+            "Content" => $content
+        ]);
     }
 
     private function writeToFileText(string $filename, mixed $content)

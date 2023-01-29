@@ -1,0 +1,20 @@
+
+2023-01-29 13:52:29
+Location: Synaptic4u\Extractor\Extractor::dumpDBs
+error: Exception: VHost Detail List cannot be null. in /home/mila/Repos/dbExtractor/src/Extractor/Extractor.php:40
+Stack trace:
+#0 /home/mila/Repos/dbExtractor/src/Core/App.php(115): Synaptic4u\Extractor\Extractor->dumpDBs()
+#1 /home/mila/Repos/dbExtractor/src/Core/App.php(157): Synaptic4u\Core\App->dumpDBs()
+#2 /home/mila/Repos/dbExtractor/src/Core/App.php(60): Synaptic4u\Core\App->parseVHosts()
+#3 /home/mila/Repos/dbExtractor/app.php(14): Synaptic4u\Core\App->__construct()
+#4 {main}
+
+2023-01-29 13:55:36
+Location: Synaptic4u\Extractor\Extractor::dumpDBs
+error: Exception: VHost Detail List cannot be null. in /home/mila/Repos/dbExtractor/src/Extractor/Extractor.php:40
+Stack trace:
+#0 /home/mila/Repos/dbExtractor/src/Core/App.php(117): Synaptic4u\Extractor\Extractor->dumpDBs()
+#1 /home/mila/Repos/dbExtractor/src/Core/App.php(159): Synaptic4u\Core\App->dumpDBs()
+#2 /home/mila/Repos/dbExtractor/src/Core/App.php(62): Synaptic4u\Core\App->parseVHosts()
+#3 /home/mila/Repos/dbExtractor/app.php(14): Synaptic4u\Core\App->__construct()
+#4 {main}

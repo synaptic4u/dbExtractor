@@ -33,6 +33,59 @@ class Extractor
         }
     }
 
+    public function dumpDBs($vhost_detail_list){
+        try{
+
+            if($vhost_detail_list === null){
+                throw new Exception("VHost Detail List cannot be null.");
+            }
+
+            foreach($vhost_detail_list as $name => $vhost){
+
+                $this->db = new DB($vhost['vhost_web_config']);
+
+                // var_dump(get_class($this->db));
+                // var_dump($this->db->getError());
+
+                if($this->db->getError() != null){
+                
+                    $vhost_detail_list[$name]['db_connect_success'] = $this->db->getError();
+                }else{
+                    
+                    $vhost_detail_list[$name]['db_connect_success'] = true;
+
+                    $vhost_detail_list[$name]['db_dump_log_path'] = dirname(__FILE__, 2).'/logs/mysql_logs/'.str_replace("-","_", $name).'.txt';
+
+                    $vhost_detail_list[$name]['db_dump_path'] = dirname(__FILE__, 3).'/mysql_dumps/'.str_replace("-","_", $name).'.sql';
+                    
+                    $cli_cmd = 'mysqldump -u'.$vhost['vhost_web_config']['user'].' -p'.$vhost['vhost_web_config']['password'].' --opt --comments --hex-blob --tz-utc --events --routines --force --log-error='.$vhost_detail_list[$name]['db_dump_log_path'].' '.$vhost['vhost_web_config']['db'].' > '.$vhost_detail_list[$name]['db_dump_path'].'';
+                    
+                    exec($cli_cmd, $output, $returnVar);
+                    
+                    // var_dump($output, $returnVar);
+
+                    $this->log([
+                        "Location" => __METHOD__,
+                        "mysql_log_file" => $vhost_detail_list[$name]['db_dump_log_path'],
+                        "mysql_dump_file" => $vhost_detail_list[$name]['db_dump_path'],
+                        "cli_cmd" => $cli_cmd,
+                        "output" => json_encode($output, JSON_PRETTY_PRINT),
+                        "returnVar" => json_encode($returnVar, JSON_PRETTY_PRINT),
+                    ]);
+                }
+            }
+        }catch(Exception $e){
+
+            $this->error([
+                'Location' => __METHOD__,
+                'error' => $e->__toString(),
+            ]);
+        }finally{
+            
+            return $vhost_detail_list;
+        }
+    }
+
     public function getDataDetails($vhost_detail_list){
         try{
 
@@ -61,14 +114,11 @@ class Extractor
 
                         $vhost_detail_list[$name]['db_details_source']['tables'][] = [
                             "name" => $table,
-                            "row_count" => ($row_count > 0) ? $row_count : null,
+                            "row_count" => $row_count,
                         ];
                     }
                 }
-
             }
-            
-
         }catch(Exception $e){
 
             $this->error([

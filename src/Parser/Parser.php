@@ -175,6 +175,7 @@ class Parser
                     "db_connect_success" => null,
                     "db_dump_success" => null,
                     "db_dump_path" => null,
+                    "db_dump_log_path" => null,
                     "db_insert_success" => null,        
                     "db_details_source" => [
                         "table_count" => null,

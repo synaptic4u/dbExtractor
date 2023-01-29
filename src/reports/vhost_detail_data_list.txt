@@ -22,15 +22,32 @@
                 "dbsslca": "",
                 "dbsslcipher": ""
             },
-            "db_connect_success": null,
+            "db_connect_success": true,
             "db_dump_success": null,
-            "db_dump_path": null,
-            "db_dump_log_path": null,
+            "db_dump_path": "\/home\/mila\/Repos\/dbExtractor\/mysql_dumps\/omnicasa.conf.sql",
+            "db_dump_log_path": "\/home\/mila\/Repos\/dbExtractor\/src\/logs\/mysql_logs\/omnicasa.conf.txt",
             "db_insert_success": null,
             "db_details_source": {
-                "table_count": null,
-                "table_list": null,
-                "tables": []
+                "table_count": 3,
+                "table_list": [
+                    "test1",
+                    "test2",
+                    "test3"
+                ],
+                "tables": [
+                    {
+                        "name": "test1",
+                        "row_count": 3
+                    },
+                    {
+                        "name": "test2",
+                        "row_count": 36
+                    },
+                    {
+                        "name": "test3",
+                        "row_count": 11
+                    }
+                ]
             },
             "db_details_target": {
                 "table_count": null,

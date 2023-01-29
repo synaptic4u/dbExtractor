@@ -112,7 +112,7 @@ class DB
 
 
         foreach ($result as $res) {
-            $count = $res->rowcount;
+            $count = $res['rowcount'];
         }
 
         return $count;
