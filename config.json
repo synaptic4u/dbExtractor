@@ -7,8 +7,13 @@
         "Description": "Nginx Virtual Hosts Base Directory path: Include a trailing forward slash. Include the suffix to search for passed as an array.",
         "dir_path": "/home/mila/Repos/dbExtractor/testdir/etc/nginx/",
         "search_suffix": [
-            "conf"
+            "conf",
+            "xxxxxx"
         ]
+    },
+    "web_config_file": {
+        "Description": "Nginx Web Directory configuration file. Please provide full name of the file to search for. Can pass single value only.",
+        "search_name": "configuration.php"
     },
     "log": {
         "Description": "Logging for application audit. This will log everything apart from reports and progress logs. Errors automatically log.",

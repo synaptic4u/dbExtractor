@@ -33,12 +33,9 @@ class Extractor
         }
     }
 
-    public function dumpDBs($vhost_detail_list){
+    public function dumpDBs(array $vhost_detail_list)
+    {
         try{
-
-            if($vhost_detail_list === null){
-                throw new Exception("VHost Detail List cannot be null.");
-            }
 
             foreach($vhost_detail_list as $name => $vhost){
 
@@ -52,20 +49,27 @@ class Extractor
                     $vhost_detail_list[$name]['db_connect_success'] = $this->db->getError();
                 }else{
                     
+                    $timestamp = microtime(true);
+
                     $vhost_detail_list[$name]['db_connect_success'] = true;
 
-                    $vhost_detail_list[$name]['db_dump_log_path'] = dirname(__FILE__, 2).'/logs/mysql_logs/'.str_replace("-","_", $name).'.txt';
-
-                    $vhost_detail_list[$name]['db_dump_path'] = dirname(__FILE__, 3).'/mysql_dumps/'.str_replace("-","_", $name).'.sql';
+                    $vhost_detail_list[$name]['db_dump_log_path'] = dirname(__FILE__, 2).'/logs/mysql_logs/'.str_replace("-","_", $name).'_'.$timestamp.'_mysql_dump.txt';
+                    $vhost_detail_list[$name]['db_dump_path'] = dirname(__FILE__, 3).'/mysql_dumps/'.str_replace("-","_", $name).'_'.$timestamp.'_mysql_dump.sql';
                     
                     $cli_cmd = 'mysqldump -u'.$vhost['vhost_web_config']['user'].' -p'.$vhost['vhost_web_config']['password'].' --opt --comments --hex-blob --tz-utc --events --routines --force --log-error='.$vhost_detail_list[$name]['db_dump_log_path'].' '.$vhost['vhost_web_config']['db'].' > '.$vhost_detail_list[$name]['db_dump_path'].'';
                     
                     exec($cli_cmd, $output, $returnVar);
-                    
-                    // var_dump($output, $returnVar);
 
+                    if(file_exists($vhost_detail_list[$name]['db_dump_path'])){
+                        $vhost_detail_list[$name]['db_dump_success'] = true;
+                    }
+                    if(file_exists($vhost_detail_list[$name]['db_dump_log_path'])){
+                        $vhost_detail_list[$name]['db_dump_log_success'] = true;
+                    }
+                    
                     $this->log([
                         "Location" => __METHOD__,
+                        "vhost" => $name,
                         "mysql_log_file" => $vhost_detail_list[$name]['db_dump_log_path'],
                         "mysql_dump_file" => $vhost_detail_list[$name]['db_dump_path'],
                         "cli_cmd" => $cli_cmd,
@@ -86,7 +90,7 @@ class Extractor
         }
     }
 
-    public function getDataDetails($vhost_detail_list){
+    public function getDataDetails(array $vhost_detail_list){
         try{
 
             foreach($vhost_detail_list as $name => $vhost){

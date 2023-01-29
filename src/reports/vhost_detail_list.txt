@@ -1,5 +1,5 @@
 {
-    "Compiled on:": "2023-01-29 13:55:36",
+    "Compiled on:": "2023-01-29 16:45:40",
     "Content": {
         "omnicasa.conf": {
             "vhost_conf_path": "\/home\/mila\/Repos\/dbExtractor\/testdir\/etc\/nginx\/conf.d\/omnicasa.conf",
@@ -21,21 +21,6 @@
                 "dbsslcert": "",
                 "dbsslca": "",
                 "dbsslcipher": ""
-            },
-            "db_connect_success": null,
-            "db_dump_success": null,
-            "db_dump_path": null,
-            "db_dump_log_path": null,
-            "db_insert_success": null,
-            "db_details_source": {
-                "table_count": null,
-                "table_list": null,
-                "tables": []
-            },
-            "db_details_target": {
-                "table_count": null,
-                "table_list": null,
-                "tables": []
             }
         }
     }

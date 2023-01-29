@@ -38,7 +38,7 @@ class Parser
         }
     }
 
-    public function confirmVHostFiles($vhost_detail_list){
+    public function confirmVHostFiles(array $vhost_detail_list){
         try{
 
             $this->log([
@@ -48,7 +48,7 @@ class Parser
 
             foreach ($vhost_detail_list as $name => $vhost) {
                 
-                $config_file = $vhost['vhost_root_dir_path'].'configuration.php';
+                $config_file = $vhost['vhost_root_dir_path'].$this->config->web_config_file->search_name;
                 
                 if(file_exists($config_file)){
                     
@@ -136,7 +136,7 @@ class Parser
         }
     }
 
-    public function parseVHostFiles($vhosts)
+    public function parseVHostFiles(array $vhosts)
     {
         try{
 
@@ -173,15 +173,16 @@ class Parser
                         "dbsslcipher" => null,
                     ],
                     "db_connect_success" => null,
-                    "db_dump_success" => null,
                     "db_dump_path" => null,
+                    "db_dump_success" => null,
                     "db_dump_log_path" => null,
-                    "db_insert_success" => null,        
+                    "db_dump_log_success" => null,     
                     "db_details_source" => [
                         "table_count" => null,
                         "table_list" => null,
                         "tables" => [],
                     ],
+                    "db_insert_success" => null,   
                     "db_details_target" => [
                         "table_count" => null,
                         "table_list" => null,

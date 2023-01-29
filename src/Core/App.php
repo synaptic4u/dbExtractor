@@ -8,6 +8,7 @@ use Synaptic4u\Log\Error;
 use Synaptic4u\Log\Activity;
 use Synaptic4u\Parser\Parser;
 use Synaptic4u\Crawler\Crawler;
+use Synaptic4u\Inserter\Inserter;
 use Synaptic4u\Extractor\Extractor;
 use Synaptic4u\Structure\Structure;
 use Synaptic4u\Files\Reader\FileReader;
@@ -75,26 +76,26 @@ class App
 
             $this->vhost_detail_list = $this->confirmVHostFiles();
 
-            $this->writeToFileJSON('/reports/vhost_detail_list.txt', $this->vhost_detail_list);
+            $this->prepDodgyVHostDetailReport();
+            // $this->writeToFileJSON('/reports/vhost_detail_list.txt', $this->vhost_detail_list);
             
-            $this->log([
-                'Location' => __METHOD__.' 1',
-                'vhost_detail_list' => json_encode($this->vhost_detail_list, JSON_PRETTY_PRINT),
-            ]);
+            // $this->log([
+            //     'Location' => __METHOD__.' 1',
+            //     'vhost_detail_list' => json_encode($this->vhost_detail_list, JSON_PRETTY_PRINT),
+            // ]);
 
             $this->vhost_detail_list = $this->getDataDetails();
 
             $this->writeToFileJSON('/reports/vhost_detail_data_list.txt', $this->vhost_detail_list);
             
-            $this->log([
-                'Location' => __METHOD__.' 2',
-                'vhost_detail_list' => json_encode($this->vhost_detail_list, JSON_PRETTY_PRINT),
-            ]);
+            // $this->log([
+            //     'Location' => __METHOD__.' 2',
+            //     'vhost_detail_list' => json_encode($this->vhost_detail_list, JSON_PRETTY_PRINT),
+            // ]);
 
             $this->vhost_detail_list = $this->dumpDBs();
 
             $this->writeToFileJSON('/reports/vhost_detail_data_list.txt', $this->vhost_detail_list);
-
             
             $this->log([
                 'Location' => __METHOD__.' 3',
@@ -111,6 +112,10 @@ class App
             
             print_r(PHP_EOL."Application has exited.".PHP_EOL);
         }
+    }
+
+    private function insertDBs(){
+        return (new Inserter($this->config))->insertDBs($this->vhost_detail_list);
     }
 
     private function dumpDBs(){
@@ -240,6 +245,24 @@ class App
     private function writeToFileText(string $filename, mixed $content)
     {
         $this->file_writer->writeToFile(new FileWriterText(), $filename, $content);
+    }
+
+    private function prepDodgyVHostDetailReport(){
+
+        $vhosts = $this->vhost_detail_list;
+
+        foreach($vhosts as $name => $vhost){
+
+            $vhosts[$name] = array_splice($vhost, 0, 6);
+        }
+
+        $this->writeToFileJSON('/reports/vhost_detail_list.txt', $vhosts);
+    }
+
+    private function prepDodgyVHostDetailDataReport()
+    {
+
+        $this->writeToFileJSON('/reports/vhost_detail_data_list.txt', $this->vhost_detail_list);
     }
 
     /**

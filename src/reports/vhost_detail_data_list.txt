@@ -1,5 +1,5 @@
 {
-    "Compiled on:": "2023-01-29 13:55:36",
+    "Compiled on:": "2023-01-29 16:45:40",
     "Content": {
         "omnicasa.conf": {
             "vhost_conf_path": "\/home\/mila\/Repos\/dbExtractor\/testdir\/etc\/nginx\/conf.d\/omnicasa.conf",
@@ -23,10 +23,10 @@
                 "dbsslcipher": ""
             },
             "db_connect_success": true,
-            "db_dump_success": null,
-            "db_dump_path": "\/home\/mila\/Repos\/dbExtractor\/mysql_dumps\/omnicasa.conf.sql",
-            "db_dump_log_path": "\/home\/mila\/Repos\/dbExtractor\/src\/logs\/mysql_logs\/omnicasa.conf.txt",
-            "db_insert_success": null,
+            "db_dump_path": "\/home\/mila\/Repos\/dbExtractor\/mysql_dumps\/omnicasa.conf_1675010740.1661_mysql_dump.sql",
+            "db_dump_success": true,
+            "db_dump_log_path": "\/home\/mila\/Repos\/dbExtractor\/src\/logs\/mysql_logs\/omnicasa.conf_1675010740.1661_mysql_dump.txt",
+            "db_dump_log_success": true,
             "db_details_source": {
                 "table_count": 3,
                 "table_list": [
@@ -49,6 +49,7 @@
                     }
                 ]
             },
+            "db_insert_success": null,
             "db_details_target": {
                 "table_count": null,
                 "table_list": null,
