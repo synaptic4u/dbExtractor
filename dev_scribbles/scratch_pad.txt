@@ -1,4 +1,10 @@
 
+docker-compose build
+docker-compose up -d
+docker ps
+docker exec -it $(docker ps -aqf "name=^omnicasa-nginx$") bash      
+docker-compose down
+
 
 mysqldump -uUser -pPassword --opt --comments --hex-blob --tz-utc --events --routines --force
 --log-error=/home/mila/Downloads/test_log.txt Database | mysql --host=Target_URL -C New_Database
