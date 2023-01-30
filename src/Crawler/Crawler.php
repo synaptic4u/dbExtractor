@@ -28,7 +28,9 @@ class Crawler
      */
     public function crawl(string $path, array $tree)
     {
+
         $cnt = 0;
+        
         if (is_dir($path)) {
 
             if ($dh = opendir($path)) {
@@ -45,7 +47,7 @@ class Crawler
                             $path_clean = str_replace("-","_",str_replace(".","_",str_replace(".conf","_vhost",$path)));
                             $file_clean = str_replace("-","_",str_replace(".","_",str_replace(".conf","_vhost",$file)));
 
-                            // var_dump([
+                            // $this->log([
                             //     "file" => $file,
                             //     "path" => $path,
                             //     "newfile" => $newfile,
@@ -86,8 +88,11 @@ class Crawler
      */
     public function flattenArray(array $array)
     {
+
         $flat_array = [];
+        
         array_walk_recursive($array, function ($value, $key) use (&$flat_array) {
+        
             $flat_array[$key] = $value;
         });
 

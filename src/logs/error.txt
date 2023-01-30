@@ -1,176 +1,336 @@
 
-UTC 2023-01-30 17:41:30
+UTC 2023-01-30 19:12:59
 Location: Synaptic4u\DB\DB::__construct
-error: Exception: Something wrong with db config in /home/mila/Repos/dbExtractor/src/DB/DB.php:44
+config: {
+    "sitename": null,
+    "dbtype": null,
+    "host": null,
+    "user": null,
+    "password": null,
+    "dbprefix": null,
+    "db": null
+}
+error: PDOException: SQLSTATE[HY000] [2002] No such file or directory in /home/mila/Repos/dbExtractor/src/DB/DB.php:51
 Stack trace:
-#0 /home/mila/Repos/dbExtractor/src/Extractor/Extractor.php(98): Synaptic4u\DB\DB->__construct()
-#1 /home/mila/Repos/dbExtractor/src/Core/App.php(148): Synaptic4u\Extractor\Extractor->getDataDetails()
-#2 /home/mila/Repos/dbExtractor/src/Core/App.php(111): Synaptic4u\Core\App->getDataDetails()
-#3 /home/mila/Repos/dbExtractor/src/Core/App.php(75): Synaptic4u\Core\App->runBatch()
-#4 /home/mila/Repos/dbExtractor/app.php(14): Synaptic4u\Core\App->__construct()
-#5 {main}
+#0 /home/mila/Repos/dbExtractor/src/DB/DB.php(51): PDO->__construct()
+#1 /home/mila/Repos/dbExtractor/src/Extractor/Extractor.php(102): Synaptic4u\DB\DB->__construct()
+#2 /home/mila/Repos/dbExtractor/src/Core/App.php(148): Synaptic4u\Extractor\Extractor->getDataDetails()
+#3 /home/mila/Repos/dbExtractor/src/Core/App.php(111): Synaptic4u\Core\App->getDataDetails()
+#4 /home/mila/Repos/dbExtractor/src/Core/App.php(75): Synaptic4u\Core\App->runBatch()
+#5 /home/mila/Repos/dbExtractor/app.php(14): Synaptic4u\Core\App->__construct()
+#6 {main}
 
-UTC 2023-01-30 17:41:30
+UTC 2023-01-30 19:12:59
 Location: Synaptic4u\DB\DB::__construct
-error: Exception: Something wrong with db config in /home/mila/Repos/dbExtractor/src/DB/DB.php:44
+config: {
+    "sitename": null,
+    "dbtype": null,
+    "host": null,
+    "user": null,
+    "password": null,
+    "dbprefix": null,
+    "db": null
+}
+error: PDOException: SQLSTATE[HY000] [2002] No such file or directory in /home/mila/Repos/dbExtractor/src/DB/DB.php:51
 Stack trace:
-#0 /home/mila/Repos/dbExtractor/src/Extractor/Extractor.php(98): Synaptic4u\DB\DB->__construct()
-#1 /home/mila/Repos/dbExtractor/src/Core/App.php(148): Synaptic4u\Extractor\Extractor->getDataDetails()
-#2 /home/mila/Repos/dbExtractor/src/Core/App.php(111): Synaptic4u\Core\App->getDataDetails()
-#3 /home/mila/Repos/dbExtractor/src/Core/App.php(75): Synaptic4u\Core\App->runBatch()
-#4 /home/mila/Repos/dbExtractor/app.php(14): Synaptic4u\Core\App->__construct()
-#5 {main}
+#0 /home/mila/Repos/dbExtractor/src/DB/DB.php(51): PDO->__construct()
+#1 /home/mila/Repos/dbExtractor/src/Extractor/Extractor.php(102): Synaptic4u\DB\DB->__construct()
+#2 /home/mila/Repos/dbExtractor/src/Core/App.php(148): Synaptic4u\Extractor\Extractor->getDataDetails()
+#3 /home/mila/Repos/dbExtractor/src/Core/App.php(111): Synaptic4u\Core\App->getDataDetails()
+#4 /home/mila/Repos/dbExtractor/src/Core/App.php(75): Synaptic4u\Core\App->runBatch()
+#5 /home/mila/Repos/dbExtractor/app.php(14): Synaptic4u\Core\App->__construct()
+#6 {main}
 
-UTC 2023-01-30 17:41:30
+UTC 2023-01-30 19:12:59
 Location: Synaptic4u\DB\DB::__construct
-error: Exception: Something wrong with db config in /home/mila/Repos/dbExtractor/src/DB/DB.php:44
+config: {
+    "sitename": null,
+    "dbtype": null,
+    "host": null,
+    "user": null,
+    "password": null,
+    "dbprefix": null,
+    "db": null
+}
+error: PDOException: SQLSTATE[HY000] [2002] No such file or directory in /home/mila/Repos/dbExtractor/src/DB/DB.php:51
 Stack trace:
-#0 /home/mila/Repos/dbExtractor/src/Extractor/Extractor.php(98): Synaptic4u\DB\DB->__construct()
-#1 /home/mila/Repos/dbExtractor/src/Core/App.php(148): Synaptic4u\Extractor\Extractor->getDataDetails()
-#2 /home/mila/Repos/dbExtractor/src/Core/App.php(111): Synaptic4u\Core\App->getDataDetails()
-#3 /home/mila/Repos/dbExtractor/src/Core/App.php(75): Synaptic4u\Core\App->runBatch()
-#4 /home/mila/Repos/dbExtractor/app.php(14): Synaptic4u\Core\App->__construct()
-#5 {main}
+#0 /home/mila/Repos/dbExtractor/src/DB/DB.php(51): PDO->__construct()
+#1 /home/mila/Repos/dbExtractor/src/Extractor/Extractor.php(102): Synaptic4u\DB\DB->__construct()
+#2 /home/mila/Repos/dbExtractor/src/Core/App.php(148): Synaptic4u\Extractor\Extractor->getDataDetails()
+#3 /home/mila/Repos/dbExtractor/src/Core/App.php(111): Synaptic4u\Core\App->getDataDetails()
+#4 /home/mila/Repos/dbExtractor/src/Core/App.php(75): Synaptic4u\Core\App->runBatch()
+#5 /home/mila/Repos/dbExtractor/app.php(14): Synaptic4u\Core\App->__construct()
+#6 {main}
 
-UTC 2023-01-30 17:41:30
+UTC 2023-01-30 19:12:59
 Location: Synaptic4u\DB\DB::__construct
-error: Exception: Something wrong with db config in /home/mila/Repos/dbExtractor/src/DB/DB.php:44
+config: {
+    "sitename": null,
+    "dbtype": null,
+    "host": null,
+    "user": null,
+    "password": null,
+    "dbprefix": null,
+    "db": null
+}
+error: PDOException: SQLSTATE[HY000] [2002] No such file or directory in /home/mila/Repos/dbExtractor/src/DB/DB.php:51
 Stack trace:
-#0 /home/mila/Repos/dbExtractor/src/Extractor/Extractor.php(98): Synaptic4u\DB\DB->__construct()
-#1 /home/mila/Repos/dbExtractor/src/Core/App.php(148): Synaptic4u\Extractor\Extractor->getDataDetails()
-#2 /home/mila/Repos/dbExtractor/src/Core/App.php(111): Synaptic4u\Core\App->getDataDetails()
-#3 /home/mila/Repos/dbExtractor/src/Core/App.php(75): Synaptic4u\Core\App->runBatch()
-#4 /home/mila/Repos/dbExtractor/app.php(14): Synaptic4u\Core\App->__construct()
-#5 {main}
+#0 /home/mila/Repos/dbExtractor/src/DB/DB.php(51): PDO->__construct()
+#1 /home/mila/Repos/dbExtractor/src/Extractor/Extractor.php(102): Synaptic4u\DB\DB->__construct()
+#2 /home/mila/Repos/dbExtractor/src/Core/App.php(148): Synaptic4u\Extractor\Extractor->getDataDetails()
+#3 /home/mila/Repos/dbExtractor/src/Core/App.php(111): Synaptic4u\Core\App->getDataDetails()
+#4 /home/mila/Repos/dbExtractor/src/Core/App.php(75): Synaptic4u\Core\App->runBatch()
+#5 /home/mila/Repos/dbExtractor/app.php(14): Synaptic4u\Core\App->__construct()
+#6 {main}
 
-UTC 2023-01-30 17:41:30
+UTC 2023-01-30 19:12:59
 Location: Synaptic4u\DB\DB::__construct
-error: Exception: Something wrong with db config in /home/mila/Repos/dbExtractor/src/DB/DB.php:44
+config: {
+    "sitename": null,
+    "dbtype": null,
+    "host": null,
+    "user": null,
+    "password": null,
+    "dbprefix": null,
+    "db": null
+}
+error: PDOException: SQLSTATE[HY000] [2002] No such file or directory in /home/mila/Repos/dbExtractor/src/DB/DB.php:51
 Stack trace:
-#0 /home/mila/Repos/dbExtractor/src/Extractor/Extractor.php(98): Synaptic4u\DB\DB->__construct()
-#1 /home/mila/Repos/dbExtractor/src/Core/App.php(148): Synaptic4u\Extractor\Extractor->getDataDetails()
-#2 /home/mila/Repos/dbExtractor/src/Core/App.php(111): Synaptic4u\Core\App->getDataDetails()
-#3 /home/mila/Repos/dbExtractor/src/Core/App.php(75): Synaptic4u\Core\App->runBatch()
-#4 /home/mila/Repos/dbExtractor/app.php(14): Synaptic4u\Core\App->__construct()
-#5 {main}
+#0 /home/mila/Repos/dbExtractor/src/DB/DB.php(51): PDO->__construct()
+#1 /home/mila/Repos/dbExtractor/src/Extractor/Extractor.php(102): Synaptic4u\DB\DB->__construct()
+#2 /home/mila/Repos/dbExtractor/src/Core/App.php(148): Synaptic4u\Extractor\Extractor->getDataDetails()
+#3 /home/mila/Repos/dbExtractor/src/Core/App.php(111): Synaptic4u\Core\App->getDataDetails()
+#4 /home/mila/Repos/dbExtractor/src/Core/App.php(75): Synaptic4u\Core\App->runBatch()
+#5 /home/mila/Repos/dbExtractor/app.php(14): Synaptic4u\Core\App->__construct()
+#6 {main}
 
-UTC 2023-01-30 17:41:30
+UTC 2023-01-30 19:12:59
 Location: Synaptic4u\DB\DB::__construct
-error: Exception: Something wrong with db config in /home/mila/Repos/dbExtractor/src/DB/DB.php:44
+config: {
+    "sitename": null,
+    "dbtype": null,
+    "host": null,
+    "user": null,
+    "password": null,
+    "dbprefix": null,
+    "db": null
+}
+error: PDOException: SQLSTATE[HY000] [2002] No such file or directory in /home/mila/Repos/dbExtractor/src/DB/DB.php:51
 Stack trace:
-#0 /home/mila/Repos/dbExtractor/src/Extractor/Extractor.php(98): Synaptic4u\DB\DB->__construct()
-#1 /home/mila/Repos/dbExtractor/src/Core/App.php(148): Synaptic4u\Extractor\Extractor->getDataDetails()
-#2 /home/mila/Repos/dbExtractor/src/Core/App.php(111): Synaptic4u\Core\App->getDataDetails()
-#3 /home/mila/Repos/dbExtractor/src/Core/App.php(75): Synaptic4u\Core\App->runBatch()
-#4 /home/mila/Repos/dbExtractor/app.php(14): Synaptic4u\Core\App->__construct()
-#5 {main}
+#0 /home/mila/Repos/dbExtractor/src/DB/DB.php(51): PDO->__construct()
+#1 /home/mila/Repos/dbExtractor/src/Extractor/Extractor.php(102): Synaptic4u\DB\DB->__construct()
+#2 /home/mila/Repos/dbExtractor/src/Core/App.php(148): Synaptic4u\Extractor\Extractor->getDataDetails()
+#3 /home/mila/Repos/dbExtractor/src/Core/App.php(111): Synaptic4u\Core\App->getDataDetails()
+#4 /home/mila/Repos/dbExtractor/src/Core/App.php(75): Synaptic4u\Core\App->runBatch()
+#5 /home/mila/Repos/dbExtractor/app.php(14): Synaptic4u\Core\App->__construct()
+#6 {main}
 
-UTC 2023-01-30 17:41:30
+UTC 2023-01-30 19:12:59
 Location: Synaptic4u\DB\DB::__construct
-error: Exception: Something wrong with db config in /home/mila/Repos/dbExtractor/src/DB/DB.php:44
+config: {
+    "sitename": null,
+    "dbtype": null,
+    "host": null,
+    "user": null,
+    "password": null,
+    "dbprefix": null,
+    "db": null
+}
+error: PDOException: SQLSTATE[HY000] [2002] No such file or directory in /home/mila/Repos/dbExtractor/src/DB/DB.php:51
 Stack trace:
-#0 /home/mila/Repos/dbExtractor/src/Extractor/Extractor.php(98): Synaptic4u\DB\DB->__construct()
-#1 /home/mila/Repos/dbExtractor/src/Core/App.php(148): Synaptic4u\Extractor\Extractor->getDataDetails()
-#2 /home/mila/Repos/dbExtractor/src/Core/App.php(111): Synaptic4u\Core\App->getDataDetails()
-#3 /home/mila/Repos/dbExtractor/src/Core/App.php(75): Synaptic4u\Core\App->runBatch()
-#4 /home/mila/Repos/dbExtractor/app.php(14): Synaptic4u\Core\App->__construct()
-#5 {main}
+#0 /home/mila/Repos/dbExtractor/src/DB/DB.php(51): PDO->__construct()
+#1 /home/mila/Repos/dbExtractor/src/Extractor/Extractor.php(102): Synaptic4u\DB\DB->__construct()
+#2 /home/mila/Repos/dbExtractor/src/Core/App.php(148): Synaptic4u\Extractor\Extractor->getDataDetails()
+#3 /home/mila/Repos/dbExtractor/src/Core/App.php(111): Synaptic4u\Core\App->getDataDetails()
+#4 /home/mila/Repos/dbExtractor/src/Core/App.php(75): Synaptic4u\Core\App->runBatch()
+#5 /home/mila/Repos/dbExtractor/app.php(14): Synaptic4u\Core\App->__construct()
+#6 {main}
 
-UTC 2023-01-30 17:41:30
+UTC 2023-01-30 19:12:59
 Location: Synaptic4u\DB\DB::__construct
-error: Exception: Something wrong with db config in /home/mila/Repos/dbExtractor/src/DB/DB.php:44
+config: {
+    "sitename": null,
+    "dbtype": null,
+    "host": null,
+    "user": null,
+    "password": null,
+    "dbprefix": null,
+    "db": null
+}
+error: PDOException: SQLSTATE[HY000] [2002] No such file or directory in /home/mila/Repos/dbExtractor/src/DB/DB.php:51
 Stack trace:
-#0 /home/mila/Repos/dbExtractor/src/Extractor/Extractor.php(98): Synaptic4u\DB\DB->__construct()
-#1 /home/mila/Repos/dbExtractor/src/Core/App.php(148): Synaptic4u\Extractor\Extractor->getDataDetails()
-#2 /home/mila/Repos/dbExtractor/src/Core/App.php(111): Synaptic4u\Core\App->getDataDetails()
-#3 /home/mila/Repos/dbExtractor/src/Core/App.php(75): Synaptic4u\Core\App->runBatch()
-#4 /home/mila/Repos/dbExtractor/app.php(14): Synaptic4u\Core\App->__construct()
-#5 {main}
+#0 /home/mila/Repos/dbExtractor/src/DB/DB.php(51): PDO->__construct()
+#1 /home/mila/Repos/dbExtractor/src/Extractor/Extractor.php(102): Synaptic4u\DB\DB->__construct()
+#2 /home/mila/Repos/dbExtractor/src/Core/App.php(148): Synaptic4u\Extractor\Extractor->getDataDetails()
+#3 /home/mila/Repos/dbExtractor/src/Core/App.php(111): Synaptic4u\Core\App->getDataDetails()
+#4 /home/mila/Repos/dbExtractor/src/Core/App.php(75): Synaptic4u\Core\App->runBatch()
+#5 /home/mila/Repos/dbExtractor/app.php(14): Synaptic4u\Core\App->__construct()
+#6 {main}
 
-UTC 2023-01-30 17:41:30
+UTC 2023-01-30 19:12:59
 Location: Synaptic4u\DB\DB::__construct
-error: Exception: Something wrong with db config in /home/mila/Repos/dbExtractor/src/DB/DB.php:44
+config: {
+    "sitename": null,
+    "dbtype": null,
+    "host": null,
+    "user": null,
+    "password": null,
+    "dbprefix": null,
+    "db": null
+}
+error: PDOException: SQLSTATE[HY000] [2002] No such file or directory in /home/mila/Repos/dbExtractor/src/DB/DB.php:51
 Stack trace:
-#0 /home/mila/Repos/dbExtractor/src/Extractor/Extractor.php(42): Synaptic4u\DB\DB->__construct()
-#1 /home/mila/Repos/dbExtractor/src/Core/App.php(144): Synaptic4u\Extractor\Extractor->dumpDBs()
-#2 /home/mila/Repos/dbExtractor/src/Core/App.php(120): Synaptic4u\Core\App->dumpDBs()
-#3 /home/mila/Repos/dbExtractor/src/Core/App.php(75): Synaptic4u\Core\App->runBatch()
-#4 /home/mila/Repos/dbExtractor/app.php(14): Synaptic4u\Core\App->__construct()
-#5 {main}
+#0 /home/mila/Repos/dbExtractor/src/DB/DB.php(51): PDO->__construct()
+#1 /home/mila/Repos/dbExtractor/src/Extractor/Extractor.php(43): Synaptic4u\DB\DB->__construct()
+#2 /home/mila/Repos/dbExtractor/src/Core/App.php(144): Synaptic4u\Extractor\Extractor->dumpDBs()
+#3 /home/mila/Repos/dbExtractor/src/Core/App.php(120): Synaptic4u\Core\App->dumpDBs()
+#4 /home/mila/Repos/dbExtractor/src/Core/App.php(75): Synaptic4u\Core\App->runBatch()
+#5 /home/mila/Repos/dbExtractor/app.php(14): Synaptic4u\Core\App->__construct()
+#6 {main}
 
-UTC 2023-01-30 17:41:30
+UTC 2023-01-30 19:12:59
 Location: Synaptic4u\DB\DB::__construct
-error: Exception: Something wrong with db config in /home/mila/Repos/dbExtractor/src/DB/DB.php:44
+config: {
+    "sitename": null,
+    "dbtype": null,
+    "host": null,
+    "user": null,
+    "password": null,
+    "dbprefix": null,
+    "db": null
+}
+error: PDOException: SQLSTATE[HY000] [2002] No such file or directory in /home/mila/Repos/dbExtractor/src/DB/DB.php:51
 Stack trace:
-#0 /home/mila/Repos/dbExtractor/src/Extractor/Extractor.php(42): Synaptic4u\DB\DB->__construct()
-#1 /home/mila/Repos/dbExtractor/src/Core/App.php(144): Synaptic4u\Extractor\Extractor->dumpDBs()
-#2 /home/mila/Repos/dbExtractor/src/Core/App.php(120): Synaptic4u\Core\App->dumpDBs()
-#3 /home/mila/Repos/dbExtractor/src/Core/App.php(75): Synaptic4u\Core\App->runBatch()
-#4 /home/mila/Repos/dbExtractor/app.php(14): Synaptic4u\Core\App->__construct()
-#5 {main}
+#0 /home/mila/Repos/dbExtractor/src/DB/DB.php(51): PDO->__construct()
+#1 /home/mila/Repos/dbExtractor/src/Extractor/Extractor.php(43): Synaptic4u\DB\DB->__construct()
+#2 /home/mila/Repos/dbExtractor/src/Core/App.php(144): Synaptic4u\Extractor\Extractor->dumpDBs()
+#3 /home/mila/Repos/dbExtractor/src/Core/App.php(120): Synaptic4u\Core\App->dumpDBs()
+#4 /home/mila/Repos/dbExtractor/src/Core/App.php(75): Synaptic4u\Core\App->runBatch()
+#5 /home/mila/Repos/dbExtractor/app.php(14): Synaptic4u\Core\App->__construct()
+#6 {main}
 
-UTC 2023-01-30 17:41:30
+UTC 2023-01-30 19:12:59
 Location: Synaptic4u\DB\DB::__construct
-error: Exception: Something wrong with db config in /home/mila/Repos/dbExtractor/src/DB/DB.php:44
+config: {
+    "sitename": null,
+    "dbtype": null,
+    "host": null,
+    "user": null,
+    "password": null,
+    "dbprefix": null,
+    "db": null
+}
+error: PDOException: SQLSTATE[HY000] [2002] No such file or directory in /home/mila/Repos/dbExtractor/src/DB/DB.php:51
 Stack trace:
-#0 /home/mila/Repos/dbExtractor/src/Extractor/Extractor.php(42): Synaptic4u\DB\DB->__construct()
-#1 /home/mila/Repos/dbExtractor/src/Core/App.php(144): Synaptic4u\Extractor\Extractor->dumpDBs()
-#2 /home/mila/Repos/dbExtractor/src/Core/App.php(120): Synaptic4u\Core\App->dumpDBs()
-#3 /home/mila/Repos/dbExtractor/src/Core/App.php(75): Synaptic4u\Core\App->runBatch()
-#4 /home/mila/Repos/dbExtractor/app.php(14): Synaptic4u\Core\App->__construct()
-#5 {main}
+#0 /home/mila/Repos/dbExtractor/src/DB/DB.php(51): PDO->__construct()
+#1 /home/mila/Repos/dbExtractor/src/Extractor/Extractor.php(43): Synaptic4u\DB\DB->__construct()
+#2 /home/mila/Repos/dbExtractor/src/Core/App.php(144): Synaptic4u\Extractor\Extractor->dumpDBs()
+#3 /home/mila/Repos/dbExtractor/src/Core/App.php(120): Synaptic4u\Core\App->dumpDBs()
+#4 /home/mila/Repos/dbExtractor/src/Core/App.php(75): Synaptic4u\Core\App->runBatch()
+#5 /home/mila/Repos/dbExtractor/app.php(14): Synaptic4u\Core\App->__construct()
+#6 {main}
 
-UTC 2023-01-30 17:41:30
+UTC 2023-01-30 19:12:59
 Location: Synaptic4u\DB\DB::__construct
-error: Exception: Something wrong with db config in /home/mila/Repos/dbExtractor/src/DB/DB.php:44
+config: {
+    "sitename": null,
+    "dbtype": null,
+    "host": null,
+    "user": null,
+    "password": null,
+    "dbprefix": null,
+    "db": null
+}
+error: PDOException: SQLSTATE[HY000] [2002] No such file or directory in /home/mila/Repos/dbExtractor/src/DB/DB.php:51
 Stack trace:
-#0 /home/mila/Repos/dbExtractor/src/Extractor/Extractor.php(42): Synaptic4u\DB\DB->__construct()
-#1 /home/mila/Repos/dbExtractor/src/Core/App.php(144): Synaptic4u\Extractor\Extractor->dumpDBs()
-#2 /home/mila/Repos/dbExtractor/src/Core/App.php(120): Synaptic4u\Core\App->dumpDBs()
-#3 /home/mila/Repos/dbExtractor/src/Core/App.php(75): Synaptic4u\Core\App->runBatch()
-#4 /home/mila/Repos/dbExtractor/app.php(14): Synaptic4u\Core\App->__construct()
-#5 {main}
+#0 /home/mila/Repos/dbExtractor/src/DB/DB.php(51): PDO->__construct()
+#1 /home/mila/Repos/dbExtractor/src/Extractor/Extractor.php(43): Synaptic4u\DB\DB->__construct()
+#2 /home/mila/Repos/dbExtractor/src/Core/App.php(144): Synaptic4u\Extractor\Extractor->dumpDBs()
+#3 /home/mila/Repos/dbExtractor/src/Core/App.php(120): Synaptic4u\Core\App->dumpDBs()
+#4 /home/mila/Repos/dbExtractor/src/Core/App.php(75): Synaptic4u\Core\App->runBatch()
+#5 /home/mila/Repos/dbExtractor/app.php(14): Synaptic4u\Core\App->__construct()
+#6 {main}
 
-UTC 2023-01-30 17:41:30
+UTC 2023-01-30 19:12:59
 Location: Synaptic4u\DB\DB::__construct
-error: Exception: Something wrong with db config in /home/mila/Repos/dbExtractor/src/DB/DB.php:44
+config: {
+    "sitename": null,
+    "dbtype": null,
+    "host": null,
+    "user": null,
+    "password": null,
+    "dbprefix": null,
+    "db": null
+}
+error: PDOException: SQLSTATE[HY000] [2002] No such file or directory in /home/mila/Repos/dbExtractor/src/DB/DB.php:51
 Stack trace:
-#0 /home/mila/Repos/dbExtractor/src/Extractor/Extractor.php(42): Synaptic4u\DB\DB->__construct()
-#1 /home/mila/Repos/dbExtractor/src/Core/App.php(144): Synaptic4u\Extractor\Extractor->dumpDBs()
-#2 /home/mila/Repos/dbExtractor/src/Core/App.php(120): Synaptic4u\Core\App->dumpDBs()
-#3 /home/mila/Repos/dbExtractor/src/Core/App.php(75): Synaptic4u\Core\App->runBatch()
-#4 /home/mila/Repos/dbExtractor/app.php(14): Synaptic4u\Core\App->__construct()
-#5 {main}
+#0 /home/mila/Repos/dbExtractor/src/DB/DB.php(51): PDO->__construct()
+#1 /home/mila/Repos/dbExtractor/src/Extractor/Extractor.php(43): Synaptic4u\DB\DB->__construct()
+#2 /home/mila/Repos/dbExtractor/src/Core/App.php(144): Synaptic4u\Extractor\Extractor->dumpDBs()
+#3 /home/mila/Repos/dbExtractor/src/Core/App.php(120): Synaptic4u\Core\App->dumpDBs()
+#4 /home/mila/Repos/dbExtractor/src/Core/App.php(75): Synaptic4u\Core\App->runBatch()
+#5 /home/mila/Repos/dbExtractor/app.php(14): Synaptic4u\Core\App->__construct()
+#6 {main}
 
-UTC 2023-01-30 17:41:30
+UTC 2023-01-30 19:12:59
 Location: Synaptic4u\DB\DB::__construct
-error: Exception: Something wrong with db config in /home/mila/Repos/dbExtractor/src/DB/DB.php:44
+config: {
+    "sitename": null,
+    "dbtype": null,
+    "host": null,
+    "user": null,
+    "password": null,
+    "dbprefix": null,
+    "db": null
+}
+error: PDOException: SQLSTATE[HY000] [2002] No such file or directory in /home/mila/Repos/dbExtractor/src/DB/DB.php:51
 Stack trace:
-#0 /home/mila/Repos/dbExtractor/src/Extractor/Extractor.php(42): Synaptic4u\DB\DB->__construct()
-#1 /home/mila/Repos/dbExtractor/src/Core/App.php(144): Synaptic4u\Extractor\Extractor->dumpDBs()
-#2 /home/mila/Repos/dbExtractor/src/Core/App.php(120): Synaptic4u\Core\App->dumpDBs()
-#3 /home/mila/Repos/dbExtractor/src/Core/App.php(75): Synaptic4u\Core\App->runBatch()
-#4 /home/mila/Repos/dbExtractor/app.php(14): Synaptic4u\Core\App->__construct()
-#5 {main}
+#0 /home/mila/Repos/dbExtractor/src/DB/DB.php(51): PDO->__construct()
+#1 /home/mila/Repos/dbExtractor/src/Extractor/Extractor.php(43): Synaptic4u\DB\DB->__construct()
+#2 /home/mila/Repos/dbExtractor/src/Core/App.php(144): Synaptic4u\Extractor\Extractor->dumpDBs()
+#3 /home/mila/Repos/dbExtractor/src/Core/App.php(120): Synaptic4u\Core\App->dumpDBs()
+#4 /home/mila/Repos/dbExtractor/src/Core/App.php(75): Synaptic4u\Core\App->runBatch()
+#5 /home/mila/Repos/dbExtractor/app.php(14): Synaptic4u\Core\App->__construct()
+#6 {main}
 
-UTC 2023-01-30 17:41:30
+UTC 2023-01-30 19:12:59
 Location: Synaptic4u\DB\DB::__construct
-error: Exception: Something wrong with db config in /home/mila/Repos/dbExtractor/src/DB/DB.php:44
+config: {
+    "sitename": null,
+    "dbtype": null,
+    "host": null,
+    "user": null,
+    "password": null,
+    "dbprefix": null,
+    "db": null
+}
+error: PDOException: SQLSTATE[HY000] [2002] No such file or directory in /home/mila/Repos/dbExtractor/src/DB/DB.php:51
 Stack trace:
-#0 /home/mila/Repos/dbExtractor/src/Extractor/Extractor.php(42): Synaptic4u\DB\DB->__construct()
-#1 /home/mila/Repos/dbExtractor/src/Core/App.php(144): Synaptic4u\Extractor\Extractor->dumpDBs()
-#2 /home/mila/Repos/dbExtractor/src/Core/App.php(120): Synaptic4u\Core\App->dumpDBs()
-#3 /home/mila/Repos/dbExtractor/src/Core/App.php(75): Synaptic4u\Core\App->runBatch()
-#4 /home/mila/Repos/dbExtractor/app.php(14): Synaptic4u\Core\App->__construct()
-#5 {main}
+#0 /home/mila/Repos/dbExtractor/src/DB/DB.php(51): PDO->__construct()
+#1 /home/mila/Repos/dbExtractor/src/Extractor/Extractor.php(43): Synaptic4u\DB\DB->__construct()
+#2 /home/mila/Repos/dbExtractor/src/Core/App.php(144): Synaptic4u\Extractor\Extractor->dumpDBs()
+#3 /home/mila/Repos/dbExtractor/src/Core/App.php(120): Synaptic4u\Core\App->dumpDBs()
+#4 /home/mila/Repos/dbExtractor/src/Core/App.php(75): Synaptic4u\Core\App->runBatch()
+#5 /home/mila/Repos/dbExtractor/app.php(14): Synaptic4u\Core\App->__construct()
+#6 {main}
 
-UTC 2023-01-30 17:41:30
+UTC 2023-01-30 19:12:59
 Location: Synaptic4u\DB\DB::__construct
-error: Exception: Something wrong with db config in /home/mila/Repos/dbExtractor/src/DB/DB.php:44
+config: {
+    "sitename": null,
+    "dbtype": null,
+    "host": null,
+    "user": null,
+    "password": null,
+    "dbprefix": null,
+    "db": null
+}
+error: PDOException: SQLSTATE[HY000] [2002] No such file or directory in /home/mila/Repos/dbExtractor/src/DB/DB.php:51
 Stack trace:
-#0 /home/mila/Repos/dbExtractor/src/Extractor/Extractor.php(42): Synaptic4u\DB\DB->__construct()
-#1 /home/mila/Repos/dbExtractor/src/Core/App.php(144): Synaptic4u\Extractor\Extractor->dumpDBs()
-#2 /home/mila/Repos/dbExtractor/src/Core/App.php(120): Synaptic4u\Core\App->dumpDBs()
-#3 /home/mila/Repos/dbExtractor/src/Core/App.php(75): Synaptic4u\Core\App->runBatch()
-#4 /home/mila/Repos/dbExtractor/app.php(14): Synaptic4u\Core\App->__construct()
-#5 {main}
+#0 /home/mila/Repos/dbExtractor/src/DB/DB.php(51): PDO->__construct()
+#1 /home/mila/Repos/dbExtractor/src/Extractor/Extractor.php(43): Synaptic4u\DB\DB->__construct()
+#2 /home/mila/Repos/dbExtractor/src/Core/App.php(144): Synaptic4u\Extractor\Extractor->dumpDBs()
+#3 /home/mila/Repos/dbExtractor/src/Core/App.php(120): Synaptic4u\Core\App->dumpDBs()
+#4 /home/mila/Repos/dbExtractor/src/Core/App.php(75): Synaptic4u\Core\App->runBatch()
+#5 /home/mila/Repos/dbExtractor/app.php(14): Synaptic4u\Core\App->__construct()
+#6 {main}

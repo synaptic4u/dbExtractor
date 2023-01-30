@@ -165,12 +165,6 @@ class Parser
                         "password" => null,
                         "dbprefix" => null,
                         "db" => null,
-                        "dbencryption" => null,
-                        "dbsslverifyservercert" => null,
-                        "dbsslkey" => null,
-                        "dbsslcert" => null,
-                        "dbsslca" => null,
-                        "dbsslcipher" => null,
                     ],
                     "db_connect_success" => null,
                     "db_dump_path" => null,
@@ -201,8 +195,10 @@ class Parser
                     foreach ($rows as $key => $row) {
                         
                         $line = $this->file_reader->stringClear($row);
-
-                        // $test = [
+         
+                        // $this->log([
+                        //     'Location' => __METHOD__.' DEBUG',
+                        //     'vhosts' => json_encode($vhosts, JSON_PRETTY_PRINT),
                         //     "line" => $line,
                         //     "root_exists" => (strrpos($line, "root ", 0) > 0) ? "true" : "false",
                         //     "root_line" => substr($line, strrpos($line, "server_name", 0)+11, strlen($line)),
@@ -210,11 +206,6 @@ class Parser
                         //     "server_exists" => (strrpos($line, "server_name ", 0) > 0) ? "true" : "false",
                         //     "server_line" => substr($line, strrpos($line, "server_name", 0)+11, strlen($line)),
                         //     "server_path" => str_replace(";", "", str_replace("  ", " ", substr($line, strrpos($line, "server_name", 0)+11, strlen($line)))),
-                        // ];              
-                        // $this->log([
-                        //     'Location' => __METHOD__.' DEBUG',
-                        //     'vhosts' => json_encode($vhosts, JSON_PRETTY_PRINT),
-                        //     'test' => json_encode($test, JSON_PRETTY_PRINT),
                         // ]);
 
                         if(strrpos($line, "server_name ", 0) > 0){
@@ -234,11 +225,11 @@ class Parser
                 $rows = null;
             }
 
-            $this->log([
-                'Location' => __METHOD__.' 2',
-                'vhosts' => json_encode($vhosts, JSON_PRETTY_PRINT),
-                'vhost_detail_list' => json_encode($vhost_detail_list, JSON_PRETTY_PRINT),
-            ]);
+            // $this->log([
+            //     'Location' => __METHOD__.' 2',
+            //     'vhosts' => json_encode($vhosts, JSON_PRETTY_PRINT),
+            //     'vhost_detail_list' => json_encode($vhost_detail_list, JSON_PRETTY_PRINT),
+            // ]);
         }catch(Exception $e){
 
             $rows = null;
@@ -251,55 +242,6 @@ class Parser
 
             return $vhost_detail_list;
         }
-    }
-
-    /**
-     * Sanitizes the string of certain characters : ",',\,,`,[]
-     * Had an issue when importing MySQL data dump files.
-     * Still need to prove that it was because of unwanted characters.
-     *
-     * @param array $columns : Array of a file line
-     *
-     * @return array : Returns cleaned array
-     */
-    protected function stringClean(array $columns)
-    {
-        foreach ($columns as $key => $string) {
-            $columns[$key] = str_replace('"', '', $string);
-            $columns[$key] = str_replace("'", '', $string);
-            $columns[$key] = str_replace(',', '~', $string);
-            $columns[$key] = str_replace('`', '#', $string);
-            $columns[$key] = str_replace('[', '', str_replace(']', '', $string));
-        }
-
-        return $columns;
-    }
-
-    /**
-     * Sanitizes the string of certain characters : ",',\,,`,[]
-     * Had an issue when importing MySQL data dump files.
-     * Still need to prove that it was because of unwanted characters.
-     *
-     * @param string $columns : string of a file line
-     *
-     * @return string : Returns cleaned string
-     */
-    protected function blobClean(string $blob)
-    {
-        $blob = str_replace('"', '~~~dblquote~~~', $blob);
-        $blob = str_replace("'", '~~~sngquote~~~', $blob);
-        $blob = str_replace(',', '~~~comma~~~', $blob);
-        $blob = str_replace('`', '~~~backtick~~~', $blob);
-        $blob = str_replace('\\', '~~~backslash~~~', $blob);
-        $blob = str_replace(';', '~~~semicolon~~~', $blob);
-        $blob = str_replace(':', '~~~colon~~~', $blob);
-        $blob = str_replace('{', '~~~lbraces~~~', $blob);
-        $blob = str_replace('}', '~~~rbraces~~~', $blob);
-        $blob = str_replace('(', '~~~lparenthesis~~~', $blob);
-        $blob = str_replace(')', '~~~rparenthesis~~~', $blob);
-        $blob = str_replace('[', '~~~lbracket~~~', $blob);
-
-        return str_replace(']', '~~~rbracket~~~', $blob);
     }
 
     /**

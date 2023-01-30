@@ -80,18 +80,21 @@ class FileReader
      */
     private function readArrayFile(string $file)
     {
-        $rows = [];
-
         try {
+
+            $rows = [];
+            
             $txt = file_get_contents($file);
 
             $rows = explode("\n", $txt);
         } catch (Exception $e) {
+            
             $this->error([
                 'Location' => __METHOD__.'()',
                 'error' => $e->__toString(),
             ]);
         } finally {
+
             return $rows;
         }
     }

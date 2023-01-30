@@ -1,5 +1,5 @@
 {
-    "DateTime": "UTC 2023-01-30 17:41:30",
+    "DateTime": "UTC 2023-01-30 19:12:59",
     "Content": {
         "app_synaptic4u_local_vhost": {
             "vhost_conf_path": "\/etc\/apache2\/sites-available\/app.synaptic4u.local.conf",
@@ -14,13 +14,7 @@
                 "user": null,
                 "password": null,
                 "dbprefix": null,
-                "db": null,
-                "dbencryption": null,
-                "dbsslverifyservercert": null,
-                "dbsslkey": null,
-                "dbsslcert": null,
-                "dbsslca": null,
-                "dbsslcipher": null
+                "db": null
             },
             "db_connect_success": null,
             "db_dump_path": null,
@@ -52,13 +46,7 @@
                 "user": null,
                 "password": null,
                 "dbprefix": null,
-                "db": null,
-                "dbencryption": null,
-                "dbsslverifyservercert": null,
-                "dbsslkey": null,
-                "dbsslcert": null,
-                "dbsslca": null,
-                "dbsslcipher": null
+                "db": null
             },
             "db_connect_success": null,
             "db_dump_path": null,
@@ -90,13 +78,7 @@
                 "user": null,
                 "password": null,
                 "dbprefix": null,
-                "db": null,
-                "dbencryption": null,
-                "dbsslverifyservercert": null,
-                "dbsslkey": null,
-                "dbsslcert": null,
-                "dbsslca": null,
-                "dbsslcipher": null
+                "db": null
             },
             "db_connect_success": null,
             "db_dump_path": null,
@@ -128,13 +110,7 @@
                 "user": null,
                 "password": null,
                 "dbprefix": null,
-                "db": null,
-                "dbencryption": null,
-                "dbsslverifyservercert": null,
-                "dbsslkey": null,
-                "dbsslcert": null,
-                "dbsslca": null,
-                "dbsslcipher": null
+                "db": null
             },
             "db_connect_success": null,
             "db_dump_path": null,
@@ -166,13 +142,7 @@
                 "user": null,
                 "password": null,
                 "dbprefix": null,
-                "db": null,
-                "dbencryption": null,
-                "dbsslverifyservercert": null,
-                "dbsslkey": null,
-                "dbsslcert": null,
-                "dbsslca": null,
-                "dbsslcipher": null
+                "db": null
             },
             "db_connect_success": null,
             "db_dump_path": null,
@@ -204,13 +174,7 @@
                 "user": null,
                 "password": null,
                 "dbprefix": null,
-                "db": null,
-                "dbencryption": null,
-                "dbsslverifyservercert": null,
-                "dbsslkey": null,
-                "dbsslcert": null,
-                "dbsslca": null,
-                "dbsslcipher": null
+                "db": null
             },
             "db_connect_success": null,
             "db_dump_path": null,
@@ -242,13 +206,7 @@
                 "user": null,
                 "password": null,
                 "dbprefix": null,
-                "db": null,
-                "dbencryption": null,
-                "dbsslverifyservercert": null,
-                "dbsslkey": null,
-                "dbsslcert": null,
-                "dbsslca": null,
-                "dbsslcipher": null
+                "db": null
             },
             "db_connect_success": null,
             "db_dump_path": null,
@@ -280,13 +238,7 @@
                 "user": null,
                 "password": null,
                 "dbprefix": null,
-                "db": null,
-                "dbencryption": null,
-                "dbsslverifyservercert": null,
-                "dbsslkey": null,
-                "dbsslcert": null,
-                "dbsslca": null,
-                "dbsslcipher": null
+                "db": null
             },
             "db_connect_success": null,
             "db_dump_path": null,

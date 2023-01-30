@@ -3,6 +3,7 @@
 namespace Synaptic4u\Extractor;
 
 use Exception;
+use stdClass;
 use Synaptic4u\Log\Activity;
 use Synaptic4u\Log\Error;
 use Synaptic4u\Log\Log;
@@ -13,16 +14,16 @@ class Extractor
     private $db;
     private $config;
     
-    public function __construct($config)
+    public function __construct(stdClass $config)
     {
         try {
             $this->config = $config;
 
             $this->db = null;
 
-            if($this->config->mysql_server_creds_source->enabled === true){
+            if($this->config->db->mysql_server_creds_source->enabled === true){
 
-                $this->db = new DB($this->config);
+                $this->db = new DB($this->config->db->mysql_server_creds_source);
             }
         } catch (Exception $e) {
 
@@ -61,9 +62,11 @@ class Extractor
                     exec($cli_cmd, $output, $returnVar);
 
                     if(file_exists($vhost_detail_list[$name]['db_dump_path'])){
+
                         $vhost_detail_list[$name]['db_dump_success'] = true;
                     }
                     if(file_exists($vhost_detail_list[$name]['db_dump_log_path'])){
+                        
                         $vhost_detail_list[$name]['db_dump_log_success'] = true;
                     }
                     
@@ -90,7 +93,8 @@ class Extractor
         }
     }
 
-    public function getDataDetails(array $vhost_detail_list){
+    public function getDataDetails(array $vhost_detail_list)
+    {
         try{
 
             foreach($vhost_detail_list as $name => $vhost){

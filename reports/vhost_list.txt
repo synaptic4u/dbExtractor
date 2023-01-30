@@ -1,5 +1,5 @@
 {
-    "DateTime": "UTC 2023-01-30 17:41:30",
+    "DateTime": "UTC 2023-01-30 19:12:59",
     "Content": {
         "app_synaptic4u_local_vhost": "\/etc\/apache2\/sites-available\/app.synaptic4u.local.conf",
         "api_synaptic4u_local_vhost": "\/etc\/apache2\/sites-available\/api.synaptic4u.local.conf",

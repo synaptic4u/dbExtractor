@@ -10,23 +10,26 @@ use Synaptic4u\Log\Log;
 
 class DB
 {
-    protected $lastinsertid = -1;
-    protected $rowcount = -1;
-    protected $conn;
-    protected $status;
-    protected $pdo;
-    protected $error;
-    protected $config;
+    private $lastinsertid = -1;
+    private $rowcount = -1;
+    private $conn;
+    private $status;
+    private $dsn;
+    private $pdo;
+    private $error;
+    private $config;
 
     public function __construct($config = null)
     {
         try {
             
+            $dsn = null;
+            
             $this->config = $config;
             $this->error = null;
-        
+
             $this->conn = [
-                "host" => $this->config['host'],
+                "host" => $this->config['sitename'],
                 "dbname" => $this->config['db'],
                 "user" => $this->config['user'],
                 "pass" => $this->config['password']          
@@ -36,16 +39,16 @@ class DB
                 throw new Exception("Something wrong with db config");
             }
 
-            if($this->config['enabled']){
+            if(isset($this->config['enabled'])){
                 
-                $dsn = 'mysql:host='.$this->conn['host'].';';
+                $this->dsn = 'mysql:host='.$this->conn['host'].';';
             }else{
     
-                $dsn = 'mysql:host='.$this->conn['host'].';dbname='.$this->conn['dbname'];
+                $this->dsn = 'mysql:host='.$this->conn['host'].';dbname='.$this->conn['dbname'];
             }
 
             //  Create PDO instance.
-            $this->pdo = new PDO($dsn, $this->conn['user'], $this->conn['pass']);
+            $this->pdo = new PDO($this->dsn, $this->conn['user'], $this->conn['pass']);
 
             $this->log([
                 'Location' => __METHOD__,
@@ -57,6 +60,7 @@ class DB
 
             $this->error([
                 'Location' => __METHOD__,
+                'config' => $this->config,
                 'error' => $e->__toString(),
             ]);
         }
@@ -83,6 +87,7 @@ class DB
 
             $stmt = null;
         } catch (Exception $e) {
+            
             $this->error([
                 'Location' => __METHOD__,
                 'pdo->errorInfo' => $this->pdo->errorInfo(),

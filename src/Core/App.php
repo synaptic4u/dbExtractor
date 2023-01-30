@@ -103,19 +103,19 @@ class App
             $this->prepDodgyVHostDetailReport();
             $this->writeToFileJSON('/reports/vhost_detail_list.txt', $this->vhost_detail_list);
             
-            $this->log([
-                'Location' => __METHOD__.' 1',
-                'vhost_detail_list' => json_encode($this->vhost_detail_list, JSON_PRETTY_PRINT),
-            ]);
+            // $this->log([
+            //     'Location' => __METHOD__.' 1',
+            //     'vhost_detail_list' => json_encode($this->vhost_detail_list, JSON_PRETTY_PRINT),
+            // ]);
 
             $this->vhost_detail_list = $this->getDataDetails();
 
             $this->writeToFileJSON('/reports/vhost_detail_data_list.txt', $this->vhost_detail_list);
             
-            $this->log([
-                'Location' => __METHOD__.' 2',
-                'vhost_detail_list' => json_encode($this->vhost_detail_list, JSON_PRETTY_PRINT),
-            ]);
+            // $this->log([
+            //     'Location' => __METHOD__.' 2',
+            //     'vhost_detail_list' => json_encode($this->vhost_detail_list, JSON_PRETTY_PRINT),
+            // ]);
 
             $this->vhost_detail_list = $this->dumpDBs();
 
@@ -165,15 +165,13 @@ class App
             $this->crawler = new Crawler($this->config->vhost->search_suffix);
 
             $vhosts = $this->crawler->crawl($this->config->vhost->dir_path, []);
-            // var_dump($vhosts);
 
-            $this->log([
-                'Location' => __METHOD__.' 1',
-                'vhosts' => json_encode($vhosts, JSON_PRETTY_PRINT),
-            ]);
+            // $this->log([
+            //     'Location' => __METHOD__.' 1',
+            //     'vhosts' => json_encode($vhosts, JSON_PRETTY_PRINT),
+            // ]);
 
             $vhosts = $this->crawler->flattenArray($vhosts);
-            // var_dump($vhosts);
             
             $this->writeToFileJSON('/reports/vhost_list.txt', $vhosts);
             
@@ -203,18 +201,15 @@ class App
 
             $error = null;
             $config = null;
+            
             $config_path = dirname(__FILE__, 3).'/config.json';
 
             $config = $this->file_reader->readJSONFile($config_path, 1);
             
             // $this->log([
-            //     'Location' => __METHOD__.' 1',
+            //     'Location' => __METHOD__.' DEBUG',
             //     'config_path' => $config_path,
             //     'config' => json_encode($config, JSON_PRETTY_PRINT)
-            // ]);
-
-            // $this->log([
-            //     'Location' => __METHOD__.' DEBUG',
             //     'dir path = null' => ($config->vhost->dir_path === null) ? "true":"false",
             //     'dir path length check' => (strlen($config->vhost->dir_path) > 0) ? "true":"false",
             //     'dir path length' => strlen($config->vhost->dir_path),
@@ -223,12 +218,13 @@ class App
             // ]);
 
             if(($config->vhost->dir_path === null) || (strlen($config->vhost->dir_path) < 2)){
+                
                 $error = "The configuration file is faulty!".PHP_EOL.
                          "       VHost directory path cannot be empty.";
                 throw new Exception($error);
             }
-            
             if(sizeof($config->vhost->search_suffix) === 0){
+             
                 $error = "The configuration file is faulty!".PHP_EOL.
                          "       VHost search suffix cannot be empty.";
                 throw new Exception($error);
@@ -291,7 +287,6 @@ class App
 
     private function prepDodgyVHostDetailDataReport()
     {
-
         $this->writeToFileJSON('/reports/vhost_detail_data_list.txt', $this->vhost_detail_list);
     }
 

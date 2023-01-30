@@ -21,36 +21,46 @@ Server Database Extractor
 ----------------------------------------------------------------------
     How To:
 ----------------------------------------------------------------------
-{
-    "report": {
-        "Description": "Report batch gruoping size. Do you want report summaries based upon per 100 / 1000 or 100000. ",
-        "batch_size": 1000
-    },
-    "vhost": {
-        "Description": "Nginx Virtual Hosts Base Directory path: Include a trailing forward slash. Include the suffix to search for passed as an array.",
-        "dir_path": "/home/mila/Repos/dbExtractor/testdir/etc/nginx/",
-        "search_suffix": [
-            "conf"
-        ]
-    },
-    "log": {
-        "Description": "Logging for application audit. This will log everything apart from reports and progress logs. Errors automatically log.",
-        "enabled": true
-    },
-    "root_db_login": {
-        "Description": "MySQL ONLY! Root Database Login credentials. If you want to compare db's from vhosts to actual databases in the server.",
-        "enabled": false,
-        "config_name": "db_root_config.json"
-    },
-    "target_server": {
-        "Description": "The target server where the db's will be inserted. Direct transport to Mysql Server.",
-        "ip_address": null,
-        "port": null,
-        "username": null,
-        "password": null
+    {
+        "report": {
+            "Description": "Report batch gruoping size. Do you want report summaries based upon per 100 / 1000 or 100000. ",
+            "batch_size": 1000
+        },
+        "vhost": {
+            "Description": "Nginx Virtual Hosts Base Directory path: Include a trailing forward slash. Include the suffix to search for passed as an array.",
+            "dir_path": "/etc/apache2/sites-available/",
+            "search_suffix": [
+                "conf",
+                "xxxxxx"
+            ]
+        },
+        "web_config_file": {
+            "Description": "Nginx Web Directory configuration file. Please provide full name of the file to search for. Can pass single value only.",
+            "search_name": "configuration.php"
+        },
+        "log": {
+            "Description": "Logging for application audit. This will log everything apart from reports and progress logs. Errors automatically log.",
+            "enabled": false
+        },
+        "db": {
+            "mysql_server_creds_source": {
+                "Description": "Using Sitename here to make it easier to use with settings in web dir config file. MySQL ONLY! Root Database Login credentials. If you want to compare db's from vhosts to actual databases in the server.",
+                "enabled": false,
+                "sitename": null,
+                "port": null,
+                "username": null,
+                "password": null
+            },
+            "mysql_server_creds_target": {
+                "Description": "Using Sitename here to make it easier to use with settings in web dir config file. The target server where the db's will be inserted. Direct transport to Mysql Server.",
+                "enabled": true,
+                "sitename": "omnicasa-mysql-v2",
+                "port": 3306,
+                "username": "root",
+                "password": "r7Xl5GRNhXVlMmcF"
+            }
+        }
     }
-}
-
 
 ----------------------------------------------------------------------
 ----------------------------------------------------------------------

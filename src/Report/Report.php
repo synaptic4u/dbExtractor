@@ -10,11 +10,8 @@ use Synaptic4u\Log\Activity;
 
 class Report{
 
-    protected $db;
-
     public function __construct()
     {
-        $this->db = new DB();
     }
 
     /**
