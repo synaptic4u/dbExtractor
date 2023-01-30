@@ -9,6 +9,6 @@
     if (file_exists(dirname(__FILE__, 1).'/vendor/autoload.php')) {
         require_once dirname(__FILE__, 1).'/vendor/autoload.php';
     }
-    use Synaptic4u\Core\App;
+    use Synaptic4u\App\App;
 
     new App();

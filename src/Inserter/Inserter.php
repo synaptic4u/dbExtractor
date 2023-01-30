@@ -20,9 +20,9 @@ class Inserter
 
             $this->db = null;
 
-            if($this->config->root_db_login->enabled === true){
+            if($this->config->db->mysql_server_creds_source->enabled === true){
 
-                $this->db = new DB($this->config);
+                $this->db = new DB($this->config->db->mysql_server_creds_source);
             }
         } catch (Exception $e) {
 
@@ -53,11 +53,8 @@ class Inserter
                     $timestamp = microtime(true);
 
                     $vhost_detail_list[$name]['db_connect_success'] = true;
-
-                    $vhost_detail_list[$name]['db_dump_log_path'] = dirname(__FILE__, 2).'/logs/mysql_logs/'.str_replace("-","_", $name).'_'.$timestamp.'_mysql_dump.txt';
-                    $vhost_detail_list[$name]['db_dump_path'] = dirname(__FILE__, 3).'/mysql_dumps/'.str_replace("-","_", $name).'_'.$timestamp.'_mysql_dump.sql';
                     
-                    $cli_cmd = 'mysqldump -u'.$vhost['vhost_web_config']['user'].' -p'.$vhost['vhost_web_config']['password'].' --opt --comments --hex-blob --tz-utc --events --routines --force --log-error='.$vhost_detail_list[$name]['db_dump_log_path'].' '.$vhost['vhost_web_config']['db'].' > '.$vhost_detail_list[$name]['db_dump_path'].'';
+                    $cli_cmd = 'mysqldump -u'.$this->config->db->mysql_server_creds_target->username.' -p'.$this->config->db->mysql_server_creds_target->password.' --opt --comments --hex-blob --tz-utc --events --routines --force--log-error='.$vhost_detail_list[$name]['db_dump_log_path'].' '.$vhost['vhost_web_config']['db'].' | mysql --host='.$this->config->db->mysql_server_creds_target->sitename.' -C '.$vhost['vhost_web_config']['db'].' ';
                     
                     exec($cli_cmd, $output, $returnVar);
 

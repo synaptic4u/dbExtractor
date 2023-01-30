@@ -1,6 +1,6 @@
 <?php
 
-namespace Synaptic4u\Core;
+namespace Synaptic4u\App;
 
 use Exception;
 use Synaptic4u\Log\Log;
@@ -125,6 +125,8 @@ class App
                 'Location' => __METHOD__.' 3',
                 'vhost_detail_list' => json_encode($this->vhost_detail_list, JSON_PRETTY_PRINT),
             ]);
+
+            $this->vhost_detail_list = $this->insertDBs();
         }catch(Exception $e){
             
             $this->error([

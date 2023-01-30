@@ -1,6 +1,0 @@
-{
-    "DateTime": "UTC 2023-01-30 20:38:54",
-    "Content": {
-        "omnicasa_vhost": "\/home\/mila\/Repos\/dbExtractor\/testdir\/etc\/nginx\/conf.d\/omnicasa.conf"
-    }
-}

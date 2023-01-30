@@ -19,17 +19,18 @@ class DB
     private $error;
     private $config;
 
-    public function __construct($config = null)
+    public function __construct($config)
     {
+        $dsn = null;
+        
         try {
             
-            $dsn = null;
             
             $this->config = $config;
             $this->error = null;
 
             $this->conn = [
-                "host" => $this->config['sitename'],
+                "host" => $this->config['host'],
                 "dbname" => $this->config['db'],
                 "user" => $this->config['user'],
                 "pass" => $this->config['password']          
@@ -41,14 +42,15 @@ class DB
 
             if(isset($this->config['enabled'])){
                 
-                $this->dsn = 'mysql:host='.$this->conn['host'].';';
-            }else{
+                $dsn = 'mysql:host='.$this->conn['host'].';';
+            }
+            if(!isset($this->config['enabled'])){
     
-                $this->dsn = 'mysql:host='.$this->conn['host'].';dbname='.$this->conn['dbname'];
+                $dsn = 'mysql:host='.$this->conn['host'].';dbname='.$this->conn['dbname'];
             }
 
             //  Create PDO instance.
-            $this->pdo = new PDO($this->dsn, $this->conn['user'], $this->conn['pass']);
+            $this->pdo = new PDO($dsn, $this->conn['user'], $this->conn['pass']);
 
             // $this->log([
             //     'Location' => __METHOD__,
@@ -60,6 +62,7 @@ class DB
 
             $this->error([
                 'Location' => __METHOD__,
+                'conn' => $this->conn,
                 'config' => $this->config,
                 'error' => $e->__toString(),
             ]);
