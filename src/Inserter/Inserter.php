@@ -54,7 +54,7 @@ class Inserter
 
                     $vhost_detail_list[$name]['db_connect_success'] = true;
                     
-                    $cli_cmd = 'mysqldump -u'.$vhost['vhost_web_config']['user'].' -p'.$vhost['vhost_web_config']['password'].' --opt --comments --hex-blob --tz-utc --events --routines --force--log-error='.$vhost_detail_list[$name]['db_dump_log_path'].' '.$vhost['vhost_web_config']['db'].' | mysql -u'.$this->config->db->mysql_server_creds_target->username.' -p'.$this->config->db->mysql_server_creds_target->password.' --host='.$this->config->db->mysql_server_creds_target->sitename.' -C '.$vhost['vhost_web_config']['db'].' ';
+                    $cli_cmd = 'mysqldump -u'.$vhost['vhost_web_config']['user'].' -p'.$vhost['vhost_web_config']['password'].' --opt --comments --hex-blob --tz-utc --events --routines --force --log-error='.$vhost_detail_list[$name]['db_dump_log_path'].' '.$vhost['vhost_web_config']['db'].' | mysql -u'.$this->config->db->mysql_server_creds_target->username.' -p'.$this->config->db->mysql_server_creds_target->password.' --host='.$this->config->db->mysql_server_creds_target->sitename.' -C '.$vhost['vhost_web_config']['db'].' ';
                     // $cli_cmd = 'mysqldump -u'.$vhost['vhost_web_config']['user'].' -p'.$vhost['vhost_web_config']['password'].' --opt --comments --hex-blob --tz-utc --events --routines --force --log-error='.$vhost_detail_list[$name]['db_dump_log_path'].' '.$vhost['vhost_web_config']['db'].' > '.$vhost_detail_list[$name]['db_dump_path'].'';
 
                     exec($cli_cmd, $output, $returnVar);

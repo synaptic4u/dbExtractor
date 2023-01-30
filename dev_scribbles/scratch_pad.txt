@@ -10,5 +10,6 @@ docker exec -it $(docker ps -aqf "name=^omnicasa-nginx$") bash
 mysqldump -uUser -pPassword --opt --comments --hex-blob --tz-utc --events --routines --force
 --log-error=/home/mila/Downloads/test_log.txt Database | mysql --host=Target_URL -C New_Database
 
-
+cd /
 yum update -y && yum upgrade && yum install git nano tree locate
+git clone https://github.com/synaptic4u/dbExtractor.git
