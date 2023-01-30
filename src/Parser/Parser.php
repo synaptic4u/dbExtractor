@@ -12,20 +12,17 @@ use Synaptic4u\Files\Reader\FileReader;
 class Parser
 {
     private $file_reader;
-    private $result;
     private $config;
 
     public function __construct($config)
     {
         try{
 
-            $this->result = [];
             $this->config = $config;
             
             $this->log([
                 'Location' => __METHOD__,
                 'config' => json_encode($this->config, JSON_PRETTY_PRINT),
-                'result' => json_encode($this->result, JSON_PRETTY_PRINT),
             ]);
 
             $this->file_reader = new FileReader();
@@ -38,7 +35,8 @@ class Parser
         }
     }
 
-    public function confirmVHostFiles(array $vhost_detail_list){
+    public function confirmVHostFiles(array $vhost_detail_list)
+    {
         try{
 
             $this->log([
@@ -88,34 +86,6 @@ class Parser
 
                             $vhost_detail_list[$name]['vhost_web_config']['db'] = str_replace("'", "", str_replace(" ", "", str_replace(";", "", str_replace("=", "", substr($line, strrpos($line, '$db', 0)+strlen('$db'), strlen($line))))));
                         }
-                        if(strrpos($line, '$dbencryption', 0) > 0){
-
-                            $vhost_detail_list[$name]['vhost_web_config']['dbencryption'] = str_replace("'", "", str_replace(" ", "", str_replace(";", "", str_replace("=", "", substr($line, strrpos($line, '$dbencryption', 0)+strlen('$dbencryption'), strlen($line))))));
-                        }
-                        if(strrpos($line, '$dbsslverifyservercert', 0) > 0){
-
-                            $vhost_detail_list[$name]['vhost_web_config']['dbsslverifyservercert'] = str_replace("'", "", str_replace(" ", "", str_replace(";", "", str_replace("=", "", substr($line, strrpos($line, '$dbsslverifyservercert', 0)+strlen('$dbsslverifyservercert'), strlen($line))))));
-                        }
-                        if(strrpos($line, '$dbsslkey', 0) > 0){
-
-                            $vhost_detail_list[$name]['vhost_web_config']['dbsslkey'] = str_replace("'", "", str_replace(" ", "", str_replace(";", "", str_replace("=", "", substr($line, strrpos($line, '$dbsslkey', 0)+strlen('$dbsslkey'), strlen($line))))));
-                        }
-                        if(strrpos($line, '$dbsslcert', 0) > 0){
-
-                            $vhost_detail_list[$name]['vhost_web_config']['dbsslcert'] = str_replace("'", "", str_replace(" ", "", str_replace(";", "", str_replace("=", "", substr($line, strrpos($line, '$dbsslcert', 0)+strlen('$dbsslcert'), strlen($line))))));
-                        }
-                        if(strrpos($line, '$dbsslca', 0) > 0){
-
-                            $vhost_detail_list[$name]['vhost_web_config']['dbsslca'] = str_replace("'", "", str_replace(" ", "", str_replace(";", "", str_replace("=", "", substr($line, strrpos($line, '$dbsslca', 0)+strlen('$dbsslca'), strlen($line))))));
-                        }
-                        if(strrpos($line, '$dbsslcipher', 0) > 0){
-
-                            $vhost_detail_list[$name]['vhost_web_config']['dbsslcipher'] = str_replace("'", "", str_replace(" ", "", str_replace(";", "", str_replace("=", "", substr($line, strrpos($line, '$dbsslcipher', 0)+strlen('$dbsslcipher'), strlen($line))))));
-                        }
-                        if(strrpos($line, '$dbsslcipher', 0) > 0){
-
-                            $vhost_detail_list[$name]['vhost_web_config']['dbsslcipher'] = str_replace("'", "", str_replace(" ", "", str_replace(";", "", str_replace("=", "", substr($line, strrpos($line, '$dbsslcipher', 0)+strlen('$dbsslcipher'), strlen($line))))));
-                        }
                     }
                 }
             }
@@ -138,9 +108,9 @@ class Parser
 
     public function parseVHostFiles(array $vhosts)
     {
+        $vhost_detail_list = [];        
+        
         try{
-
-            $vhost_detail_list = [];
 
             $this->log([
                 'Location' => __METHOD__.' 1',
@@ -225,11 +195,11 @@ class Parser
                 $rows = null;
             }
 
-            // $this->log([
-            //     'Location' => __METHOD__.' 2',
-            //     'vhosts' => json_encode($vhosts, JSON_PRETTY_PRINT),
-            //     'vhost_detail_list' => json_encode($vhost_detail_list, JSON_PRETTY_PRINT),
-            // ]);
+            $this->log([
+                'Location' => __METHOD__.' 2',
+                'vhosts' => json_encode($vhosts, JSON_PRETTY_PRINT),
+                'vhost_detail_list' => json_encode($vhost_detail_list, JSON_PRETTY_PRINT),
+            ]);
         }catch(Exception $e){
 
             $rows = null;

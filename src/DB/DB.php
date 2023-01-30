@@ -50,10 +50,10 @@ class DB
             //  Create PDO instance.
             $this->pdo = new PDO($this->dsn, $this->conn['user'], $this->conn['pass']);
 
-            $this->log([
-                'Location' => __METHOD__,
-                'conn' => json_encode($this->conn, JSON_PRETTY_PRINT),
-            ]);
+            // $this->log([
+            //     'Location' => __METHOD__,
+            //     'conn' => json_encode($this->conn, JSON_PRETTY_PRINT),
+            // ]);
         } catch (Exception $e) {
             
             $this->error = $e->__toString();

@@ -1,254 +1,47 @@
 {
-    "DateTime": "UTC 2023-01-30 19:12:59",
+    "DateTime": "UTC 2023-01-30 20:38:54",
     "Content": {
-        "app_synaptic4u_local_vhost": {
-            "vhost_conf_path": "\/etc\/apache2\/sites-available\/app.synaptic4u.local.conf",
-            "vhost_file_not_empty": 38,
-            "vhost_url": null,
-            "vhost_root_dir_path_exists": null,
-            "vhost_root_dir_path": null,
+        "omnicasa_vhost": {
+            "vhost_conf_path": "\/home\/mila\/Repos\/dbExtractor\/testdir\/etc\/nginx\/conf.d\/omnicasa.conf",
+            "vhost_file_not_empty": 59,
+            "vhost_url": " joomla.omnicasa.local www.omnicasa.local",
+            "vhost_root_dir_path_exists": true,
+            "vhost_root_dir_path": "\/home\/mila\/Repos\/dbExtractor\/testdir\/app\/joomla\/",
             "vhost_web_config": {
-                "sitename": null,
-                "dbtype": null,
-                "host": null,
-                "user": null,
-                "password": null,
-                "dbprefix": null,
-                "db": null
+                "sitename": "joomla.omnicasa.local",
+                "dbtype": "mysql",
+                "host": "localhost",
+                "user": "omni-joomla1",
+                "password": "omni-joomla1",
+                "dbprefix": "tbbx2_",
+                "db": "omnicasa_joomla1"
             },
-            "db_connect_success": "PDOException: SQLSTATE[HY000] [2002] No such file or directory in \/home\/mila\/Repos\/dbExtractor\/src\/DB\/DB.php:51\nStack trace:\n#0 \/home\/mila\/Repos\/dbExtractor\/src\/DB\/DB.php(51): PDO->__construct()\n#1 \/home\/mila\/Repos\/dbExtractor\/src\/Extractor\/Extractor.php(43): Synaptic4u\\DB\\DB->__construct()\n#2 \/home\/mila\/Repos\/dbExtractor\/src\/Core\/App.php(144): Synaptic4u\\Extractor\\Extractor->dumpDBs()\n#3 \/home\/mila\/Repos\/dbExtractor\/src\/Core\/App.php(120): Synaptic4u\\Core\\App->dumpDBs()\n#4 \/home\/mila\/Repos\/dbExtractor\/src\/Core\/App.php(75): Synaptic4u\\Core\\App->runBatch()\n#5 \/home\/mila\/Repos\/dbExtractor\/app.php(14): Synaptic4u\\Core\\App->__construct()\n#6 {main}",
-            "db_dump_path": null,
-            "db_dump_success": null,
-            "db_dump_log_path": null,
-            "db_dump_log_success": null,
+            "db_connect_success": true,
+            "db_dump_path": "\/home\/mila\/Repos\/dbExtractor\/mysql_dumps\/omnicasa_vhost_1675111134.2721_mysql_dump.sql",
+            "db_dump_success": true,
+            "db_dump_log_path": "\/home\/mila\/Repos\/dbExtractor\/src\/logs\/mysql_logs\/omnicasa_vhost_1675111134.2721_mysql_dump.txt",
+            "db_dump_log_success": true,
             "db_details_source": {
-                "table_count": null,
-                "table_list": null,
-                "tables": []
-            },
-            "db_insert_success": null,
-            "db_details_target": {
-                "table_count": null,
-                "table_list": null,
-                "tables": []
-            }
-        },
-        "api_synaptic4u_local_vhost": {
-            "vhost_conf_path": "\/etc\/apache2\/sites-available\/api.synaptic4u.local.conf",
-            "vhost_file_not_empty": 41,
-            "vhost_url": null,
-            "vhost_root_dir_path_exists": null,
-            "vhost_root_dir_path": null,
-            "vhost_web_config": {
-                "sitename": null,
-                "dbtype": null,
-                "host": null,
-                "user": null,
-                "password": null,
-                "dbprefix": null,
-                "db": null
-            },
-            "db_connect_success": "PDOException: SQLSTATE[HY000] [2002] No such file or directory in \/home\/mila\/Repos\/dbExtractor\/src\/DB\/DB.php:51\nStack trace:\n#0 \/home\/mila\/Repos\/dbExtractor\/src\/DB\/DB.php(51): PDO->__construct()\n#1 \/home\/mila\/Repos\/dbExtractor\/src\/Extractor\/Extractor.php(43): Synaptic4u\\DB\\DB->__construct()\n#2 \/home\/mila\/Repos\/dbExtractor\/src\/Core\/App.php(144): Synaptic4u\\Extractor\\Extractor->dumpDBs()\n#3 \/home\/mila\/Repos\/dbExtractor\/src\/Core\/App.php(120): Synaptic4u\\Core\\App->dumpDBs()\n#4 \/home\/mila\/Repos\/dbExtractor\/src\/Core\/App.php(75): Synaptic4u\\Core\\App->runBatch()\n#5 \/home\/mila\/Repos\/dbExtractor\/app.php(14): Synaptic4u\\Core\\App->__construct()\n#6 {main}",
-            "db_dump_path": null,
-            "db_dump_success": null,
-            "db_dump_log_path": null,
-            "db_dump_log_success": null,
-            "db_details_source": {
-                "table_count": null,
-                "table_list": null,
-                "tables": []
-            },
-            "db_insert_success": null,
-            "db_details_target": {
-                "table_count": null,
-                "table_list": null,
-                "tables": []
-            }
-        },
-        "000_default_vhost": {
-            "vhost_conf_path": "\/etc\/apache2\/sites-available\/000-default.conf",
-            "vhost_file_not_empty": 30,
-            "vhost_url": null,
-            "vhost_root_dir_path_exists": null,
-            "vhost_root_dir_path": null,
-            "vhost_web_config": {
-                "sitename": null,
-                "dbtype": null,
-                "host": null,
-                "user": null,
-                "password": null,
-                "dbprefix": null,
-                "db": null
-            },
-            "db_connect_success": "PDOException: SQLSTATE[HY000] [2002] No such file or directory in \/home\/mila\/Repos\/dbExtractor\/src\/DB\/DB.php:51\nStack trace:\n#0 \/home\/mila\/Repos\/dbExtractor\/src\/DB\/DB.php(51): PDO->__construct()\n#1 \/home\/mila\/Repos\/dbExtractor\/src\/Extractor\/Extractor.php(43): Synaptic4u\\DB\\DB->__construct()\n#2 \/home\/mila\/Repos\/dbExtractor\/src\/Core\/App.php(144): Synaptic4u\\Extractor\\Extractor->dumpDBs()\n#3 \/home\/mila\/Repos\/dbExtractor\/src\/Core\/App.php(120): Synaptic4u\\Core\\App->dumpDBs()\n#4 \/home\/mila\/Repos\/dbExtractor\/src\/Core\/App.php(75): Synaptic4u\\Core\\App->runBatch()\n#5 \/home\/mila\/Repos\/dbExtractor\/app.php(14): Synaptic4u\\Core\\App->__construct()\n#6 {main}",
-            "db_dump_path": null,
-            "db_dump_success": null,
-            "db_dump_log_path": null,
-            "db_dump_log_success": null,
-            "db_details_source": {
-                "table_count": null,
-                "table_list": null,
-                "tables": []
-            },
-            "db_insert_success": null,
-            "db_details_target": {
-                "table_count": null,
-                "table_list": null,
-                "tables": []
-            }
-        },
-        "ums_synaptic4u_local_vhost": {
-            "vhost_conf_path": "\/etc\/apache2\/sites-available\/ums.synaptic4u.local.conf",
-            "vhost_file_not_empty": 39,
-            "vhost_url": null,
-            "vhost_root_dir_path_exists": null,
-            "vhost_root_dir_path": null,
-            "vhost_web_config": {
-                "sitename": null,
-                "dbtype": null,
-                "host": null,
-                "user": null,
-                "password": null,
-                "dbprefix": null,
-                "db": null
-            },
-            "db_connect_success": "PDOException: SQLSTATE[HY000] [2002] No such file or directory in \/home\/mila\/Repos\/dbExtractor\/src\/DB\/DB.php:51\nStack trace:\n#0 \/home\/mila\/Repos\/dbExtractor\/src\/DB\/DB.php(51): PDO->__construct()\n#1 \/home\/mila\/Repos\/dbExtractor\/src\/Extractor\/Extractor.php(43): Synaptic4u\\DB\\DB->__construct()\n#2 \/home\/mila\/Repos\/dbExtractor\/src\/Core\/App.php(144): Synaptic4u\\Extractor\\Extractor->dumpDBs()\n#3 \/home\/mila\/Repos\/dbExtractor\/src\/Core\/App.php(120): Synaptic4u\\Core\\App->dumpDBs()\n#4 \/home\/mila\/Repos\/dbExtractor\/src\/Core\/App.php(75): Synaptic4u\\Core\\App->runBatch()\n#5 \/home\/mila\/Repos\/dbExtractor\/app.php(14): Synaptic4u\\Core\\App->__construct()\n#6 {main}",
-            "db_dump_path": null,
-            "db_dump_success": null,
-            "db_dump_log_path": null,
-            "db_dump_log_success": null,
-            "db_details_source": {
-                "table_count": null,
-                "table_list": null,
-                "tables": []
-            },
-            "db_insert_success": null,
-            "db_details_target": {
-                "table_count": null,
-                "table_list": null,
-                "tables": []
-            }
-        },
-        "puttingtracker_local_vhost": {
-            "vhost_conf_path": "\/etc\/apache2\/sites-available\/puttingtracker.local.conf",
-            "vhost_file_not_empty": 39,
-            "vhost_url": null,
-            "vhost_root_dir_path_exists": null,
-            "vhost_root_dir_path": null,
-            "vhost_web_config": {
-                "sitename": null,
-                "dbtype": null,
-                "host": null,
-                "user": null,
-                "password": null,
-                "dbprefix": null,
-                "db": null
-            },
-            "db_connect_success": "PDOException: SQLSTATE[HY000] [2002] No such file or directory in \/home\/mila\/Repos\/dbExtractor\/src\/DB\/DB.php:51\nStack trace:\n#0 \/home\/mila\/Repos\/dbExtractor\/src\/DB\/DB.php(51): PDO->__construct()\n#1 \/home\/mila\/Repos\/dbExtractor\/src\/Extractor\/Extractor.php(43): Synaptic4u\\DB\\DB->__construct()\n#2 \/home\/mila\/Repos\/dbExtractor\/src\/Core\/App.php(144): Synaptic4u\\Extractor\\Extractor->dumpDBs()\n#3 \/home\/mila\/Repos\/dbExtractor\/src\/Core\/App.php(120): Synaptic4u\\Core\\App->dumpDBs()\n#4 \/home\/mila\/Repos\/dbExtractor\/src\/Core\/App.php(75): Synaptic4u\\Core\\App->runBatch()\n#5 \/home\/mila\/Repos\/dbExtractor\/app.php(14): Synaptic4u\\Core\\App->__construct()\n#6 {main}",
-            "db_dump_path": null,
-            "db_dump_success": null,
-            "db_dump_log_path": null,
-            "db_dump_log_success": null,
-            "db_details_source": {
-                "table_count": null,
-                "table_list": null,
-                "tables": []
-            },
-            "db_insert_success": null,
-            "db_details_target": {
-                "table_count": null,
-                "table_list": null,
-                "tables": []
-            }
-        },
-        "default_ssl_vhost": {
-            "vhost_conf_path": "\/etc\/apache2\/sites-available\/default-ssl.conf",
-            "vhost_file_not_empty": 131,
-            "vhost_url": null,
-            "vhost_root_dir_path_exists": null,
-            "vhost_root_dir_path": null,
-            "vhost_web_config": {
-                "sitename": null,
-                "dbtype": null,
-                "host": null,
-                "user": null,
-                "password": null,
-                "dbprefix": null,
-                "db": null
-            },
-            "db_connect_success": "PDOException: SQLSTATE[HY000] [2002] No such file or directory in \/home\/mila\/Repos\/dbExtractor\/src\/DB\/DB.php:51\nStack trace:\n#0 \/home\/mila\/Repos\/dbExtractor\/src\/DB\/DB.php(51): PDO->__construct()\n#1 \/home\/mila\/Repos\/dbExtractor\/src\/Extractor\/Extractor.php(43): Synaptic4u\\DB\\DB->__construct()\n#2 \/home\/mila\/Repos\/dbExtractor\/src\/Core\/App.php(144): Synaptic4u\\Extractor\\Extractor->dumpDBs()\n#3 \/home\/mila\/Repos\/dbExtractor\/src\/Core\/App.php(120): Synaptic4u\\Core\\App->dumpDBs()\n#4 \/home\/mila\/Repos\/dbExtractor\/src\/Core\/App.php(75): Synaptic4u\\Core\\App->runBatch()\n#5 \/home\/mila\/Repos\/dbExtractor\/app.php(14): Synaptic4u\\Core\\App->__construct()\n#6 {main}",
-            "db_dump_path": null,
-            "db_dump_success": null,
-            "db_dump_log_path": null,
-            "db_dump_log_success": null,
-            "db_details_source": {
-                "table_count": null,
-                "table_list": null,
-                "tables": []
-            },
-            "db_insert_success": null,
-            "db_details_target": {
-                "table_count": null,
-                "table_list": null,
-                "tables": []
-            }
-        },
-        "dev_synaptic4u_local_vhost": {
-            "vhost_conf_path": "\/etc\/apache2\/sites-available\/dev.synaptic4u.local.conf",
-            "vhost_file_not_empty": 33,
-            "vhost_url": null,
-            "vhost_root_dir_path_exists": null,
-            "vhost_root_dir_path": null,
-            "vhost_web_config": {
-                "sitename": null,
-                "dbtype": null,
-                "host": null,
-                "user": null,
-                "password": null,
-                "dbprefix": null,
-                "db": null
-            },
-            "db_connect_success": "PDOException: SQLSTATE[HY000] [2002] No such file or directory in \/home\/mila\/Repos\/dbExtractor\/src\/DB\/DB.php:51\nStack trace:\n#0 \/home\/mila\/Repos\/dbExtractor\/src\/DB\/DB.php(51): PDO->__construct()\n#1 \/home\/mila\/Repos\/dbExtractor\/src\/Extractor\/Extractor.php(43): Synaptic4u\\DB\\DB->__construct()\n#2 \/home\/mila\/Repos\/dbExtractor\/src\/Core\/App.php(144): Synaptic4u\\Extractor\\Extractor->dumpDBs()\n#3 \/home\/mila\/Repos\/dbExtractor\/src\/Core\/App.php(120): Synaptic4u\\Core\\App->dumpDBs()\n#4 \/home\/mila\/Repos\/dbExtractor\/src\/Core\/App.php(75): Synaptic4u\\Core\\App->runBatch()\n#5 \/home\/mila\/Repos\/dbExtractor\/app.php(14): Synaptic4u\\Core\\App->__construct()\n#6 {main}",
-            "db_dump_path": null,
-            "db_dump_success": null,
-            "db_dump_log_path": null,
-            "db_dump_log_success": null,
-            "db_details_source": {
-                "table_count": null,
-                "table_list": null,
-                "tables": []
-            },
-            "db_insert_success": null,
-            "db_details_target": {
-                "table_count": null,
-                "table_list": null,
-                "tables": []
-            }
-        },
-        "mila_local_vhost": {
-            "vhost_conf_path": "\/etc\/apache2\/sites-available\/mila.local.conf",
-            "vhost_file_not_empty": 33,
-            "vhost_url": null,
-            "vhost_root_dir_path_exists": null,
-            "vhost_root_dir_path": null,
-            "vhost_web_config": {
-                "sitename": null,
-                "dbtype": null,
-                "host": null,
-                "user": null,
-                "password": null,
-                "dbprefix": null,
-                "db": null
-            },
-            "db_connect_success": "PDOException: SQLSTATE[HY000] [2002] No such file or directory in \/home\/mila\/Repos\/dbExtractor\/src\/DB\/DB.php:51\nStack trace:\n#0 \/home\/mila\/Repos\/dbExtractor\/src\/DB\/DB.php(51): PDO->__construct()\n#1 \/home\/mila\/Repos\/dbExtractor\/src\/Extractor\/Extractor.php(43): Synaptic4u\\DB\\DB->__construct()\n#2 \/home\/mila\/Repos\/dbExtractor\/src\/Core\/App.php(144): Synaptic4u\\Extractor\\Extractor->dumpDBs()\n#3 \/home\/mila\/Repos\/dbExtractor\/src\/Core\/App.php(120): Synaptic4u\\Core\\App->dumpDBs()\n#4 \/home\/mila\/Repos\/dbExtractor\/src\/Core\/App.php(75): Synaptic4u\\Core\\App->runBatch()\n#5 \/home\/mila\/Repos\/dbExtractor\/app.php(14): Synaptic4u\\Core\\App->__construct()\n#6 {main}",
-            "db_dump_path": null,
-            "db_dump_success": null,
-            "db_dump_log_path": null,
-            "db_dump_log_success": null,
-            "db_details_source": {
-                "table_count": null,
-                "table_list": null,
-                "tables": []
+                "table_count": 3,
+                "table_list": [
+                    "test1",
+                    "test2",
+                    "test3"
+                ],
+                "tables": [
+                    {
+                        "name": "test1",
+                        "row_count": 3
+                    },
+                    {
+                        "name": "test2",
+                        "row_count": 36
+                    },
+                    {
+                        "name": "test3",
+                        "row_count": 11
+                    }
+                ]
             },
             "db_insert_success": null,
             "db_details_target": {

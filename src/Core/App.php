@@ -87,13 +87,13 @@ class App
         }
     }
 
-    private function runBatch(){
-
+    private function runBatch()
+    {
         try{
 
             $this->vhost_detail_list = $this->parseVHostFiles();
             
-            if(($this->vhost_detail_list === null) || (sizeof($this->vhost_detail_list) < 2)){
+            if(($this->vhost_detail_list === null) || (sizeof($this->vhost_detail_list) < 1)){
                 $error = "ERROR: The Virtual Host Detailed List could not be compiled!".PHP_EOL;
                 throw new Exception($error);
             }
@@ -103,10 +103,10 @@ class App
             $this->prepDodgyVHostDetailReport();
             $this->writeToFileJSON('/reports/vhost_detail_list.txt', $this->vhost_detail_list);
             
-            // $this->log([
-            //     'Location' => __METHOD__.' 1',
-            //     'vhost_detail_list' => json_encode($this->vhost_detail_list, JSON_PRETTY_PRINT),
-            // ]);
+            $this->log([
+                'Location' => __METHOD__.' 1',
+                'vhost_detail_list' => json_encode($this->vhost_detail_list, JSON_PRETTY_PRINT),
+            ]);
 
             $this->vhost_detail_list = $this->getDataDetails();
 
@@ -136,23 +136,28 @@ class App
         }
     }
 
-    private function insertDBs(){
+    private function insertDBs()
+    {
         return (new Inserter($this->config))->insertDBs($this->vhost_detail_list);
     }
 
-    private function dumpDBs(){
+    private function dumpDBs()
+    {
         return (new Extractor($this->config))->dumpDBs($this->vhost_detail_list);
     }
 
-    private function getDataDetails(){
+    private function getDataDetails()
+    {
         return (new Extractor($this->config))->getDataDetails($this->vhost_detail_list);
     }
 
-    private function confirmVHostFiles(){
+    private function confirmVHostFiles()
+    {
         return (new Parser($this->config))->confirmVHostFiles($this->vhost_detail_list);
     }
 
-    private function parseVHostFiles(){  
+    private function parseVHostFiles()
+    {  
         return (new Parser($this->config))->parseVHostFiles($this->vhost_list);
     }
 
@@ -166,10 +171,10 @@ class App
 
             $vhosts = $this->crawler->crawl($this->config->vhost->dir_path, []);
 
-            // $this->log([
-            //     'Location' => __METHOD__.' 1',
-            //     'vhosts' => json_encode($vhosts, JSON_PRETTY_PRINT),
-            // ]);
+            $this->log([
+                'Location' => __METHOD__.' 1',
+                'vhosts' => json_encode($vhosts, JSON_PRETTY_PRINT),
+            ]);
 
             $vhosts = $this->crawler->flattenArray($vhosts);
             
@@ -179,8 +184,6 @@ class App
                 'Location' => __METHOD__.' 2',
                 'vhosts' => json_encode($vhosts, JSON_PRETTY_PRINT),
             ]);
-
-            $this->dumpDBs();
         }catch(Exception $e){
 
             $this->error([
@@ -273,7 +276,8 @@ class App
         ], 4);
     }
 
-    private function prepDodgyVHostDetailReport(){
+    private function prepDodgyVHostDetailReport()
+    {
 
         $vhosts = $this->vhost_detail_list;
 

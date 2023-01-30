@@ -45,6 +45,7 @@ class Crawler
                             $newpath = $newfile.'/';
 
                             $path_clean = str_replace("-","_",str_replace(".","_",str_replace(".conf","_vhost",$path)));
+                            
                             $file_clean = str_replace("-","_",str_replace(".","_",str_replace(".conf","_vhost",$file)));
 
                             // $this->log([

@@ -1,0 +1,382 @@
+
+UTC 2023-01-30 20:38:54
+Location: Synaptic4u\Core\App::readConfig 2
+config_path: /home/mila/Repos/dbExtractor/config.json
+config: {
+    "report": {
+        "Description": "Report batch gruoping size. Do you want report summaries based upon per 100 \/ 1000 or 100000. ",
+        "batch_size": 1000
+    },
+    "vhost": {
+        "Description": "Nginx Virtual Hosts Base Directory path: Include a trailing forward slash. Include the suffix to search for passed as an array.",
+        "dir_path": "\/home\/mila\/Repos\/dbExtractor\/testdir\/etc\/nginx\/conf.d\/",
+        "search_suffix": [
+            "conf",
+            "xxxxxx"
+        ]
+    },
+    "web_config_file": {
+        "Description": "Nginx Web Directory configuration file. Please provide full name of the file to search for. Can pass single value only.",
+        "search_name": "configuration.php"
+    },
+    "log": {
+        "Description": "Logging for application audit. This will log everything apart from reports and progress logs. Errors automatically log.",
+        "enabled": false
+    },
+    "db": {
+        "mysql_server_creds_source": {
+            "Description": "Using Sitename here to make it easier to use with settings in web dir config file. MySQL ONLY! Root Database Login credentials. If you want to compare db's from vhosts to actual databases in the server.",
+            "enabled": false,
+            "sitename": null,
+            "port": null,
+            "username": null,
+            "password": null
+        },
+        "mysql_server_creds_target": {
+            "Description": "Using Sitename here to make it easier to use with settings in web dir config file. The target server where the db's will be inserted. Direct transport to Mysql Server.",
+            "enabled": true,
+            "sitename": "omnicasa-mysql-v2",
+            "port": 3306,
+            "username": "root",
+            "password": "r7Xl5GRNhXVlMmcF"
+        }
+    }
+}
+
+UTC 2023-01-30 20:38:54
+Location: Synaptic4u\Core\App::parseVHosts 1
+vhosts: {
+    "\/home\/mila\/Repos\/dbExtractor\/testdir\/etc\/nginx\/conf_d\/": {
+        "omnicasa_vhost": "\/home\/mila\/Repos\/dbExtractor\/testdir\/etc\/nginx\/conf.d\/omnicasa.conf"
+    }
+}
+
+UTC 2023-01-30 20:38:54
+Location: Synaptic4u\Core\App::parseVHosts 2
+vhosts: {
+    "omnicasa_vhost": "\/home\/mila\/Repos\/dbExtractor\/testdir\/etc\/nginx\/conf.d\/omnicasa.conf"
+}
+
+UTC 2023-01-30 20:38:54
+Location: Synaptic4u\Parser\Parser::__construct
+config: {
+    "report": {
+        "Description": "Report batch gruoping size. Do you want report summaries based upon per 100 \/ 1000 or 100000. ",
+        "batch_size": 1000
+    },
+    "vhost": {
+        "Description": "Nginx Virtual Hosts Base Directory path: Include a trailing forward slash. Include the suffix to search for passed as an array.",
+        "dir_path": "\/home\/mila\/Repos\/dbExtractor\/testdir\/etc\/nginx\/conf.d\/",
+        "search_suffix": [
+            "conf",
+            "xxxxxx"
+        ]
+    },
+    "web_config_file": {
+        "Description": "Nginx Web Directory configuration file. Please provide full name of the file to search for. Can pass single value only.",
+        "search_name": "configuration.php"
+    },
+    "log": {
+        "Description": "Logging for application audit. This will log everything apart from reports and progress logs. Errors automatically log.",
+        "enabled": false
+    },
+    "db": {
+        "mysql_server_creds_source": {
+            "Description": "Using Sitename here to make it easier to use with settings in web dir config file. MySQL ONLY! Root Database Login credentials. If you want to compare db's from vhosts to actual databases in the server.",
+            "enabled": false,
+            "sitename": null,
+            "port": null,
+            "username": null,
+            "password": null
+        },
+        "mysql_server_creds_target": {
+            "Description": "Using Sitename here to make it easier to use with settings in web dir config file. The target server where the db's will be inserted. Direct transport to Mysql Server.",
+            "enabled": true,
+            "sitename": "omnicasa-mysql-v2",
+            "port": 3306,
+            "username": "root",
+            "password": "r7Xl5GRNhXVlMmcF"
+        }
+    }
+}
+
+UTC 2023-01-30 20:38:54
+Location: Synaptic4u\Parser\Parser::parseVHostFiles 1
+vhosts: {
+    "omnicasa_vhost": "\/home\/mila\/Repos\/dbExtractor\/testdir\/etc\/nginx\/conf.d\/omnicasa.conf"
+}
+
+UTC 2023-01-30 20:38:54
+Location: Synaptic4u\Parser\Parser::parseVHostFiles 2
+vhosts: {
+    "omnicasa_vhost": "\/home\/mila\/Repos\/dbExtractor\/testdir\/etc\/nginx\/conf.d\/omnicasa.conf"
+}
+vhost_detail_list: {
+    "omnicasa_vhost": {
+        "vhost_conf_path": "\/home\/mila\/Repos\/dbExtractor\/testdir\/etc\/nginx\/conf.d\/omnicasa.conf",
+        "vhost_file_not_empty": 59,
+        "vhost_url": " joomla.omnicasa.local www.omnicasa.local",
+        "vhost_root_dir_path_exists": null,
+        "vhost_root_dir_path": "\/home\/mila\/Repos\/dbExtractor\/testdir\/app\/joomla\/",
+        "vhost_web_config": {
+            "sitename": null,
+            "dbtype": null,
+            "host": null,
+            "user": null,
+            "password": null,
+            "dbprefix": null,
+            "db": null
+        },
+        "db_connect_success": null,
+        "db_dump_path": null,
+        "db_dump_success": null,
+        "db_dump_log_path": null,
+        "db_dump_log_success": null,
+        "db_details_source": {
+            "table_count": null,
+            "table_list": null,
+            "tables": []
+        },
+        "db_insert_success": null,
+        "db_details_target": {
+            "table_count": null,
+            "table_list": null,
+            "tables": []
+        }
+    }
+}
+
+UTC 2023-01-30 20:38:54
+Location: Synaptic4u\Parser\Parser::__construct
+config: {
+    "report": {
+        "Description": "Report batch gruoping size. Do you want report summaries based upon per 100 \/ 1000 or 100000. ",
+        "batch_size": 1000
+    },
+    "vhost": {
+        "Description": "Nginx Virtual Hosts Base Directory path: Include a trailing forward slash. Include the suffix to search for passed as an array.",
+        "dir_path": "\/home\/mila\/Repos\/dbExtractor\/testdir\/etc\/nginx\/conf.d\/",
+        "search_suffix": [
+            "conf",
+            "xxxxxx"
+        ]
+    },
+    "web_config_file": {
+        "Description": "Nginx Web Directory configuration file. Please provide full name of the file to search for. Can pass single value only.",
+        "search_name": "configuration.php"
+    },
+    "log": {
+        "Description": "Logging for application audit. This will log everything apart from reports and progress logs. Errors automatically log.",
+        "enabled": false
+    },
+    "db": {
+        "mysql_server_creds_source": {
+            "Description": "Using Sitename here to make it easier to use with settings in web dir config file. MySQL ONLY! Root Database Login credentials. If you want to compare db's from vhosts to actual databases in the server.",
+            "enabled": false,
+            "sitename": null,
+            "port": null,
+            "username": null,
+            "password": null
+        },
+        "mysql_server_creds_target": {
+            "Description": "Using Sitename here to make it easier to use with settings in web dir config file. The target server where the db's will be inserted. Direct transport to Mysql Server.",
+            "enabled": true,
+            "sitename": "omnicasa-mysql-v2",
+            "port": 3306,
+            "username": "root",
+            "password": "r7Xl5GRNhXVlMmcF"
+        }
+    }
+}
+
+UTC 2023-01-30 20:38:54
+Location: Synaptic4u\Parser\Parser::confirmVHostFiles 1
+vhost_detail_list: {
+    "omnicasa_vhost": {
+        "vhost_conf_path": "\/home\/mila\/Repos\/dbExtractor\/testdir\/etc\/nginx\/conf.d\/omnicasa.conf",
+        "vhost_file_not_empty": 59,
+        "vhost_url": " joomla.omnicasa.local www.omnicasa.local",
+        "vhost_root_dir_path_exists": null,
+        "vhost_root_dir_path": "\/home\/mila\/Repos\/dbExtractor\/testdir\/app\/joomla\/",
+        "vhost_web_config": {
+            "sitename": null,
+            "dbtype": null,
+            "host": null,
+            "user": null,
+            "password": null,
+            "dbprefix": null,
+            "db": null
+        },
+        "db_connect_success": null,
+        "db_dump_path": null,
+        "db_dump_success": null,
+        "db_dump_log_path": null,
+        "db_dump_log_success": null,
+        "db_details_source": {
+            "table_count": null,
+            "table_list": null,
+            "tables": []
+        },
+        "db_insert_success": null,
+        "db_details_target": {
+            "table_count": null,
+            "table_list": null,
+            "tables": []
+        }
+    }
+}
+
+UTC 2023-01-30 20:38:54
+Location: Synaptic4u\Parser\Parser::confirmVHostFiles 2
+vhost_detail_list: {
+    "omnicasa_vhost": {
+        "vhost_conf_path": "\/home\/mila\/Repos\/dbExtractor\/testdir\/etc\/nginx\/conf.d\/omnicasa.conf",
+        "vhost_file_not_empty": 59,
+        "vhost_url": " joomla.omnicasa.local www.omnicasa.local",
+        "vhost_root_dir_path_exists": true,
+        "vhost_root_dir_path": "\/home\/mila\/Repos\/dbExtractor\/testdir\/app\/joomla\/",
+        "vhost_web_config": {
+            "sitename": "joomla.omnicasa.local",
+            "dbtype": "mysql",
+            "host": "localhost",
+            "user": "omni-joomla1",
+            "password": "omni-joomla1",
+            "dbprefix": "tbbx2_",
+            "db": "omnicasa_joomla1"
+        },
+        "db_connect_success": null,
+        "db_dump_path": null,
+        "db_dump_success": null,
+        "db_dump_log_path": null,
+        "db_dump_log_success": null,
+        "db_details_source": {
+            "table_count": null,
+            "table_list": null,
+            "tables": []
+        },
+        "db_insert_success": null,
+        "db_details_target": {
+            "table_count": null,
+            "table_list": null,
+            "tables": []
+        }
+    }
+}
+
+UTC 2023-01-30 20:38:54
+Location: Synaptic4u\Core\App::runBatch 1
+vhost_detail_list: {
+    "omnicasa_vhost": {
+        "vhost_conf_path": "\/home\/mila\/Repos\/dbExtractor\/testdir\/etc\/nginx\/conf.d\/omnicasa.conf",
+        "vhost_file_not_empty": 59,
+        "vhost_url": " joomla.omnicasa.local www.omnicasa.local",
+        "vhost_root_dir_path_exists": true,
+        "vhost_root_dir_path": "\/home\/mila\/Repos\/dbExtractor\/testdir\/app\/joomla\/",
+        "vhost_web_config": {
+            "sitename": "joomla.omnicasa.local",
+            "dbtype": "mysql",
+            "host": "localhost",
+            "user": "omni-joomla1",
+            "password": "omni-joomla1",
+            "dbprefix": "tbbx2_",
+            "db": "omnicasa_joomla1"
+        },
+        "db_connect_success": null,
+        "db_dump_path": null,
+        "db_dump_success": null,
+        "db_dump_log_path": null,
+        "db_dump_log_success": null,
+        "db_details_source": {
+            "table_count": null,
+            "table_list": null,
+            "tables": []
+        },
+        "db_insert_success": null,
+        "db_details_target": {
+            "table_count": null,
+            "table_list": null,
+            "tables": []
+        }
+    }
+}
+
+UTC 2023-01-30 20:38:54
+Location: Synaptic4u\DB\DB::__construct
+conn: {
+    "host": "joomla.omnicasa.local",
+    "dbname": "omnicasa_joomla1",
+    "user": "omni-joomla1",
+    "pass": "omni-joomla1"
+}
+
+UTC 2023-01-30 20:38:54
+Location: Synaptic4u\DB\DB::__construct
+conn: {
+    "host": "joomla.omnicasa.local",
+    "dbname": "omnicasa_joomla1",
+    "user": "omni-joomla1",
+    "pass": "omni-joomla1"
+}
+
+UTC 2023-01-30 20:38:54
+Location: Synaptic4u\Extractor\Extractor::dumpDBs
+vhost: omnicasa_vhost
+mysql_log_file: /home/mila/Repos/dbExtractor/src/logs/mysql_logs/omnicasa_vhost_1675111134.2721_mysql_dump.txt
+mysql_dump_file: /home/mila/Repos/dbExtractor/mysql_dumps/omnicasa_vhost_1675111134.2721_mysql_dump.sql
+cli_cmd: mysqldump -uomni-joomla1 -pomni-joomla1 --opt --comments --hex-blob --tz-utc --events --routines --force --log-error=/home/mila/Repos/dbExtractor/src/logs/mysql_logs/omnicasa_vhost_1675111134.2721_mysql_dump.txt omnicasa_joomla1 > /home/mila/Repos/dbExtractor/mysql_dumps/omnicasa_vhost_1675111134.2721_mysql_dump.sql
+output: []
+returnVar: 0
+
+UTC 2023-01-30 20:38:54
+Location: Synaptic4u\Core\App::runBatch 3
+vhost_detail_list: {
+    "omnicasa_vhost": {
+        "vhost_conf_path": "\/home\/mila\/Repos\/dbExtractor\/testdir\/etc\/nginx\/conf.d\/omnicasa.conf",
+        "vhost_file_not_empty": 59,
+        "vhost_url": " joomla.omnicasa.local www.omnicasa.local",
+        "vhost_root_dir_path_exists": true,
+        "vhost_root_dir_path": "\/home\/mila\/Repos\/dbExtractor\/testdir\/app\/joomla\/",
+        "vhost_web_config": {
+            "sitename": "joomla.omnicasa.local",
+            "dbtype": "mysql",
+            "host": "localhost",
+            "user": "omni-joomla1",
+            "password": "omni-joomla1",
+            "dbprefix": "tbbx2_",
+            "db": "omnicasa_joomla1"
+        },
+        "db_connect_success": true,
+        "db_dump_path": "\/home\/mila\/Repos\/dbExtractor\/mysql_dumps\/omnicasa_vhost_1675111134.2721_mysql_dump.sql",
+        "db_dump_success": true,
+        "db_dump_log_path": "\/home\/mila\/Repos\/dbExtractor\/src\/logs\/mysql_logs\/omnicasa_vhost_1675111134.2721_mysql_dump.txt",
+        "db_dump_log_success": true,
+        "db_details_source": {
+            "table_count": 3,
+            "table_list": [
+                "test1",
+                "test2",
+                "test3"
+            ],
+            "tables": [
+                {
+                    "name": "test1",
+                    "row_count": 3
+                },
+                {
+                    "name": "test2",
+                    "row_count": 36
+                },
+                {
+                    "name": "test3",
+                    "row_count": 11
+                }
+            ]
+        },
+        "db_insert_success": null,
+        "db_details_target": {
+            "table_count": null,
+            "table_list": null,
+            "tables": []
+        }
+    }
+}

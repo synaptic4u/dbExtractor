@@ -5,7 +5,7 @@
     },
     "vhost": {
         "Description": "Nginx Virtual Hosts Base Directory path: Include a trailing forward slash. Include the suffix to search for passed as an array.",
-        "dir_path": "/etc/nginx/conf.d/",
+        "dir_path": "/home/mila/Repos/dbExtractor/testdir/etc/nginx/conf.d/",
         "search_suffix": [
             "conf",
             "xxxxxx"
