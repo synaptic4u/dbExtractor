@@ -32,6 +32,7 @@ class App
     private $vhost_detail_list;
     private $config;
     
+    private $start;
     private $parser;
     private $report;
     private $result;
@@ -40,14 +41,18 @@ class App
     {
         try {
             $error = null;
-            $start = microtime(true);
+            $this->start = microtime(true);
+
+            print_r(PHP_EOL."Application has started.".PHP_EOL);
             
             $this->vhost_list = null;
-            $this->vhost_detail_list = null;
+            $this->vhost_detail_list = [];
             
             $this->report = [
                 'app_timer' => [],
-                'summary' => [],
+                'summary' => [
+                    'batch' => [],
+                ],
             ];
 
             $this->file_reader = new FileReader();
@@ -66,41 +71,9 @@ class App
                 $error = "ERROR: The Virtual Host List couldn't be compiled!".PHP_EOL;
                 throw new Exception($error);
             }
-
-            $this->vhost_detail_list = $this->parseVHostFiles();
             
-            if($this->vhost_detail_list === null){
-                $error = "ERROR: The Virtual Host Detailed List could not be compiled!".PHP_EOL;
-                throw new Exception($error);
-            }
+            $this->runBatch();
 
-            $this->vhost_detail_list = $this->confirmVHostFiles();
-
-            $this->prepDodgyVHostDetailReport();
-            // $this->writeToFileJSON('/reports/vhost_detail_list.txt', $this->vhost_detail_list);
-            
-            // $this->log([
-            //     'Location' => __METHOD__.' 1',
-            //     'vhost_detail_list' => json_encode($this->vhost_detail_list, JSON_PRETTY_PRINT),
-            // ]);
-
-            $this->vhost_detail_list = $this->getDataDetails();
-
-            $this->writeToFileJSON('/reports/vhost_detail_data_list.txt', $this->vhost_detail_list);
-            
-            // $this->log([
-            //     'Location' => __METHOD__.' 2',
-            //     'vhost_detail_list' => json_encode($this->vhost_detail_list, JSON_PRETTY_PRINT),
-            // ]);
-
-            $this->vhost_detail_list = $this->dumpDBs();
-
-            $this->writeToFileJSON('/reports/vhost_detail_data_list.txt', $this->vhost_detail_list);
-            
-            $this->log([
-                'Location' => __METHOD__.' 3',
-                'vhost_detail_list' => json_encode($this->vhost_detail_list, JSON_PRETTY_PRINT),
-            ]);
         } catch (Exception $e) {
             
             $this->error([
@@ -111,6 +84,55 @@ class App
         }finally{
             
             print_r(PHP_EOL."Application has exited.".PHP_EOL);
+        }
+    }
+
+    private function runBatch(){
+
+        try{
+
+            $this->vhost_detail_list = $this->parseVHostFiles();
+            
+            if(($this->vhost_detail_list === null) || (sizeof($this->vhost_detail_list) < 2)){
+                $error = "ERROR: The Virtual Host Detailed List could not be compiled!".PHP_EOL;
+                throw new Exception($error);
+            }
+
+            $this->vhost_detail_list = $this->confirmVHostFiles();
+
+            $this->prepDodgyVHostDetailReport();
+            $this->writeToFileJSON('/reports/vhost_detail_list.txt', $this->vhost_detail_list);
+            
+            $this->log([
+                'Location' => __METHOD__.' 1',
+                'vhost_detail_list' => json_encode($this->vhost_detail_list, JSON_PRETTY_PRINT),
+            ]);
+
+            $this->vhost_detail_list = $this->getDataDetails();
+
+            $this->writeToFileJSON('/reports/vhost_detail_data_list.txt', $this->vhost_detail_list);
+            
+            $this->log([
+                'Location' => __METHOD__.' 2',
+                'vhost_detail_list' => json_encode($this->vhost_detail_list, JSON_PRETTY_PRINT),
+            ]);
+
+            $this->vhost_detail_list = $this->dumpDBs();
+
+            $this->writeToFileJSON('/reports/vhost_detail_data_list.txt', $this->vhost_detail_list);
+            
+            $this->log([
+                'Location' => __METHOD__.' 3',
+                'vhost_detail_list' => json_encode($this->vhost_detail_list, JSON_PRETTY_PRINT),
+            ]);
+        }catch(Exception $e){
+            
+            $this->error([
+                'Location' => __METHOD__,
+                'error' => $e->__toString(),
+            ]);
+        }finally{
+
         }
     }
 
@@ -136,7 +158,6 @@ class App
 
     private function parseVHosts()
     {
-
         try{
 
             $vhosts = [];
@@ -236,15 +257,24 @@ class App
 
     private function writeToFileJSON(string $filename, mixed $content)
     {   
+    
+        $date = date('e Y-m-d H:i:s');
+        
         $this->file_writer->writeToFile(new FileWriterArray(), $filename, [
-            "Compiled on:" => date('Y-m-d H:i:s'),
+            "DateTime" => $date,
             "Content" => $content
-        ]);
+        ], 4);
     }
 
     private function writeToFileText(string $filename, mixed $content)
     {
-        $this->file_writer->writeToFile(new FileWriterText(), $filename, $content);
+        
+        $date = date('e Y-m-d H:i:s');
+        
+        $this->file_writer->writeToFile(new FileWriterText(), $filename, [
+            "DateTime" => $date,
+            "Content" => $content
+        ], 4);
     }
 
     private function prepDodgyVHostDetailReport(){

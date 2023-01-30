@@ -1,0 +1,13 @@
+{
+    "DateTime": "UTC 2023-01-30 17:41:30",
+    "Content": {
+        "app_synaptic4u_local_vhost": "\/etc\/apache2\/sites-available\/app.synaptic4u.local.conf",
+        "api_synaptic4u_local_vhost": "\/etc\/apache2\/sites-available\/api.synaptic4u.local.conf",
+        "000_default_vhost": "\/etc\/apache2\/sites-available\/000-default.conf",
+        "ums_synaptic4u_local_vhost": "\/etc\/apache2\/sites-available\/ums.synaptic4u.local.conf",
+        "puttingtracker_local_vhost": "\/etc\/apache2\/sites-available\/puttingtracker.local.conf",
+        "default_ssl_vhost": "\/etc\/apache2\/sites-available\/default-ssl.conf",
+        "dev_synaptic4u_local_vhost": "\/etc\/apache2\/sites-available\/dev.synaptic4u.local.conf",
+        "mila_local_vhost": "\/etc\/apache2\/sites-available\/mila.local.conf"
+    }
+}

@@ -20,7 +20,7 @@ class Extractor
 
             $this->db = null;
 
-            if($this->config->root_db_login->enabled === true){
+            if($this->config->mysql_server_creds_source->enabled === true){
 
                 $this->db = new DB($this->config);
             }

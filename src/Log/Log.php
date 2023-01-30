@@ -39,7 +39,7 @@ class Log
      */
     protected function buildMessage(array $msg)
     {
-        $date = date('Y-m-d H:i:s');
+        $date = date('e Y-m-d H:i:s');
 
         $message = "\n".$date."\n";
 

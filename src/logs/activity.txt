@@ -1,5 +1,5 @@
 
-2023-01-29 17:30:27
+UTC 2023-01-30 17:41:30
 Location: Synaptic4u\Core\App::readConfig 2
 config_path: /home/mila/Repos/dbExtractor/config.json
 config: {
@@ -9,7 +9,7 @@ config: {
     },
     "vhost": {
         "Description": "Nginx Virtual Hosts Base Directory path: Include a trailing forward slash. Include the suffix to search for passed as an array.",
-        "dir_path": "\/home\/mila\/Repos\/dbExtractor\/testdir\/etc\/nginx\/",
+        "dir_path": "\/etc\/apache2\/sites-available\/",
         "search_suffix": [
             "conf",
             "xxxxxx"
@@ -23,39 +23,52 @@ config: {
         "Description": "Logging for application audit. This will log everything apart from reports and progress logs. Errors automatically log.",
         "enabled": true
     },
-    "root_db_login": {
+    "mysql_server_creds_source": {
         "Description": "MySQL ONLY! Root Database Login credentials. If you want to compare db's from vhosts to actual databases in the server.",
         "enabled": false,
-        "config_name": "db_root_config.json"
-    },
-    "target_server": {
-        "Description": "The target server where the db's will be inserted. Direct transport to Mysql Server.",
-        "ip_address": null,
+        "ip_or_url": null,
         "port": null,
         "username": null,
         "password": null
+    },
+    "mysql_server_creds_target": {
+        "Description": "The target server where the db's will be inserted. Direct transport to Mysql Server.",
+        "ip_or_url": "omnicasa-mysql-v2",
+        "port": 3306,
+        "username": "root",
+        "password": "r7Xl5GRNhXVlMmcF"
     }
 }
 
-2023-01-29 17:30:27
+UTC 2023-01-30 17:41:30
 Location: Synaptic4u\Core\App::parseVHosts 1
 vhosts: {
-    "\/home\/mila\/Repos\/dbExtractor\/testdir\/etc\/nginx\/": {
-        "conf_d": {
-            "\/home\/mila\/Repos\/dbExtractor\/testdir\/etc\/nginx\/conf_d\/": {
-                "omnicasa_vhost": "\/home\/mila\/Repos\/dbExtractor\/testdir\/etc\/nginx\/conf.d\/omnicasa.conf"
-            }
-        }
+    "\/etc\/apache2\/sites_available\/": {
+        "app_synaptic4u_local_vhost": "\/etc\/apache2\/sites-available\/app.synaptic4u.local.conf",
+        "api_synaptic4u_local_vhost": "\/etc\/apache2\/sites-available\/api.synaptic4u.local.conf",
+        "000_default_vhost": "\/etc\/apache2\/sites-available\/000-default.conf",
+        "ums_synaptic4u_local_vhost": "\/etc\/apache2\/sites-available\/ums.synaptic4u.local.conf",
+        "puttingtracker_local_vhost": "\/etc\/apache2\/sites-available\/puttingtracker.local.conf",
+        "default_ssl_vhost": "\/etc\/apache2\/sites-available\/default-ssl.conf",
+        "dev_synaptic4u_local_vhost": "\/etc\/apache2\/sites-available\/dev.synaptic4u.local.conf",
+        "mila_local_vhost": "\/etc\/apache2\/sites-available\/mila.local.conf"
     }
 }
 
-2023-01-29 17:30:27
+UTC 2023-01-30 17:41:30
 Location: Synaptic4u\Core\App::parseVHosts 2
 vhosts: {
-    "omnicasa_vhost": "\/home\/mila\/Repos\/dbExtractor\/testdir\/etc\/nginx\/conf.d\/omnicasa.conf"
+    "app_synaptic4u_local_vhost": "\/etc\/apache2\/sites-available\/app.synaptic4u.local.conf",
+    "api_synaptic4u_local_vhost": "\/etc\/apache2\/sites-available\/api.synaptic4u.local.conf",
+    "000_default_vhost": "\/etc\/apache2\/sites-available\/000-default.conf",
+    "ums_synaptic4u_local_vhost": "\/etc\/apache2\/sites-available\/ums.synaptic4u.local.conf",
+    "puttingtracker_local_vhost": "\/etc\/apache2\/sites-available\/puttingtracker.local.conf",
+    "default_ssl_vhost": "\/etc\/apache2\/sites-available\/default-ssl.conf",
+    "dev_synaptic4u_local_vhost": "\/etc\/apache2\/sites-available\/dev.synaptic4u.local.conf",
+    "mila_local_vhost": "\/etc\/apache2\/sites-available\/mila.local.conf"
 }
 
-2023-01-29 17:30:27
+UTC 2023-01-30 17:41:30
 Location: Synaptic4u\Parser\Parser::__construct
 config: {
     "report": {
@@ -64,7 +77,7 @@ config: {
     },
     "vhost": {
         "Description": "Nginx Virtual Hosts Base Directory path: Include a trailing forward slash. Include the suffix to search for passed as an array.",
-        "dir_path": "\/home\/mila\/Repos\/dbExtractor\/testdir\/etc\/nginx\/",
+        "dir_path": "\/etc\/apache2\/sites-available\/",
         "search_suffix": [
             "conf",
             "xxxxxx"
@@ -78,39 +91,322 @@ config: {
         "Description": "Logging for application audit. This will log everything apart from reports and progress logs. Errors automatically log.",
         "enabled": true
     },
-    "root_db_login": {
+    "mysql_server_creds_source": {
         "Description": "MySQL ONLY! Root Database Login credentials. If you want to compare db's from vhosts to actual databases in the server.",
         "enabled": false,
-        "config_name": "db_root_config.json"
-    },
-    "target_server": {
-        "Description": "The target server where the db's will be inserted. Direct transport to Mysql Server.",
-        "ip_address": null,
+        "ip_or_url": null,
         "port": null,
         "username": null,
         "password": null
+    },
+    "mysql_server_creds_target": {
+        "Description": "The target server where the db's will be inserted. Direct transport to Mysql Server.",
+        "ip_or_url": "omnicasa-mysql-v2",
+        "port": 3306,
+        "username": "root",
+        "password": "r7Xl5GRNhXVlMmcF"
     }
 }
 result: []
 
-2023-01-29 17:30:27
+UTC 2023-01-30 17:41:30
 Location: Synaptic4u\Parser\Parser::parseVHostFiles 1
 vhosts: {
-    "omnicasa_vhost": "\/home\/mila\/Repos\/dbExtractor\/testdir\/etc\/nginx\/conf.d\/omnicasa.conf"
+    "app_synaptic4u_local_vhost": "\/etc\/apache2\/sites-available\/app.synaptic4u.local.conf",
+    "api_synaptic4u_local_vhost": "\/etc\/apache2\/sites-available\/api.synaptic4u.local.conf",
+    "000_default_vhost": "\/etc\/apache2\/sites-available\/000-default.conf",
+    "ums_synaptic4u_local_vhost": "\/etc\/apache2\/sites-available\/ums.synaptic4u.local.conf",
+    "puttingtracker_local_vhost": "\/etc\/apache2\/sites-available\/puttingtracker.local.conf",
+    "default_ssl_vhost": "\/etc\/apache2\/sites-available\/default-ssl.conf",
+    "dev_synaptic4u_local_vhost": "\/etc\/apache2\/sites-available\/dev.synaptic4u.local.conf",
+    "mila_local_vhost": "\/etc\/apache2\/sites-available\/mila.local.conf"
 }
 
-2023-01-29 17:30:27
+UTC 2023-01-30 17:41:30
 Location: Synaptic4u\Parser\Parser::parseVHostFiles 2
 vhosts: {
-    "omnicasa_vhost": "\/home\/mila\/Repos\/dbExtractor\/testdir\/etc\/nginx\/conf.d\/omnicasa.conf"
+    "app_synaptic4u_local_vhost": "\/etc\/apache2\/sites-available\/app.synaptic4u.local.conf",
+    "api_synaptic4u_local_vhost": "\/etc\/apache2\/sites-available\/api.synaptic4u.local.conf",
+    "000_default_vhost": "\/etc\/apache2\/sites-available\/000-default.conf",
+    "ums_synaptic4u_local_vhost": "\/etc\/apache2\/sites-available\/ums.synaptic4u.local.conf",
+    "puttingtracker_local_vhost": "\/etc\/apache2\/sites-available\/puttingtracker.local.conf",
+    "default_ssl_vhost": "\/etc\/apache2\/sites-available\/default-ssl.conf",
+    "dev_synaptic4u_local_vhost": "\/etc\/apache2\/sites-available\/dev.synaptic4u.local.conf",
+    "mila_local_vhost": "\/etc\/apache2\/sites-available\/mila.local.conf"
 }
 vhost_detail_list: {
-    "omnicasa_vhost": {
-        "vhost_conf_path": "\/home\/mila\/Repos\/dbExtractor\/testdir\/etc\/nginx\/conf.d\/omnicasa.conf",
-        "vhost_file_not_empty": 59,
-        "vhost_url": " joomla.omnicasa.local www.omnicasa.local",
+    "app_synaptic4u_local_vhost": {
+        "vhost_conf_path": "\/etc\/apache2\/sites-available\/app.synaptic4u.local.conf",
+        "vhost_file_not_empty": 38,
+        "vhost_url": null,
         "vhost_root_dir_path_exists": null,
-        "vhost_root_dir_path": "\/home\/mila\/Repos\/dbExtractor\/testdir\/app\/joomla\/",
+        "vhost_root_dir_path": null,
+        "vhost_web_config": {
+            "sitename": null,
+            "dbtype": null,
+            "host": null,
+            "user": null,
+            "password": null,
+            "dbprefix": null,
+            "db": null,
+            "dbencryption": null,
+            "dbsslverifyservercert": null,
+            "dbsslkey": null,
+            "dbsslcert": null,
+            "dbsslca": null,
+            "dbsslcipher": null
+        },
+        "db_connect_success": null,
+        "db_dump_path": null,
+        "db_dump_success": null,
+        "db_dump_log_path": null,
+        "db_dump_log_success": null,
+        "db_details_source": {
+            "table_count": null,
+            "table_list": null,
+            "tables": []
+        },
+        "db_insert_success": null,
+        "db_details_target": {
+            "table_count": null,
+            "table_list": null,
+            "tables": []
+        }
+    },
+    "api_synaptic4u_local_vhost": {
+        "vhost_conf_path": "\/etc\/apache2\/sites-available\/api.synaptic4u.local.conf",
+        "vhost_file_not_empty": 41,
+        "vhost_url": null,
+        "vhost_root_dir_path_exists": null,
+        "vhost_root_dir_path": null,
+        "vhost_web_config": {
+            "sitename": null,
+            "dbtype": null,
+            "host": null,
+            "user": null,
+            "password": null,
+            "dbprefix": null,
+            "db": null,
+            "dbencryption": null,
+            "dbsslverifyservercert": null,
+            "dbsslkey": null,
+            "dbsslcert": null,
+            "dbsslca": null,
+            "dbsslcipher": null
+        },
+        "db_connect_success": null,
+        "db_dump_path": null,
+        "db_dump_success": null,
+        "db_dump_log_path": null,
+        "db_dump_log_success": null,
+        "db_details_source": {
+            "table_count": null,
+            "table_list": null,
+            "tables": []
+        },
+        "db_insert_success": null,
+        "db_details_target": {
+            "table_count": null,
+            "table_list": null,
+            "tables": []
+        }
+    },
+    "000_default_vhost": {
+        "vhost_conf_path": "\/etc\/apache2\/sites-available\/000-default.conf",
+        "vhost_file_not_empty": 30,
+        "vhost_url": null,
+        "vhost_root_dir_path_exists": null,
+        "vhost_root_dir_path": null,
+        "vhost_web_config": {
+            "sitename": null,
+            "dbtype": null,
+            "host": null,
+            "user": null,
+            "password": null,
+            "dbprefix": null,
+            "db": null,
+            "dbencryption": null,
+            "dbsslverifyservercert": null,
+            "dbsslkey": null,
+            "dbsslcert": null,
+            "dbsslca": null,
+            "dbsslcipher": null
+        },
+        "db_connect_success": null,
+        "db_dump_path": null,
+        "db_dump_success": null,
+        "db_dump_log_path": null,
+        "db_dump_log_success": null,
+        "db_details_source": {
+            "table_count": null,
+            "table_list": null,
+            "tables": []
+        },
+        "db_insert_success": null,
+        "db_details_target": {
+            "table_count": null,
+            "table_list": null,
+            "tables": []
+        }
+    },
+    "ums_synaptic4u_local_vhost": {
+        "vhost_conf_path": "\/etc\/apache2\/sites-available\/ums.synaptic4u.local.conf",
+        "vhost_file_not_empty": 39,
+        "vhost_url": null,
+        "vhost_root_dir_path_exists": null,
+        "vhost_root_dir_path": null,
+        "vhost_web_config": {
+            "sitename": null,
+            "dbtype": null,
+            "host": null,
+            "user": null,
+            "password": null,
+            "dbprefix": null,
+            "db": null,
+            "dbencryption": null,
+            "dbsslverifyservercert": null,
+            "dbsslkey": null,
+            "dbsslcert": null,
+            "dbsslca": null,
+            "dbsslcipher": null
+        },
+        "db_connect_success": null,
+        "db_dump_path": null,
+        "db_dump_success": null,
+        "db_dump_log_path": null,
+        "db_dump_log_success": null,
+        "db_details_source": {
+            "table_count": null,
+            "table_list": null,
+            "tables": []
+        },
+        "db_insert_success": null,
+        "db_details_target": {
+            "table_count": null,
+            "table_list": null,
+            "tables": []
+        }
+    },
+    "puttingtracker_local_vhost": {
+        "vhost_conf_path": "\/etc\/apache2\/sites-available\/puttingtracker.local.conf",
+        "vhost_file_not_empty": 39,
+        "vhost_url": null,
+        "vhost_root_dir_path_exists": null,
+        "vhost_root_dir_path": null,
+        "vhost_web_config": {
+            "sitename": null,
+            "dbtype": null,
+            "host": null,
+            "user": null,
+            "password": null,
+            "dbprefix": null,
+            "db": null,
+            "dbencryption": null,
+            "dbsslverifyservercert": null,
+            "dbsslkey": null,
+            "dbsslcert": null,
+            "dbsslca": null,
+            "dbsslcipher": null
+        },
+        "db_connect_success": null,
+        "db_dump_path": null,
+        "db_dump_success": null,
+        "db_dump_log_path": null,
+        "db_dump_log_success": null,
+        "db_details_source": {
+            "table_count": null,
+            "table_list": null,
+            "tables": []
+        },
+        "db_insert_success": null,
+        "db_details_target": {
+            "table_count": null,
+            "table_list": null,
+            "tables": []
+        }
+    },
+    "default_ssl_vhost": {
+        "vhost_conf_path": "\/etc\/apache2\/sites-available\/default-ssl.conf",
+        "vhost_file_not_empty": 131,
+        "vhost_url": null,
+        "vhost_root_dir_path_exists": null,
+        "vhost_root_dir_path": null,
+        "vhost_web_config": {
+            "sitename": null,
+            "dbtype": null,
+            "host": null,
+            "user": null,
+            "password": null,
+            "dbprefix": null,
+            "db": null,
+            "dbencryption": null,
+            "dbsslverifyservercert": null,
+            "dbsslkey": null,
+            "dbsslcert": null,
+            "dbsslca": null,
+            "dbsslcipher": null
+        },
+        "db_connect_success": null,
+        "db_dump_path": null,
+        "db_dump_success": null,
+        "db_dump_log_path": null,
+        "db_dump_log_success": null,
+        "db_details_source": {
+            "table_count": null,
+            "table_list": null,
+            "tables": []
+        },
+        "db_insert_success": null,
+        "db_details_target": {
+            "table_count": null,
+            "table_list": null,
+            "tables": []
+        }
+    },
+    "dev_synaptic4u_local_vhost": {
+        "vhost_conf_path": "\/etc\/apache2\/sites-available\/dev.synaptic4u.local.conf",
+        "vhost_file_not_empty": 33,
+        "vhost_url": null,
+        "vhost_root_dir_path_exists": null,
+        "vhost_root_dir_path": null,
+        "vhost_web_config": {
+            "sitename": null,
+            "dbtype": null,
+            "host": null,
+            "user": null,
+            "password": null,
+            "dbprefix": null,
+            "db": null,
+            "dbencryption": null,
+            "dbsslverifyservercert": null,
+            "dbsslkey": null,
+            "dbsslcert": null,
+            "dbsslca": null,
+            "dbsslcipher": null
+        },
+        "db_connect_success": null,
+        "db_dump_path": null,
+        "db_dump_success": null,
+        "db_dump_log_path": null,
+        "db_dump_log_success": null,
+        "db_details_source": {
+            "table_count": null,
+            "table_list": null,
+            "tables": []
+        },
+        "db_insert_success": null,
+        "db_details_target": {
+            "table_count": null,
+            "table_list": null,
+            "tables": []
+        }
+    },
+    "mila_local_vhost": {
+        "vhost_conf_path": "\/etc\/apache2\/sites-available\/mila.local.conf",
+        "vhost_file_not_empty": 33,
+        "vhost_url": null,
+        "vhost_root_dir_path_exists": null,
+        "vhost_root_dir_path": null,
         "vhost_web_config": {
             "sitename": null,
             "dbtype": null,
@@ -145,7 +441,7 @@ vhost_detail_list: {
     }
 }
 
-2023-01-29 17:30:27
+UTC 2023-01-30 17:41:30
 Location: Synaptic4u\Parser\Parser::__construct
 config: {
     "report": {
@@ -154,7 +450,7 @@ config: {
     },
     "vhost": {
         "Description": "Nginx Virtual Hosts Base Directory path: Include a trailing forward slash. Include the suffix to search for passed as an array.",
-        "dir_path": "\/home\/mila\/Repos\/dbExtractor\/testdir\/etc\/nginx\/",
+        "dir_path": "\/etc\/apache2\/sites-available\/",
         "search_suffix": [
             "conf",
             "xxxxxx"
@@ -168,30 +464,299 @@ config: {
         "Description": "Logging for application audit. This will log everything apart from reports and progress logs. Errors automatically log.",
         "enabled": true
     },
-    "root_db_login": {
+    "mysql_server_creds_source": {
         "Description": "MySQL ONLY! Root Database Login credentials. If you want to compare db's from vhosts to actual databases in the server.",
         "enabled": false,
-        "config_name": "db_root_config.json"
-    },
-    "target_server": {
-        "Description": "The target server where the db's will be inserted. Direct transport to Mysql Server.",
-        "ip_address": null,
+        "ip_or_url": null,
         "port": null,
         "username": null,
         "password": null
+    },
+    "mysql_server_creds_target": {
+        "Description": "The target server where the db's will be inserted. Direct transport to Mysql Server.",
+        "ip_or_url": "omnicasa-mysql-v2",
+        "port": 3306,
+        "username": "root",
+        "password": "r7Xl5GRNhXVlMmcF"
     }
 }
 result: []
 
-2023-01-29 17:30:27
+UTC 2023-01-30 17:41:30
 Location: Synaptic4u\Parser\Parser::confirmVHostFiles 1
 vhost_detail_list: {
-    "omnicasa_vhost": {
-        "vhost_conf_path": "\/home\/mila\/Repos\/dbExtractor\/testdir\/etc\/nginx\/conf.d\/omnicasa.conf",
-        "vhost_file_not_empty": 59,
-        "vhost_url": " joomla.omnicasa.local www.omnicasa.local",
+    "app_synaptic4u_local_vhost": {
+        "vhost_conf_path": "\/etc\/apache2\/sites-available\/app.synaptic4u.local.conf",
+        "vhost_file_not_empty": 38,
+        "vhost_url": null,
         "vhost_root_dir_path_exists": null,
-        "vhost_root_dir_path": "\/home\/mila\/Repos\/dbExtractor\/testdir\/app\/joomla\/",
+        "vhost_root_dir_path": null,
+        "vhost_web_config": {
+            "sitename": null,
+            "dbtype": null,
+            "host": null,
+            "user": null,
+            "password": null,
+            "dbprefix": null,
+            "db": null,
+            "dbencryption": null,
+            "dbsslverifyservercert": null,
+            "dbsslkey": null,
+            "dbsslcert": null,
+            "dbsslca": null,
+            "dbsslcipher": null
+        },
+        "db_connect_success": null,
+        "db_dump_path": null,
+        "db_dump_success": null,
+        "db_dump_log_path": null,
+        "db_dump_log_success": null,
+        "db_details_source": {
+            "table_count": null,
+            "table_list": null,
+            "tables": []
+        },
+        "db_insert_success": null,
+        "db_details_target": {
+            "table_count": null,
+            "table_list": null,
+            "tables": []
+        }
+    },
+    "api_synaptic4u_local_vhost": {
+        "vhost_conf_path": "\/etc\/apache2\/sites-available\/api.synaptic4u.local.conf",
+        "vhost_file_not_empty": 41,
+        "vhost_url": null,
+        "vhost_root_dir_path_exists": null,
+        "vhost_root_dir_path": null,
+        "vhost_web_config": {
+            "sitename": null,
+            "dbtype": null,
+            "host": null,
+            "user": null,
+            "password": null,
+            "dbprefix": null,
+            "db": null,
+            "dbencryption": null,
+            "dbsslverifyservercert": null,
+            "dbsslkey": null,
+            "dbsslcert": null,
+            "dbsslca": null,
+            "dbsslcipher": null
+        },
+        "db_connect_success": null,
+        "db_dump_path": null,
+        "db_dump_success": null,
+        "db_dump_log_path": null,
+        "db_dump_log_success": null,
+        "db_details_source": {
+            "table_count": null,
+            "table_list": null,
+            "tables": []
+        },
+        "db_insert_success": null,
+        "db_details_target": {
+            "table_count": null,
+            "table_list": null,
+            "tables": []
+        }
+    },
+    "000_default_vhost": {
+        "vhost_conf_path": "\/etc\/apache2\/sites-available\/000-default.conf",
+        "vhost_file_not_empty": 30,
+        "vhost_url": null,
+        "vhost_root_dir_path_exists": null,
+        "vhost_root_dir_path": null,
+        "vhost_web_config": {
+            "sitename": null,
+            "dbtype": null,
+            "host": null,
+            "user": null,
+            "password": null,
+            "dbprefix": null,
+            "db": null,
+            "dbencryption": null,
+            "dbsslverifyservercert": null,
+            "dbsslkey": null,
+            "dbsslcert": null,
+            "dbsslca": null,
+            "dbsslcipher": null
+        },
+        "db_connect_success": null,
+        "db_dump_path": null,
+        "db_dump_success": null,
+        "db_dump_log_path": null,
+        "db_dump_log_success": null,
+        "db_details_source": {
+            "table_count": null,
+            "table_list": null,
+            "tables": []
+        },
+        "db_insert_success": null,
+        "db_details_target": {
+            "table_count": null,
+            "table_list": null,
+            "tables": []
+        }
+    },
+    "ums_synaptic4u_local_vhost": {
+        "vhost_conf_path": "\/etc\/apache2\/sites-available\/ums.synaptic4u.local.conf",
+        "vhost_file_not_empty": 39,
+        "vhost_url": null,
+        "vhost_root_dir_path_exists": null,
+        "vhost_root_dir_path": null,
+        "vhost_web_config": {
+            "sitename": null,
+            "dbtype": null,
+            "host": null,
+            "user": null,
+            "password": null,
+            "dbprefix": null,
+            "db": null,
+            "dbencryption": null,
+            "dbsslverifyservercert": null,
+            "dbsslkey": null,
+            "dbsslcert": null,
+            "dbsslca": null,
+            "dbsslcipher": null
+        },
+        "db_connect_success": null,
+        "db_dump_path": null,
+        "db_dump_success": null,
+        "db_dump_log_path": null,
+        "db_dump_log_success": null,
+        "db_details_source": {
+            "table_count": null,
+            "table_list": null,
+            "tables": []
+        },
+        "db_insert_success": null,
+        "db_details_target": {
+            "table_count": null,
+            "table_list": null,
+            "tables": []
+        }
+    },
+    "puttingtracker_local_vhost": {
+        "vhost_conf_path": "\/etc\/apache2\/sites-available\/puttingtracker.local.conf",
+        "vhost_file_not_empty": 39,
+        "vhost_url": null,
+        "vhost_root_dir_path_exists": null,
+        "vhost_root_dir_path": null,
+        "vhost_web_config": {
+            "sitename": null,
+            "dbtype": null,
+            "host": null,
+            "user": null,
+            "password": null,
+            "dbprefix": null,
+            "db": null,
+            "dbencryption": null,
+            "dbsslverifyservercert": null,
+            "dbsslkey": null,
+            "dbsslcert": null,
+            "dbsslca": null,
+            "dbsslcipher": null
+        },
+        "db_connect_success": null,
+        "db_dump_path": null,
+        "db_dump_success": null,
+        "db_dump_log_path": null,
+        "db_dump_log_success": null,
+        "db_details_source": {
+            "table_count": null,
+            "table_list": null,
+            "tables": []
+        },
+        "db_insert_success": null,
+        "db_details_target": {
+            "table_count": null,
+            "table_list": null,
+            "tables": []
+        }
+    },
+    "default_ssl_vhost": {
+        "vhost_conf_path": "\/etc\/apache2\/sites-available\/default-ssl.conf",
+        "vhost_file_not_empty": 131,
+        "vhost_url": null,
+        "vhost_root_dir_path_exists": null,
+        "vhost_root_dir_path": null,
+        "vhost_web_config": {
+            "sitename": null,
+            "dbtype": null,
+            "host": null,
+            "user": null,
+            "password": null,
+            "dbprefix": null,
+            "db": null,
+            "dbencryption": null,
+            "dbsslverifyservercert": null,
+            "dbsslkey": null,
+            "dbsslcert": null,
+            "dbsslca": null,
+            "dbsslcipher": null
+        },
+        "db_connect_success": null,
+        "db_dump_path": null,
+        "db_dump_success": null,
+        "db_dump_log_path": null,
+        "db_dump_log_success": null,
+        "db_details_source": {
+            "table_count": null,
+            "table_list": null,
+            "tables": []
+        },
+        "db_insert_success": null,
+        "db_details_target": {
+            "table_count": null,
+            "table_list": null,
+            "tables": []
+        }
+    },
+    "dev_synaptic4u_local_vhost": {
+        "vhost_conf_path": "\/etc\/apache2\/sites-available\/dev.synaptic4u.local.conf",
+        "vhost_file_not_empty": 33,
+        "vhost_url": null,
+        "vhost_root_dir_path_exists": null,
+        "vhost_root_dir_path": null,
+        "vhost_web_config": {
+            "sitename": null,
+            "dbtype": null,
+            "host": null,
+            "user": null,
+            "password": null,
+            "dbprefix": null,
+            "db": null,
+            "dbencryption": null,
+            "dbsslverifyservercert": null,
+            "dbsslkey": null,
+            "dbsslcert": null,
+            "dbsslca": null,
+            "dbsslcipher": null
+        },
+        "db_connect_success": null,
+        "db_dump_path": null,
+        "db_dump_success": null,
+        "db_dump_log_path": null,
+        "db_dump_log_success": null,
+        "db_details_source": {
+            "table_count": null,
+            "table_list": null,
+            "tables": []
+        },
+        "db_insert_success": null,
+        "db_details_target": {
+            "table_count": null,
+            "table_list": null,
+            "tables": []
+        }
+    },
+    "mila_local_vhost": {
+        "vhost_conf_path": "\/etc\/apache2\/sites-available\/mila.local.conf",
+        "vhost_file_not_empty": 33,
+        "vhost_url": null,
+        "vhost_root_dir_path_exists": null,
+        "vhost_root_dir_path": null,
         "vhost_web_config": {
             "sitename": null,
             "dbtype": null,
@@ -226,29 +791,295 @@ vhost_detail_list: {
     }
 }
 
-2023-01-29 17:30:27
+UTC 2023-01-30 17:41:30
 Location: Synaptic4u\Parser\Parser::confirmVHostFiles 2
 vhost_detail_list: {
-    "omnicasa_vhost": {
-        "vhost_conf_path": "\/home\/mila\/Repos\/dbExtractor\/testdir\/etc\/nginx\/conf.d\/omnicasa.conf",
-        "vhost_file_not_empty": 59,
-        "vhost_url": " joomla.omnicasa.local www.omnicasa.local",
-        "vhost_root_dir_path_exists": true,
-        "vhost_root_dir_path": "\/home\/mila\/Repos\/dbExtractor\/testdir\/app\/joomla\/",
+    "app_synaptic4u_local_vhost": {
+        "vhost_conf_path": "\/etc\/apache2\/sites-available\/app.synaptic4u.local.conf",
+        "vhost_file_not_empty": 38,
+        "vhost_url": null,
+        "vhost_root_dir_path_exists": null,
+        "vhost_root_dir_path": null,
         "vhost_web_config": {
-            "sitename": "joomla.omnicasa.local",
-            "dbtype": "mysql",
-            "host": "localhost",
-            "user": "omni-joomla1",
-            "password": "omni-joomla1",
-            "dbprefix": "tbbx2_",
-            "db": "omnicasa_joomla1",
-            "dbencryption": "0",
-            "dbsslverifyservercert": "false",
-            "dbsslkey": "",
-            "dbsslcert": "",
-            "dbsslca": "",
-            "dbsslcipher": ""
+            "sitename": null,
+            "dbtype": null,
+            "host": null,
+            "user": null,
+            "password": null,
+            "dbprefix": null,
+            "db": null,
+            "dbencryption": null,
+            "dbsslverifyservercert": null,
+            "dbsslkey": null,
+            "dbsslcert": null,
+            "dbsslca": null,
+            "dbsslcipher": null
+        },
+        "db_connect_success": null,
+        "db_dump_path": null,
+        "db_dump_success": null,
+        "db_dump_log_path": null,
+        "db_dump_log_success": null,
+        "db_details_source": {
+            "table_count": null,
+            "table_list": null,
+            "tables": []
+        },
+        "db_insert_success": null,
+        "db_details_target": {
+            "table_count": null,
+            "table_list": null,
+            "tables": []
+        }
+    },
+    "api_synaptic4u_local_vhost": {
+        "vhost_conf_path": "\/etc\/apache2\/sites-available\/api.synaptic4u.local.conf",
+        "vhost_file_not_empty": 41,
+        "vhost_url": null,
+        "vhost_root_dir_path_exists": null,
+        "vhost_root_dir_path": null,
+        "vhost_web_config": {
+            "sitename": null,
+            "dbtype": null,
+            "host": null,
+            "user": null,
+            "password": null,
+            "dbprefix": null,
+            "db": null,
+            "dbencryption": null,
+            "dbsslverifyservercert": null,
+            "dbsslkey": null,
+            "dbsslcert": null,
+            "dbsslca": null,
+            "dbsslcipher": null
+        },
+        "db_connect_success": null,
+        "db_dump_path": null,
+        "db_dump_success": null,
+        "db_dump_log_path": null,
+        "db_dump_log_success": null,
+        "db_details_source": {
+            "table_count": null,
+            "table_list": null,
+            "tables": []
+        },
+        "db_insert_success": null,
+        "db_details_target": {
+            "table_count": null,
+            "table_list": null,
+            "tables": []
+        }
+    },
+    "000_default_vhost": {
+        "vhost_conf_path": "\/etc\/apache2\/sites-available\/000-default.conf",
+        "vhost_file_not_empty": 30,
+        "vhost_url": null,
+        "vhost_root_dir_path_exists": null,
+        "vhost_root_dir_path": null,
+        "vhost_web_config": {
+            "sitename": null,
+            "dbtype": null,
+            "host": null,
+            "user": null,
+            "password": null,
+            "dbprefix": null,
+            "db": null,
+            "dbencryption": null,
+            "dbsslverifyservercert": null,
+            "dbsslkey": null,
+            "dbsslcert": null,
+            "dbsslca": null,
+            "dbsslcipher": null
+        },
+        "db_connect_success": null,
+        "db_dump_path": null,
+        "db_dump_success": null,
+        "db_dump_log_path": null,
+        "db_dump_log_success": null,
+        "db_details_source": {
+            "table_count": null,
+            "table_list": null,
+            "tables": []
+        },
+        "db_insert_success": null,
+        "db_details_target": {
+            "table_count": null,
+            "table_list": null,
+            "tables": []
+        }
+    },
+    "ums_synaptic4u_local_vhost": {
+        "vhost_conf_path": "\/etc\/apache2\/sites-available\/ums.synaptic4u.local.conf",
+        "vhost_file_not_empty": 39,
+        "vhost_url": null,
+        "vhost_root_dir_path_exists": null,
+        "vhost_root_dir_path": null,
+        "vhost_web_config": {
+            "sitename": null,
+            "dbtype": null,
+            "host": null,
+            "user": null,
+            "password": null,
+            "dbprefix": null,
+            "db": null,
+            "dbencryption": null,
+            "dbsslverifyservercert": null,
+            "dbsslkey": null,
+            "dbsslcert": null,
+            "dbsslca": null,
+            "dbsslcipher": null
+        },
+        "db_connect_success": null,
+        "db_dump_path": null,
+        "db_dump_success": null,
+        "db_dump_log_path": null,
+        "db_dump_log_success": null,
+        "db_details_source": {
+            "table_count": null,
+            "table_list": null,
+            "tables": []
+        },
+        "db_insert_success": null,
+        "db_details_target": {
+            "table_count": null,
+            "table_list": null,
+            "tables": []
+        }
+    },
+    "puttingtracker_local_vhost": {
+        "vhost_conf_path": "\/etc\/apache2\/sites-available\/puttingtracker.local.conf",
+        "vhost_file_not_empty": 39,
+        "vhost_url": null,
+        "vhost_root_dir_path_exists": null,
+        "vhost_root_dir_path": null,
+        "vhost_web_config": {
+            "sitename": null,
+            "dbtype": null,
+            "host": null,
+            "user": null,
+            "password": null,
+            "dbprefix": null,
+            "db": null,
+            "dbencryption": null,
+            "dbsslverifyservercert": null,
+            "dbsslkey": null,
+            "dbsslcert": null,
+            "dbsslca": null,
+            "dbsslcipher": null
+        },
+        "db_connect_success": null,
+        "db_dump_path": null,
+        "db_dump_success": null,
+        "db_dump_log_path": null,
+        "db_dump_log_success": null,
+        "db_details_source": {
+            "table_count": null,
+            "table_list": null,
+            "tables": []
+        },
+        "db_insert_success": null,
+        "db_details_target": {
+            "table_count": null,
+            "table_list": null,
+            "tables": []
+        }
+    },
+    "default_ssl_vhost": {
+        "vhost_conf_path": "\/etc\/apache2\/sites-available\/default-ssl.conf",
+        "vhost_file_not_empty": 131,
+        "vhost_url": null,
+        "vhost_root_dir_path_exists": null,
+        "vhost_root_dir_path": null,
+        "vhost_web_config": {
+            "sitename": null,
+            "dbtype": null,
+            "host": null,
+            "user": null,
+            "password": null,
+            "dbprefix": null,
+            "db": null,
+            "dbencryption": null,
+            "dbsslverifyservercert": null,
+            "dbsslkey": null,
+            "dbsslcert": null,
+            "dbsslca": null,
+            "dbsslcipher": null
+        },
+        "db_connect_success": null,
+        "db_dump_path": null,
+        "db_dump_success": null,
+        "db_dump_log_path": null,
+        "db_dump_log_success": null,
+        "db_details_source": {
+            "table_count": null,
+            "table_list": null,
+            "tables": []
+        },
+        "db_insert_success": null,
+        "db_details_target": {
+            "table_count": null,
+            "table_list": null,
+            "tables": []
+        }
+    },
+    "dev_synaptic4u_local_vhost": {
+        "vhost_conf_path": "\/etc\/apache2\/sites-available\/dev.synaptic4u.local.conf",
+        "vhost_file_not_empty": 33,
+        "vhost_url": null,
+        "vhost_root_dir_path_exists": null,
+        "vhost_root_dir_path": null,
+        "vhost_web_config": {
+            "sitename": null,
+            "dbtype": null,
+            "host": null,
+            "user": null,
+            "password": null,
+            "dbprefix": null,
+            "db": null,
+            "dbencryption": null,
+            "dbsslverifyservercert": null,
+            "dbsslkey": null,
+            "dbsslcert": null,
+            "dbsslca": null,
+            "dbsslcipher": null
+        },
+        "db_connect_success": null,
+        "db_dump_path": null,
+        "db_dump_success": null,
+        "db_dump_log_path": null,
+        "db_dump_log_success": null,
+        "db_details_source": {
+            "table_count": null,
+            "table_list": null,
+            "tables": []
+        },
+        "db_insert_success": null,
+        "db_details_target": {
+            "table_count": null,
+            "table_list": null,
+            "tables": []
+        }
+    },
+    "mila_local_vhost": {
+        "vhost_conf_path": "\/etc\/apache2\/sites-available\/mila.local.conf",
+        "vhost_file_not_empty": 33,
+        "vhost_url": null,
+        "vhost_root_dir_path_exists": null,
+        "vhost_root_dir_path": null,
+        "vhost_web_config": {
+            "sitename": null,
+            "dbtype": null,
+            "host": null,
+            "user": null,
+            "password": null,
+            "dbprefix": null,
+            "db": null,
+            "dbencryption": null,
+            "dbsslverifyservercert": null,
+            "dbsslkey": null,
+            "dbsslcert": null,
+            "dbsslca": null,
+            "dbsslcipher": null
         },
         "db_connect_success": null,
         "db_dump_path": null,
@@ -269,83 +1100,923 @@ vhost_detail_list: {
     }
 }
 
-2023-01-29 17:30:27
-Location: Synaptic4u\DB\DB::__construct
-conn: {
-    "host": "localhost",
-    "dbname": "omnicasa_joomla1",
-    "user": "omni-joomla1",
-    "pass": "omni-joomla1"
-}
-
-2023-01-29 17:30:27
-Location: Synaptic4u\DB\DB::__construct
-conn: {
-    "host": "localhost",
-    "dbname": "omnicasa_joomla1",
-    "user": "omni-joomla1",
-    "pass": "omni-joomla1"
-}
-
-2023-01-29 17:30:27
-Location: Synaptic4u\Extractor\Extractor::dumpDBs
-vhost: omnicasa_vhost
-mysql_log_file: /home/mila/Repos/dbExtractor/src/logs/mysql_logs/omnicasa_vhost_1675013427.299_mysql_dump.txt
-mysql_dump_file: /home/mila/Repos/dbExtractor/mysql_dumps/omnicasa_vhost_1675013427.299_mysql_dump.sql
-cli_cmd: mysqldump -uomni-joomla1 -pomni-joomla1 --opt --comments --hex-blob --tz-utc --events --routines --force --log-error=/home/mila/Repos/dbExtractor/src/logs/mysql_logs/omnicasa_vhost_1675013427.299_mysql_dump.txt omnicasa_joomla1 > /home/mila/Repos/dbExtractor/mysql_dumps/omnicasa_vhost_1675013427.299_mysql_dump.sql
-output: []
-returnVar: 0
-
-2023-01-29 17:30:27
-Location: Synaptic4u\Core\App::__construct 3
+UTC 2023-01-30 17:41:30
+Location: Synaptic4u\Core\App::runBatch 1
 vhost_detail_list: {
-    "omnicasa_vhost": {
-        "vhost_conf_path": "\/home\/mila\/Repos\/dbExtractor\/testdir\/etc\/nginx\/conf.d\/omnicasa.conf",
-        "vhost_file_not_empty": 59,
-        "vhost_url": " joomla.omnicasa.local www.omnicasa.local",
-        "vhost_root_dir_path_exists": true,
-        "vhost_root_dir_path": "\/home\/mila\/Repos\/dbExtractor\/testdir\/app\/joomla\/",
+    "app_synaptic4u_local_vhost": {
+        "vhost_conf_path": "\/etc\/apache2\/sites-available\/app.synaptic4u.local.conf",
+        "vhost_file_not_empty": 38,
+        "vhost_url": null,
+        "vhost_root_dir_path_exists": null,
+        "vhost_root_dir_path": null,
         "vhost_web_config": {
-            "sitename": "joomla.omnicasa.local",
-            "dbtype": "mysql",
-            "host": "localhost",
-            "user": "omni-joomla1",
-            "password": "omni-joomla1",
-            "dbprefix": "tbbx2_",
-            "db": "omnicasa_joomla1",
-            "dbencryption": "0",
-            "dbsslverifyservercert": "false",
-            "dbsslkey": "",
-            "dbsslcert": "",
-            "dbsslca": "",
-            "dbsslcipher": ""
+            "sitename": null,
+            "dbtype": null,
+            "host": null,
+            "user": null,
+            "password": null,
+            "dbprefix": null,
+            "db": null,
+            "dbencryption": null,
+            "dbsslverifyservercert": null,
+            "dbsslkey": null,
+            "dbsslcert": null,
+            "dbsslca": null,
+            "dbsslcipher": null
         },
-        "db_connect_success": true,
-        "db_dump_path": "\/home\/mila\/Repos\/dbExtractor\/mysql_dumps\/omnicasa_vhost_1675013427.299_mysql_dump.sql",
-        "db_dump_success": true,
-        "db_dump_log_path": "\/home\/mila\/Repos\/dbExtractor\/src\/logs\/mysql_logs\/omnicasa_vhost_1675013427.299_mysql_dump.txt",
-        "db_dump_log_success": true,
+        "db_connect_success": null,
+        "db_dump_path": null,
+        "db_dump_success": null,
+        "db_dump_log_path": null,
+        "db_dump_log_success": null,
         "db_details_source": {
-            "table_count": 3,
-            "table_list": [
-                "test1",
-                "test2",
-                "test3"
-            ],
-            "tables": [
-                {
-                    "name": "test1",
-                    "row_count": 3
-                },
-                {
-                    "name": "test2",
-                    "row_count": 36
-                },
-                {
-                    "name": "test3",
-                    "row_count": 11
-                }
-            ]
+            "table_count": null,
+            "table_list": null,
+            "tables": []
+        },
+        "db_insert_success": null,
+        "db_details_target": {
+            "table_count": null,
+            "table_list": null,
+            "tables": []
+        }
+    },
+    "api_synaptic4u_local_vhost": {
+        "vhost_conf_path": "\/etc\/apache2\/sites-available\/api.synaptic4u.local.conf",
+        "vhost_file_not_empty": 41,
+        "vhost_url": null,
+        "vhost_root_dir_path_exists": null,
+        "vhost_root_dir_path": null,
+        "vhost_web_config": {
+            "sitename": null,
+            "dbtype": null,
+            "host": null,
+            "user": null,
+            "password": null,
+            "dbprefix": null,
+            "db": null,
+            "dbencryption": null,
+            "dbsslverifyservercert": null,
+            "dbsslkey": null,
+            "dbsslcert": null,
+            "dbsslca": null,
+            "dbsslcipher": null
+        },
+        "db_connect_success": null,
+        "db_dump_path": null,
+        "db_dump_success": null,
+        "db_dump_log_path": null,
+        "db_dump_log_success": null,
+        "db_details_source": {
+            "table_count": null,
+            "table_list": null,
+            "tables": []
+        },
+        "db_insert_success": null,
+        "db_details_target": {
+            "table_count": null,
+            "table_list": null,
+            "tables": []
+        }
+    },
+    "000_default_vhost": {
+        "vhost_conf_path": "\/etc\/apache2\/sites-available\/000-default.conf",
+        "vhost_file_not_empty": 30,
+        "vhost_url": null,
+        "vhost_root_dir_path_exists": null,
+        "vhost_root_dir_path": null,
+        "vhost_web_config": {
+            "sitename": null,
+            "dbtype": null,
+            "host": null,
+            "user": null,
+            "password": null,
+            "dbprefix": null,
+            "db": null,
+            "dbencryption": null,
+            "dbsslverifyservercert": null,
+            "dbsslkey": null,
+            "dbsslcert": null,
+            "dbsslca": null,
+            "dbsslcipher": null
+        },
+        "db_connect_success": null,
+        "db_dump_path": null,
+        "db_dump_success": null,
+        "db_dump_log_path": null,
+        "db_dump_log_success": null,
+        "db_details_source": {
+            "table_count": null,
+            "table_list": null,
+            "tables": []
+        },
+        "db_insert_success": null,
+        "db_details_target": {
+            "table_count": null,
+            "table_list": null,
+            "tables": []
+        }
+    },
+    "ums_synaptic4u_local_vhost": {
+        "vhost_conf_path": "\/etc\/apache2\/sites-available\/ums.synaptic4u.local.conf",
+        "vhost_file_not_empty": 39,
+        "vhost_url": null,
+        "vhost_root_dir_path_exists": null,
+        "vhost_root_dir_path": null,
+        "vhost_web_config": {
+            "sitename": null,
+            "dbtype": null,
+            "host": null,
+            "user": null,
+            "password": null,
+            "dbprefix": null,
+            "db": null,
+            "dbencryption": null,
+            "dbsslverifyservercert": null,
+            "dbsslkey": null,
+            "dbsslcert": null,
+            "dbsslca": null,
+            "dbsslcipher": null
+        },
+        "db_connect_success": null,
+        "db_dump_path": null,
+        "db_dump_success": null,
+        "db_dump_log_path": null,
+        "db_dump_log_success": null,
+        "db_details_source": {
+            "table_count": null,
+            "table_list": null,
+            "tables": []
+        },
+        "db_insert_success": null,
+        "db_details_target": {
+            "table_count": null,
+            "table_list": null,
+            "tables": []
+        }
+    },
+    "puttingtracker_local_vhost": {
+        "vhost_conf_path": "\/etc\/apache2\/sites-available\/puttingtracker.local.conf",
+        "vhost_file_not_empty": 39,
+        "vhost_url": null,
+        "vhost_root_dir_path_exists": null,
+        "vhost_root_dir_path": null,
+        "vhost_web_config": {
+            "sitename": null,
+            "dbtype": null,
+            "host": null,
+            "user": null,
+            "password": null,
+            "dbprefix": null,
+            "db": null,
+            "dbencryption": null,
+            "dbsslverifyservercert": null,
+            "dbsslkey": null,
+            "dbsslcert": null,
+            "dbsslca": null,
+            "dbsslcipher": null
+        },
+        "db_connect_success": null,
+        "db_dump_path": null,
+        "db_dump_success": null,
+        "db_dump_log_path": null,
+        "db_dump_log_success": null,
+        "db_details_source": {
+            "table_count": null,
+            "table_list": null,
+            "tables": []
+        },
+        "db_insert_success": null,
+        "db_details_target": {
+            "table_count": null,
+            "table_list": null,
+            "tables": []
+        }
+    },
+    "default_ssl_vhost": {
+        "vhost_conf_path": "\/etc\/apache2\/sites-available\/default-ssl.conf",
+        "vhost_file_not_empty": 131,
+        "vhost_url": null,
+        "vhost_root_dir_path_exists": null,
+        "vhost_root_dir_path": null,
+        "vhost_web_config": {
+            "sitename": null,
+            "dbtype": null,
+            "host": null,
+            "user": null,
+            "password": null,
+            "dbprefix": null,
+            "db": null,
+            "dbencryption": null,
+            "dbsslverifyservercert": null,
+            "dbsslkey": null,
+            "dbsslcert": null,
+            "dbsslca": null,
+            "dbsslcipher": null
+        },
+        "db_connect_success": null,
+        "db_dump_path": null,
+        "db_dump_success": null,
+        "db_dump_log_path": null,
+        "db_dump_log_success": null,
+        "db_details_source": {
+            "table_count": null,
+            "table_list": null,
+            "tables": []
+        },
+        "db_insert_success": null,
+        "db_details_target": {
+            "table_count": null,
+            "table_list": null,
+            "tables": []
+        }
+    },
+    "dev_synaptic4u_local_vhost": {
+        "vhost_conf_path": "\/etc\/apache2\/sites-available\/dev.synaptic4u.local.conf",
+        "vhost_file_not_empty": 33,
+        "vhost_url": null,
+        "vhost_root_dir_path_exists": null,
+        "vhost_root_dir_path": null,
+        "vhost_web_config": {
+            "sitename": null,
+            "dbtype": null,
+            "host": null,
+            "user": null,
+            "password": null,
+            "dbprefix": null,
+            "db": null,
+            "dbencryption": null,
+            "dbsslverifyservercert": null,
+            "dbsslkey": null,
+            "dbsslcert": null,
+            "dbsslca": null,
+            "dbsslcipher": null
+        },
+        "db_connect_success": null,
+        "db_dump_path": null,
+        "db_dump_success": null,
+        "db_dump_log_path": null,
+        "db_dump_log_success": null,
+        "db_details_source": {
+            "table_count": null,
+            "table_list": null,
+            "tables": []
+        },
+        "db_insert_success": null,
+        "db_details_target": {
+            "table_count": null,
+            "table_list": null,
+            "tables": []
+        }
+    },
+    "mila_local_vhost": {
+        "vhost_conf_path": "\/etc\/apache2\/sites-available\/mila.local.conf",
+        "vhost_file_not_empty": 33,
+        "vhost_url": null,
+        "vhost_root_dir_path_exists": null,
+        "vhost_root_dir_path": null,
+        "vhost_web_config": {
+            "sitename": null,
+            "dbtype": null,
+            "host": null,
+            "user": null,
+            "password": null,
+            "dbprefix": null,
+            "db": null,
+            "dbencryption": null,
+            "dbsslverifyservercert": null,
+            "dbsslkey": null,
+            "dbsslcert": null,
+            "dbsslca": null,
+            "dbsslcipher": null
+        },
+        "db_connect_success": null,
+        "db_dump_path": null,
+        "db_dump_success": null,
+        "db_dump_log_path": null,
+        "db_dump_log_success": null,
+        "db_details_source": {
+            "table_count": null,
+            "table_list": null,
+            "tables": []
+        },
+        "db_insert_success": null,
+        "db_details_target": {
+            "table_count": null,
+            "table_list": null,
+            "tables": []
+        }
+    }
+}
+
+UTC 2023-01-30 17:41:30
+Location: Synaptic4u\Core\App::runBatch 2
+vhost_detail_list: {
+    "app_synaptic4u_local_vhost": {
+        "vhost_conf_path": "\/etc\/apache2\/sites-available\/app.synaptic4u.local.conf",
+        "vhost_file_not_empty": 38,
+        "vhost_url": null,
+        "vhost_root_dir_path_exists": null,
+        "vhost_root_dir_path": null,
+        "vhost_web_config": {
+            "sitename": null,
+            "dbtype": null,
+            "host": null,
+            "user": null,
+            "password": null,
+            "dbprefix": null,
+            "db": null,
+            "dbencryption": null,
+            "dbsslverifyservercert": null,
+            "dbsslkey": null,
+            "dbsslcert": null,
+            "dbsslca": null,
+            "dbsslcipher": null
+        },
+        "db_connect_success": "Exception: Something wrong with db config in \/home\/mila\/Repos\/dbExtractor\/src\/DB\/DB.php:44\nStack trace:\n#0 \/home\/mila\/Repos\/dbExtractor\/src\/Extractor\/Extractor.php(98): Synaptic4u\\DB\\DB->__construct()\n#1 \/home\/mila\/Repos\/dbExtractor\/src\/Core\/App.php(148): Synaptic4u\\Extractor\\Extractor->getDataDetails()\n#2 \/home\/mila\/Repos\/dbExtractor\/src\/Core\/App.php(111): Synaptic4u\\Core\\App->getDataDetails()\n#3 \/home\/mila\/Repos\/dbExtractor\/src\/Core\/App.php(75): Synaptic4u\\Core\\App->runBatch()\n#4 \/home\/mila\/Repos\/dbExtractor\/app.php(14): Synaptic4u\\Core\\App->__construct()\n#5 {main}",
+        "db_dump_path": null,
+        "db_dump_success": null,
+        "db_dump_log_path": null,
+        "db_dump_log_success": null,
+        "db_details_source": {
+            "table_count": null,
+            "table_list": null,
+            "tables": []
+        },
+        "db_insert_success": null,
+        "db_details_target": {
+            "table_count": null,
+            "table_list": null,
+            "tables": []
+        }
+    },
+    "api_synaptic4u_local_vhost": {
+        "vhost_conf_path": "\/etc\/apache2\/sites-available\/api.synaptic4u.local.conf",
+        "vhost_file_not_empty": 41,
+        "vhost_url": null,
+        "vhost_root_dir_path_exists": null,
+        "vhost_root_dir_path": null,
+        "vhost_web_config": {
+            "sitename": null,
+            "dbtype": null,
+            "host": null,
+            "user": null,
+            "password": null,
+            "dbprefix": null,
+            "db": null,
+            "dbencryption": null,
+            "dbsslverifyservercert": null,
+            "dbsslkey": null,
+            "dbsslcert": null,
+            "dbsslca": null,
+            "dbsslcipher": null
+        },
+        "db_connect_success": "Exception: Something wrong with db config in \/home\/mila\/Repos\/dbExtractor\/src\/DB\/DB.php:44\nStack trace:\n#0 \/home\/mila\/Repos\/dbExtractor\/src\/Extractor\/Extractor.php(98): Synaptic4u\\DB\\DB->__construct()\n#1 \/home\/mila\/Repos\/dbExtractor\/src\/Core\/App.php(148): Synaptic4u\\Extractor\\Extractor->getDataDetails()\n#2 \/home\/mila\/Repos\/dbExtractor\/src\/Core\/App.php(111): Synaptic4u\\Core\\App->getDataDetails()\n#3 \/home\/mila\/Repos\/dbExtractor\/src\/Core\/App.php(75): Synaptic4u\\Core\\App->runBatch()\n#4 \/home\/mila\/Repos\/dbExtractor\/app.php(14): Synaptic4u\\Core\\App->__construct()\n#5 {main}",
+        "db_dump_path": null,
+        "db_dump_success": null,
+        "db_dump_log_path": null,
+        "db_dump_log_success": null,
+        "db_details_source": {
+            "table_count": null,
+            "table_list": null,
+            "tables": []
+        },
+        "db_insert_success": null,
+        "db_details_target": {
+            "table_count": null,
+            "table_list": null,
+            "tables": []
+        }
+    },
+    "000_default_vhost": {
+        "vhost_conf_path": "\/etc\/apache2\/sites-available\/000-default.conf",
+        "vhost_file_not_empty": 30,
+        "vhost_url": null,
+        "vhost_root_dir_path_exists": null,
+        "vhost_root_dir_path": null,
+        "vhost_web_config": {
+            "sitename": null,
+            "dbtype": null,
+            "host": null,
+            "user": null,
+            "password": null,
+            "dbprefix": null,
+            "db": null,
+            "dbencryption": null,
+            "dbsslverifyservercert": null,
+            "dbsslkey": null,
+            "dbsslcert": null,
+            "dbsslca": null,
+            "dbsslcipher": null
+        },
+        "db_connect_success": "Exception: Something wrong with db config in \/home\/mila\/Repos\/dbExtractor\/src\/DB\/DB.php:44\nStack trace:\n#0 \/home\/mila\/Repos\/dbExtractor\/src\/Extractor\/Extractor.php(98): Synaptic4u\\DB\\DB->__construct()\n#1 \/home\/mila\/Repos\/dbExtractor\/src\/Core\/App.php(148): Synaptic4u\\Extractor\\Extractor->getDataDetails()\n#2 \/home\/mila\/Repos\/dbExtractor\/src\/Core\/App.php(111): Synaptic4u\\Core\\App->getDataDetails()\n#3 \/home\/mila\/Repos\/dbExtractor\/src\/Core\/App.php(75): Synaptic4u\\Core\\App->runBatch()\n#4 \/home\/mila\/Repos\/dbExtractor\/app.php(14): Synaptic4u\\Core\\App->__construct()\n#5 {main}",
+        "db_dump_path": null,
+        "db_dump_success": null,
+        "db_dump_log_path": null,
+        "db_dump_log_success": null,
+        "db_details_source": {
+            "table_count": null,
+            "table_list": null,
+            "tables": []
+        },
+        "db_insert_success": null,
+        "db_details_target": {
+            "table_count": null,
+            "table_list": null,
+            "tables": []
+        }
+    },
+    "ums_synaptic4u_local_vhost": {
+        "vhost_conf_path": "\/etc\/apache2\/sites-available\/ums.synaptic4u.local.conf",
+        "vhost_file_not_empty": 39,
+        "vhost_url": null,
+        "vhost_root_dir_path_exists": null,
+        "vhost_root_dir_path": null,
+        "vhost_web_config": {
+            "sitename": null,
+            "dbtype": null,
+            "host": null,
+            "user": null,
+            "password": null,
+            "dbprefix": null,
+            "db": null,
+            "dbencryption": null,
+            "dbsslverifyservercert": null,
+            "dbsslkey": null,
+            "dbsslcert": null,
+            "dbsslca": null,
+            "dbsslcipher": null
+        },
+        "db_connect_success": "Exception: Something wrong with db config in \/home\/mila\/Repos\/dbExtractor\/src\/DB\/DB.php:44\nStack trace:\n#0 \/home\/mila\/Repos\/dbExtractor\/src\/Extractor\/Extractor.php(98): Synaptic4u\\DB\\DB->__construct()\n#1 \/home\/mila\/Repos\/dbExtractor\/src\/Core\/App.php(148): Synaptic4u\\Extractor\\Extractor->getDataDetails()\n#2 \/home\/mila\/Repos\/dbExtractor\/src\/Core\/App.php(111): Synaptic4u\\Core\\App->getDataDetails()\n#3 \/home\/mila\/Repos\/dbExtractor\/src\/Core\/App.php(75): Synaptic4u\\Core\\App->runBatch()\n#4 \/home\/mila\/Repos\/dbExtractor\/app.php(14): Synaptic4u\\Core\\App->__construct()\n#5 {main}",
+        "db_dump_path": null,
+        "db_dump_success": null,
+        "db_dump_log_path": null,
+        "db_dump_log_success": null,
+        "db_details_source": {
+            "table_count": null,
+            "table_list": null,
+            "tables": []
+        },
+        "db_insert_success": null,
+        "db_details_target": {
+            "table_count": null,
+            "table_list": null,
+            "tables": []
+        }
+    },
+    "puttingtracker_local_vhost": {
+        "vhost_conf_path": "\/etc\/apache2\/sites-available\/puttingtracker.local.conf",
+        "vhost_file_not_empty": 39,
+        "vhost_url": null,
+        "vhost_root_dir_path_exists": null,
+        "vhost_root_dir_path": null,
+        "vhost_web_config": {
+            "sitename": null,
+            "dbtype": null,
+            "host": null,
+            "user": null,
+            "password": null,
+            "dbprefix": null,
+            "db": null,
+            "dbencryption": null,
+            "dbsslverifyservercert": null,
+            "dbsslkey": null,
+            "dbsslcert": null,
+            "dbsslca": null,
+            "dbsslcipher": null
+        },
+        "db_connect_success": "Exception: Something wrong with db config in \/home\/mila\/Repos\/dbExtractor\/src\/DB\/DB.php:44\nStack trace:\n#0 \/home\/mila\/Repos\/dbExtractor\/src\/Extractor\/Extractor.php(98): Synaptic4u\\DB\\DB->__construct()\n#1 \/home\/mila\/Repos\/dbExtractor\/src\/Core\/App.php(148): Synaptic4u\\Extractor\\Extractor->getDataDetails()\n#2 \/home\/mila\/Repos\/dbExtractor\/src\/Core\/App.php(111): Synaptic4u\\Core\\App->getDataDetails()\n#3 \/home\/mila\/Repos\/dbExtractor\/src\/Core\/App.php(75): Synaptic4u\\Core\\App->runBatch()\n#4 \/home\/mila\/Repos\/dbExtractor\/app.php(14): Synaptic4u\\Core\\App->__construct()\n#5 {main}",
+        "db_dump_path": null,
+        "db_dump_success": null,
+        "db_dump_log_path": null,
+        "db_dump_log_success": null,
+        "db_details_source": {
+            "table_count": null,
+            "table_list": null,
+            "tables": []
+        },
+        "db_insert_success": null,
+        "db_details_target": {
+            "table_count": null,
+            "table_list": null,
+            "tables": []
+        }
+    },
+    "default_ssl_vhost": {
+        "vhost_conf_path": "\/etc\/apache2\/sites-available\/default-ssl.conf",
+        "vhost_file_not_empty": 131,
+        "vhost_url": null,
+        "vhost_root_dir_path_exists": null,
+        "vhost_root_dir_path": null,
+        "vhost_web_config": {
+            "sitename": null,
+            "dbtype": null,
+            "host": null,
+            "user": null,
+            "password": null,
+            "dbprefix": null,
+            "db": null,
+            "dbencryption": null,
+            "dbsslverifyservercert": null,
+            "dbsslkey": null,
+            "dbsslcert": null,
+            "dbsslca": null,
+            "dbsslcipher": null
+        },
+        "db_connect_success": "Exception: Something wrong with db config in \/home\/mila\/Repos\/dbExtractor\/src\/DB\/DB.php:44\nStack trace:\n#0 \/home\/mila\/Repos\/dbExtractor\/src\/Extractor\/Extractor.php(98): Synaptic4u\\DB\\DB->__construct()\n#1 \/home\/mila\/Repos\/dbExtractor\/src\/Core\/App.php(148): Synaptic4u\\Extractor\\Extractor->getDataDetails()\n#2 \/home\/mila\/Repos\/dbExtractor\/src\/Core\/App.php(111): Synaptic4u\\Core\\App->getDataDetails()\n#3 \/home\/mila\/Repos\/dbExtractor\/src\/Core\/App.php(75): Synaptic4u\\Core\\App->runBatch()\n#4 \/home\/mila\/Repos\/dbExtractor\/app.php(14): Synaptic4u\\Core\\App->__construct()\n#5 {main}",
+        "db_dump_path": null,
+        "db_dump_success": null,
+        "db_dump_log_path": null,
+        "db_dump_log_success": null,
+        "db_details_source": {
+            "table_count": null,
+            "table_list": null,
+            "tables": []
+        },
+        "db_insert_success": null,
+        "db_details_target": {
+            "table_count": null,
+            "table_list": null,
+            "tables": []
+        }
+    },
+    "dev_synaptic4u_local_vhost": {
+        "vhost_conf_path": "\/etc\/apache2\/sites-available\/dev.synaptic4u.local.conf",
+        "vhost_file_not_empty": 33,
+        "vhost_url": null,
+        "vhost_root_dir_path_exists": null,
+        "vhost_root_dir_path": null,
+        "vhost_web_config": {
+            "sitename": null,
+            "dbtype": null,
+            "host": null,
+            "user": null,
+            "password": null,
+            "dbprefix": null,
+            "db": null,
+            "dbencryption": null,
+            "dbsslverifyservercert": null,
+            "dbsslkey": null,
+            "dbsslcert": null,
+            "dbsslca": null,
+            "dbsslcipher": null
+        },
+        "db_connect_success": "Exception: Something wrong with db config in \/home\/mila\/Repos\/dbExtractor\/src\/DB\/DB.php:44\nStack trace:\n#0 \/home\/mila\/Repos\/dbExtractor\/src\/Extractor\/Extractor.php(98): Synaptic4u\\DB\\DB->__construct()\n#1 \/home\/mila\/Repos\/dbExtractor\/src\/Core\/App.php(148): Synaptic4u\\Extractor\\Extractor->getDataDetails()\n#2 \/home\/mila\/Repos\/dbExtractor\/src\/Core\/App.php(111): Synaptic4u\\Core\\App->getDataDetails()\n#3 \/home\/mila\/Repos\/dbExtractor\/src\/Core\/App.php(75): Synaptic4u\\Core\\App->runBatch()\n#4 \/home\/mila\/Repos\/dbExtractor\/app.php(14): Synaptic4u\\Core\\App->__construct()\n#5 {main}",
+        "db_dump_path": null,
+        "db_dump_success": null,
+        "db_dump_log_path": null,
+        "db_dump_log_success": null,
+        "db_details_source": {
+            "table_count": null,
+            "table_list": null,
+            "tables": []
+        },
+        "db_insert_success": null,
+        "db_details_target": {
+            "table_count": null,
+            "table_list": null,
+            "tables": []
+        }
+    },
+    "mila_local_vhost": {
+        "vhost_conf_path": "\/etc\/apache2\/sites-available\/mila.local.conf",
+        "vhost_file_not_empty": 33,
+        "vhost_url": null,
+        "vhost_root_dir_path_exists": null,
+        "vhost_root_dir_path": null,
+        "vhost_web_config": {
+            "sitename": null,
+            "dbtype": null,
+            "host": null,
+            "user": null,
+            "password": null,
+            "dbprefix": null,
+            "db": null,
+            "dbencryption": null,
+            "dbsslverifyservercert": null,
+            "dbsslkey": null,
+            "dbsslcert": null,
+            "dbsslca": null,
+            "dbsslcipher": null
+        },
+        "db_connect_success": "Exception: Something wrong with db config in \/home\/mila\/Repos\/dbExtractor\/src\/DB\/DB.php:44\nStack trace:\n#0 \/home\/mila\/Repos\/dbExtractor\/src\/Extractor\/Extractor.php(98): Synaptic4u\\DB\\DB->__construct()\n#1 \/home\/mila\/Repos\/dbExtractor\/src\/Core\/App.php(148): Synaptic4u\\Extractor\\Extractor->getDataDetails()\n#2 \/home\/mila\/Repos\/dbExtractor\/src\/Core\/App.php(111): Synaptic4u\\Core\\App->getDataDetails()\n#3 \/home\/mila\/Repos\/dbExtractor\/src\/Core\/App.php(75): Synaptic4u\\Core\\App->runBatch()\n#4 \/home\/mila\/Repos\/dbExtractor\/app.php(14): Synaptic4u\\Core\\App->__construct()\n#5 {main}",
+        "db_dump_path": null,
+        "db_dump_success": null,
+        "db_dump_log_path": null,
+        "db_dump_log_success": null,
+        "db_details_source": {
+            "table_count": null,
+            "table_list": null,
+            "tables": []
+        },
+        "db_insert_success": null,
+        "db_details_target": {
+            "table_count": null,
+            "table_list": null,
+            "tables": []
+        }
+    }
+}
+
+UTC 2023-01-30 17:41:30
+Location: Synaptic4u\Core\App::runBatch 3
+vhost_detail_list: {
+    "app_synaptic4u_local_vhost": {
+        "vhost_conf_path": "\/etc\/apache2\/sites-available\/app.synaptic4u.local.conf",
+        "vhost_file_not_empty": 38,
+        "vhost_url": null,
+        "vhost_root_dir_path_exists": null,
+        "vhost_root_dir_path": null,
+        "vhost_web_config": {
+            "sitename": null,
+            "dbtype": null,
+            "host": null,
+            "user": null,
+            "password": null,
+            "dbprefix": null,
+            "db": null,
+            "dbencryption": null,
+            "dbsslverifyservercert": null,
+            "dbsslkey": null,
+            "dbsslcert": null,
+            "dbsslca": null,
+            "dbsslcipher": null
+        },
+        "db_connect_success": "Exception: Something wrong with db config in \/home\/mila\/Repos\/dbExtractor\/src\/DB\/DB.php:44\nStack trace:\n#0 \/home\/mila\/Repos\/dbExtractor\/src\/Extractor\/Extractor.php(42): Synaptic4u\\DB\\DB->__construct()\n#1 \/home\/mila\/Repos\/dbExtractor\/src\/Core\/App.php(144): Synaptic4u\\Extractor\\Extractor->dumpDBs()\n#2 \/home\/mila\/Repos\/dbExtractor\/src\/Core\/App.php(120): Synaptic4u\\Core\\App->dumpDBs()\n#3 \/home\/mila\/Repos\/dbExtractor\/src\/Core\/App.php(75): Synaptic4u\\Core\\App->runBatch()\n#4 \/home\/mila\/Repos\/dbExtractor\/app.php(14): Synaptic4u\\Core\\App->__construct()\n#5 {main}",
+        "db_dump_path": null,
+        "db_dump_success": null,
+        "db_dump_log_path": null,
+        "db_dump_log_success": null,
+        "db_details_source": {
+            "table_count": null,
+            "table_list": null,
+            "tables": []
+        },
+        "db_insert_success": null,
+        "db_details_target": {
+            "table_count": null,
+            "table_list": null,
+            "tables": []
+        }
+    },
+    "api_synaptic4u_local_vhost": {
+        "vhost_conf_path": "\/etc\/apache2\/sites-available\/api.synaptic4u.local.conf",
+        "vhost_file_not_empty": 41,
+        "vhost_url": null,
+        "vhost_root_dir_path_exists": null,
+        "vhost_root_dir_path": null,
+        "vhost_web_config": {
+            "sitename": null,
+            "dbtype": null,
+            "host": null,
+            "user": null,
+            "password": null,
+            "dbprefix": null,
+            "db": null,
+            "dbencryption": null,
+            "dbsslverifyservercert": null,
+            "dbsslkey": null,
+            "dbsslcert": null,
+            "dbsslca": null,
+            "dbsslcipher": null
+        },
+        "db_connect_success": "Exception: Something wrong with db config in \/home\/mila\/Repos\/dbExtractor\/src\/DB\/DB.php:44\nStack trace:\n#0 \/home\/mila\/Repos\/dbExtractor\/src\/Extractor\/Extractor.php(42): Synaptic4u\\DB\\DB->__construct()\n#1 \/home\/mila\/Repos\/dbExtractor\/src\/Core\/App.php(144): Synaptic4u\\Extractor\\Extractor->dumpDBs()\n#2 \/home\/mila\/Repos\/dbExtractor\/src\/Core\/App.php(120): Synaptic4u\\Core\\App->dumpDBs()\n#3 \/home\/mila\/Repos\/dbExtractor\/src\/Core\/App.php(75): Synaptic4u\\Core\\App->runBatch()\n#4 \/home\/mila\/Repos\/dbExtractor\/app.php(14): Synaptic4u\\Core\\App->__construct()\n#5 {main}",
+        "db_dump_path": null,
+        "db_dump_success": null,
+        "db_dump_log_path": null,
+        "db_dump_log_success": null,
+        "db_details_source": {
+            "table_count": null,
+            "table_list": null,
+            "tables": []
+        },
+        "db_insert_success": null,
+        "db_details_target": {
+            "table_count": null,
+            "table_list": null,
+            "tables": []
+        }
+    },
+    "000_default_vhost": {
+        "vhost_conf_path": "\/etc\/apache2\/sites-available\/000-default.conf",
+        "vhost_file_not_empty": 30,
+        "vhost_url": null,
+        "vhost_root_dir_path_exists": null,
+        "vhost_root_dir_path": null,
+        "vhost_web_config": {
+            "sitename": null,
+            "dbtype": null,
+            "host": null,
+            "user": null,
+            "password": null,
+            "dbprefix": null,
+            "db": null,
+            "dbencryption": null,
+            "dbsslverifyservercert": null,
+            "dbsslkey": null,
+            "dbsslcert": null,
+            "dbsslca": null,
+            "dbsslcipher": null
+        },
+        "db_connect_success": "Exception: Something wrong with db config in \/home\/mila\/Repos\/dbExtractor\/src\/DB\/DB.php:44\nStack trace:\n#0 \/home\/mila\/Repos\/dbExtractor\/src\/Extractor\/Extractor.php(42): Synaptic4u\\DB\\DB->__construct()\n#1 \/home\/mila\/Repos\/dbExtractor\/src\/Core\/App.php(144): Synaptic4u\\Extractor\\Extractor->dumpDBs()\n#2 \/home\/mila\/Repos\/dbExtractor\/src\/Core\/App.php(120): Synaptic4u\\Core\\App->dumpDBs()\n#3 \/home\/mila\/Repos\/dbExtractor\/src\/Core\/App.php(75): Synaptic4u\\Core\\App->runBatch()\n#4 \/home\/mila\/Repos\/dbExtractor\/app.php(14): Synaptic4u\\Core\\App->__construct()\n#5 {main}",
+        "db_dump_path": null,
+        "db_dump_success": null,
+        "db_dump_log_path": null,
+        "db_dump_log_success": null,
+        "db_details_source": {
+            "table_count": null,
+            "table_list": null,
+            "tables": []
+        },
+        "db_insert_success": null,
+        "db_details_target": {
+            "table_count": null,
+            "table_list": null,
+            "tables": []
+        }
+    },
+    "ums_synaptic4u_local_vhost": {
+        "vhost_conf_path": "\/etc\/apache2\/sites-available\/ums.synaptic4u.local.conf",
+        "vhost_file_not_empty": 39,
+        "vhost_url": null,
+        "vhost_root_dir_path_exists": null,
+        "vhost_root_dir_path": null,
+        "vhost_web_config": {
+            "sitename": null,
+            "dbtype": null,
+            "host": null,
+            "user": null,
+            "password": null,
+            "dbprefix": null,
+            "db": null,
+            "dbencryption": null,
+            "dbsslverifyservercert": null,
+            "dbsslkey": null,
+            "dbsslcert": null,
+            "dbsslca": null,
+            "dbsslcipher": null
+        },
+        "db_connect_success": "Exception: Something wrong with db config in \/home\/mila\/Repos\/dbExtractor\/src\/DB\/DB.php:44\nStack trace:\n#0 \/home\/mila\/Repos\/dbExtractor\/src\/Extractor\/Extractor.php(42): Synaptic4u\\DB\\DB->__construct()\n#1 \/home\/mila\/Repos\/dbExtractor\/src\/Core\/App.php(144): Synaptic4u\\Extractor\\Extractor->dumpDBs()\n#2 \/home\/mila\/Repos\/dbExtractor\/src\/Core\/App.php(120): Synaptic4u\\Core\\App->dumpDBs()\n#3 \/home\/mila\/Repos\/dbExtractor\/src\/Core\/App.php(75): Synaptic4u\\Core\\App->runBatch()\n#4 \/home\/mila\/Repos\/dbExtractor\/app.php(14): Synaptic4u\\Core\\App->__construct()\n#5 {main}",
+        "db_dump_path": null,
+        "db_dump_success": null,
+        "db_dump_log_path": null,
+        "db_dump_log_success": null,
+        "db_details_source": {
+            "table_count": null,
+            "table_list": null,
+            "tables": []
+        },
+        "db_insert_success": null,
+        "db_details_target": {
+            "table_count": null,
+            "table_list": null,
+            "tables": []
+        }
+    },
+    "puttingtracker_local_vhost": {
+        "vhost_conf_path": "\/etc\/apache2\/sites-available\/puttingtracker.local.conf",
+        "vhost_file_not_empty": 39,
+        "vhost_url": null,
+        "vhost_root_dir_path_exists": null,
+        "vhost_root_dir_path": null,
+        "vhost_web_config": {
+            "sitename": null,
+            "dbtype": null,
+            "host": null,
+            "user": null,
+            "password": null,
+            "dbprefix": null,
+            "db": null,
+            "dbencryption": null,
+            "dbsslverifyservercert": null,
+            "dbsslkey": null,
+            "dbsslcert": null,
+            "dbsslca": null,
+            "dbsslcipher": null
+        },
+        "db_connect_success": "Exception: Something wrong with db config in \/home\/mila\/Repos\/dbExtractor\/src\/DB\/DB.php:44\nStack trace:\n#0 \/home\/mila\/Repos\/dbExtractor\/src\/Extractor\/Extractor.php(42): Synaptic4u\\DB\\DB->__construct()\n#1 \/home\/mila\/Repos\/dbExtractor\/src\/Core\/App.php(144): Synaptic4u\\Extractor\\Extractor->dumpDBs()\n#2 \/home\/mila\/Repos\/dbExtractor\/src\/Core\/App.php(120): Synaptic4u\\Core\\App->dumpDBs()\n#3 \/home\/mila\/Repos\/dbExtractor\/src\/Core\/App.php(75): Synaptic4u\\Core\\App->runBatch()\n#4 \/home\/mila\/Repos\/dbExtractor\/app.php(14): Synaptic4u\\Core\\App->__construct()\n#5 {main}",
+        "db_dump_path": null,
+        "db_dump_success": null,
+        "db_dump_log_path": null,
+        "db_dump_log_success": null,
+        "db_details_source": {
+            "table_count": null,
+            "table_list": null,
+            "tables": []
+        },
+        "db_insert_success": null,
+        "db_details_target": {
+            "table_count": null,
+            "table_list": null,
+            "tables": []
+        }
+    },
+    "default_ssl_vhost": {
+        "vhost_conf_path": "\/etc\/apache2\/sites-available\/default-ssl.conf",
+        "vhost_file_not_empty": 131,
+        "vhost_url": null,
+        "vhost_root_dir_path_exists": null,
+        "vhost_root_dir_path": null,
+        "vhost_web_config": {
+            "sitename": null,
+            "dbtype": null,
+            "host": null,
+            "user": null,
+            "password": null,
+            "dbprefix": null,
+            "db": null,
+            "dbencryption": null,
+            "dbsslverifyservercert": null,
+            "dbsslkey": null,
+            "dbsslcert": null,
+            "dbsslca": null,
+            "dbsslcipher": null
+        },
+        "db_connect_success": "Exception: Something wrong with db config in \/home\/mila\/Repos\/dbExtractor\/src\/DB\/DB.php:44\nStack trace:\n#0 \/home\/mila\/Repos\/dbExtractor\/src\/Extractor\/Extractor.php(42): Synaptic4u\\DB\\DB->__construct()\n#1 \/home\/mila\/Repos\/dbExtractor\/src\/Core\/App.php(144): Synaptic4u\\Extractor\\Extractor->dumpDBs()\n#2 \/home\/mila\/Repos\/dbExtractor\/src\/Core\/App.php(120): Synaptic4u\\Core\\App->dumpDBs()\n#3 \/home\/mila\/Repos\/dbExtractor\/src\/Core\/App.php(75): Synaptic4u\\Core\\App->runBatch()\n#4 \/home\/mila\/Repos\/dbExtractor\/app.php(14): Synaptic4u\\Core\\App->__construct()\n#5 {main}",
+        "db_dump_path": null,
+        "db_dump_success": null,
+        "db_dump_log_path": null,
+        "db_dump_log_success": null,
+        "db_details_source": {
+            "table_count": null,
+            "table_list": null,
+            "tables": []
+        },
+        "db_insert_success": null,
+        "db_details_target": {
+            "table_count": null,
+            "table_list": null,
+            "tables": []
+        }
+    },
+    "dev_synaptic4u_local_vhost": {
+        "vhost_conf_path": "\/etc\/apache2\/sites-available\/dev.synaptic4u.local.conf",
+        "vhost_file_not_empty": 33,
+        "vhost_url": null,
+        "vhost_root_dir_path_exists": null,
+        "vhost_root_dir_path": null,
+        "vhost_web_config": {
+            "sitename": null,
+            "dbtype": null,
+            "host": null,
+            "user": null,
+            "password": null,
+            "dbprefix": null,
+            "db": null,
+            "dbencryption": null,
+            "dbsslverifyservercert": null,
+            "dbsslkey": null,
+            "dbsslcert": null,
+            "dbsslca": null,
+            "dbsslcipher": null
+        },
+        "db_connect_success": "Exception: Something wrong with db config in \/home\/mila\/Repos\/dbExtractor\/src\/DB\/DB.php:44\nStack trace:\n#0 \/home\/mila\/Repos\/dbExtractor\/src\/Extractor\/Extractor.php(42): Synaptic4u\\DB\\DB->__construct()\n#1 \/home\/mila\/Repos\/dbExtractor\/src\/Core\/App.php(144): Synaptic4u\\Extractor\\Extractor->dumpDBs()\n#2 \/home\/mila\/Repos\/dbExtractor\/src\/Core\/App.php(120): Synaptic4u\\Core\\App->dumpDBs()\n#3 \/home\/mila\/Repos\/dbExtractor\/src\/Core\/App.php(75): Synaptic4u\\Core\\App->runBatch()\n#4 \/home\/mila\/Repos\/dbExtractor\/app.php(14): Synaptic4u\\Core\\App->__construct()\n#5 {main}",
+        "db_dump_path": null,
+        "db_dump_success": null,
+        "db_dump_log_path": null,
+        "db_dump_log_success": null,
+        "db_details_source": {
+            "table_count": null,
+            "table_list": null,
+            "tables": []
+        },
+        "db_insert_success": null,
+        "db_details_target": {
+            "table_count": null,
+            "table_list": null,
+            "tables": []
+        }
+    },
+    "mila_local_vhost": {
+        "vhost_conf_path": "\/etc\/apache2\/sites-available\/mila.local.conf",
+        "vhost_file_not_empty": 33,
+        "vhost_url": null,
+        "vhost_root_dir_path_exists": null,
+        "vhost_root_dir_path": null,
+        "vhost_web_config": {
+            "sitename": null,
+            "dbtype": null,
+            "host": null,
+            "user": null,
+            "password": null,
+            "dbprefix": null,
+            "db": null,
+            "dbencryption": null,
+            "dbsslverifyservercert": null,
+            "dbsslkey": null,
+            "dbsslcert": null,
+            "dbsslca": null,
+            "dbsslcipher": null
+        },
+        "db_connect_success": "Exception: Something wrong with db config in \/home\/mila\/Repos\/dbExtractor\/src\/DB\/DB.php:44\nStack trace:\n#0 \/home\/mila\/Repos\/dbExtractor\/src\/Extractor\/Extractor.php(42): Synaptic4u\\DB\\DB->__construct()\n#1 \/home\/mila\/Repos\/dbExtractor\/src\/Core\/App.php(144): Synaptic4u\\Extractor\\Extractor->dumpDBs()\n#2 \/home\/mila\/Repos\/dbExtractor\/src\/Core\/App.php(120): Synaptic4u\\Core\\App->dumpDBs()\n#3 \/home\/mila\/Repos\/dbExtractor\/src\/Core\/App.php(75): Synaptic4u\\Core\\App->runBatch()\n#4 \/home\/mila\/Repos\/dbExtractor\/app.php(14): Synaptic4u\\Core\\App->__construct()\n#5 {main}",
+        "db_dump_path": null,
+        "db_dump_success": null,
+        "db_dump_log_path": null,
+        "db_dump_log_success": null,
+        "db_details_source": {
+            "table_count": null,
+            "table_list": null,
+            "tables": []
         },
         "db_insert_success": null,
         "db_details_target": {

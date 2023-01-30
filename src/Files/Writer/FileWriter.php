@@ -15,24 +15,22 @@ class FileWriter
 {
     protected $path;
 
-    public function appendToFile(IFileWriter $file_writer, string $file, $params)
+    public function appendToFile(IFileWriter $file_writer, string $file, $params, int $levels = 3)
     {
-        $this->setPath($file);
+        $this->setPath($file, $levels);
 
         $file_writer->appendToFile($this->path, $params);
     }
 
-    public function writeToFile(IFileWriter $file_writer, string $file, $params)
+    public function writeToFile(IFileWriter $file_writer, string $file, $params, int $levels = 3)
     {
-        $this->setPath($file);
+        $this->setPath($file, $levels);
 
         $file_writer->writeToFile($this->path, $params);
     }
 
-    protected function setPath(string $file)
+    protected function setPath(string $file, int $levels)
     {
-        // Must accept the directory beginning with a "/".
-        // Travels 2 directories up.
-        $this->path = dirname(__FILE__, 3).$file;
+        $this->path = dirname(__FILE__, $levels).$file;
     }
 }

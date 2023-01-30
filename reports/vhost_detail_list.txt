@@ -1,0 +1,309 @@
+{
+    "DateTime": "UTC 2023-01-30 17:41:30",
+    "Content": {
+        "app_synaptic4u_local_vhost": {
+            "vhost_conf_path": "\/etc\/apache2\/sites-available\/app.synaptic4u.local.conf",
+            "vhost_file_not_empty": 38,
+            "vhost_url": null,
+            "vhost_root_dir_path_exists": null,
+            "vhost_root_dir_path": null,
+            "vhost_web_config": {
+                "sitename": null,
+                "dbtype": null,
+                "host": null,
+                "user": null,
+                "password": null,
+                "dbprefix": null,
+                "db": null,
+                "dbencryption": null,
+                "dbsslverifyservercert": null,
+                "dbsslkey": null,
+                "dbsslcert": null,
+                "dbsslca": null,
+                "dbsslcipher": null
+            },
+            "db_connect_success": null,
+            "db_dump_path": null,
+            "db_dump_success": null,
+            "db_dump_log_path": null,
+            "db_dump_log_success": null,
+            "db_details_source": {
+                "table_count": null,
+                "table_list": null,
+                "tables": []
+            },
+            "db_insert_success": null,
+            "db_details_target": {
+                "table_count": null,
+                "table_list": null,
+                "tables": []
+            }
+        },
+        "api_synaptic4u_local_vhost": {
+            "vhost_conf_path": "\/etc\/apache2\/sites-available\/api.synaptic4u.local.conf",
+            "vhost_file_not_empty": 41,
+            "vhost_url": null,
+            "vhost_root_dir_path_exists": null,
+            "vhost_root_dir_path": null,
+            "vhost_web_config": {
+                "sitename": null,
+                "dbtype": null,
+                "host": null,
+                "user": null,
+                "password": null,
+                "dbprefix": null,
+                "db": null,
+                "dbencryption": null,
+                "dbsslverifyservercert": null,
+                "dbsslkey": null,
+                "dbsslcert": null,
+                "dbsslca": null,
+                "dbsslcipher": null
+            },
+            "db_connect_success": null,
+            "db_dump_path": null,
+            "db_dump_success": null,
+            "db_dump_log_path": null,
+            "db_dump_log_success": null,
+            "db_details_source": {
+                "table_count": null,
+                "table_list": null,
+                "tables": []
+            },
+            "db_insert_success": null,
+            "db_details_target": {
+                "table_count": null,
+                "table_list": null,
+                "tables": []
+            }
+        },
+        "000_default_vhost": {
+            "vhost_conf_path": "\/etc\/apache2\/sites-available\/000-default.conf",
+            "vhost_file_not_empty": 30,
+            "vhost_url": null,
+            "vhost_root_dir_path_exists": null,
+            "vhost_root_dir_path": null,
+            "vhost_web_config": {
+                "sitename": null,
+                "dbtype": null,
+                "host": null,
+                "user": null,
+                "password": null,
+                "dbprefix": null,
+                "db": null,
+                "dbencryption": null,
+                "dbsslverifyservercert": null,
+                "dbsslkey": null,
+                "dbsslcert": null,
+                "dbsslca": null,
+                "dbsslcipher": null
+            },
+            "db_connect_success": null,
+            "db_dump_path": null,
+            "db_dump_success": null,
+            "db_dump_log_path": null,
+            "db_dump_log_success": null,
+            "db_details_source": {
+                "table_count": null,
+                "table_list": null,
+                "tables": []
+            },
+            "db_insert_success": null,
+            "db_details_target": {
+                "table_count": null,
+                "table_list": null,
+                "tables": []
+            }
+        },
+        "ums_synaptic4u_local_vhost": {
+            "vhost_conf_path": "\/etc\/apache2\/sites-available\/ums.synaptic4u.local.conf",
+            "vhost_file_not_empty": 39,
+            "vhost_url": null,
+            "vhost_root_dir_path_exists": null,
+            "vhost_root_dir_path": null,
+            "vhost_web_config": {
+                "sitename": null,
+                "dbtype": null,
+                "host": null,
+                "user": null,
+                "password": null,
+                "dbprefix": null,
+                "db": null,
+                "dbencryption": null,
+                "dbsslverifyservercert": null,
+                "dbsslkey": null,
+                "dbsslcert": null,
+                "dbsslca": null,
+                "dbsslcipher": null
+            },
+            "db_connect_success": null,
+            "db_dump_path": null,
+            "db_dump_success": null,
+            "db_dump_log_path": null,
+            "db_dump_log_success": null,
+            "db_details_source": {
+                "table_count": null,
+                "table_list": null,
+                "tables": []
+            },
+            "db_insert_success": null,
+            "db_details_target": {
+                "table_count": null,
+                "table_list": null,
+                "tables": []
+            }
+        },
+        "puttingtracker_local_vhost": {
+            "vhost_conf_path": "\/etc\/apache2\/sites-available\/puttingtracker.local.conf",
+            "vhost_file_not_empty": 39,
+            "vhost_url": null,
+            "vhost_root_dir_path_exists": null,
+            "vhost_root_dir_path": null,
+            "vhost_web_config": {
+                "sitename": null,
+                "dbtype": null,
+                "host": null,
+                "user": null,
+                "password": null,
+                "dbprefix": null,
+                "db": null,
+                "dbencryption": null,
+                "dbsslverifyservercert": null,
+                "dbsslkey": null,
+                "dbsslcert": null,
+                "dbsslca": null,
+                "dbsslcipher": null
+            },
+            "db_connect_success": null,
+            "db_dump_path": null,
+            "db_dump_success": null,
+            "db_dump_log_path": null,
+            "db_dump_log_success": null,
+            "db_details_source": {
+                "table_count": null,
+                "table_list": null,
+                "tables": []
+            },
+            "db_insert_success": null,
+            "db_details_target": {
+                "table_count": null,
+                "table_list": null,
+                "tables": []
+            }
+        },
+        "default_ssl_vhost": {
+            "vhost_conf_path": "\/etc\/apache2\/sites-available\/default-ssl.conf",
+            "vhost_file_not_empty": 131,
+            "vhost_url": null,
+            "vhost_root_dir_path_exists": null,
+            "vhost_root_dir_path": null,
+            "vhost_web_config": {
+                "sitename": null,
+                "dbtype": null,
+                "host": null,
+                "user": null,
+                "password": null,
+                "dbprefix": null,
+                "db": null,
+                "dbencryption": null,
+                "dbsslverifyservercert": null,
+                "dbsslkey": null,
+                "dbsslcert": null,
+                "dbsslca": null,
+                "dbsslcipher": null
+            },
+            "db_connect_success": null,
+            "db_dump_path": null,
+            "db_dump_success": null,
+            "db_dump_log_path": null,
+            "db_dump_log_success": null,
+            "db_details_source": {
+                "table_count": null,
+                "table_list": null,
+                "tables": []
+            },
+            "db_insert_success": null,
+            "db_details_target": {
+                "table_count": null,
+                "table_list": null,
+                "tables": []
+            }
+        },
+        "dev_synaptic4u_local_vhost": {
+            "vhost_conf_path": "\/etc\/apache2\/sites-available\/dev.synaptic4u.local.conf",
+            "vhost_file_not_empty": 33,
+            "vhost_url": null,
+            "vhost_root_dir_path_exists": null,
+            "vhost_root_dir_path": null,
+            "vhost_web_config": {
+                "sitename": null,
+                "dbtype": null,
+                "host": null,
+                "user": null,
+                "password": null,
+                "dbprefix": null,
+                "db": null,
+                "dbencryption": null,
+                "dbsslverifyservercert": null,
+                "dbsslkey": null,
+                "dbsslcert": null,
+                "dbsslca": null,
+                "dbsslcipher": null
+            },
+            "db_connect_success": null,
+            "db_dump_path": null,
+            "db_dump_success": null,
+            "db_dump_log_path": null,
+            "db_dump_log_success": null,
+            "db_details_source": {
+                "table_count": null,
+                "table_list": null,
+                "tables": []
+            },
+            "db_insert_success": null,
+            "db_details_target": {
+                "table_count": null,
+                "table_list": null,
+                "tables": []
+            }
+        },
+        "mila_local_vhost": {
+            "vhost_conf_path": "\/etc\/apache2\/sites-available\/mila.local.conf",
+            "vhost_file_not_empty": 33,
+            "vhost_url": null,
+            "vhost_root_dir_path_exists": null,
+            "vhost_root_dir_path": null,
+            "vhost_web_config": {
+                "sitename": null,
+                "dbtype": null,
+                "host": null,
+                "user": null,
+                "password": null,
+                "dbprefix": null,
+                "db": null,
+                "dbencryption": null,
+                "dbsslverifyservercert": null,
+                "dbsslkey": null,
+                "dbsslcert": null,
+                "dbsslca": null,
+                "dbsslcipher": null
+            },
+            "db_connect_success": null,
+            "db_dump_path": null,
+            "db_dump_success": null,
+            "db_dump_log_path": null,
+            "db_dump_log_success": null,
+            "db_details_source": {
+                "table_count": null,
+                "table_list": null,
+                "tables": []
+            },
+            "db_insert_success": null,
+            "db_details_target": {
+                "table_count": null,
+                "table_list": null,
+                "tables": []
+            }
+        }
+    }
+}

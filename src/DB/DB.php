@@ -16,35 +16,33 @@ class DB
     protected $status;
     protected $pdo;
     protected $error;
+    protected $config;
 
-    public function __construct($config)
+    public function __construct($config = null)
     {
         try {
             
+            $this->config = $config;
             $this->error = null;
-            $this->conn = null;
-
-            if(isset($config->root_db_login->config_name)){
-                var_dump("YES");
-                $filepath = dirname(__FILE__, 3).'/'.$config->root_db_login->config_name;
-
-                //  Returns associative array.
-                $this->conn = json_decode(file_get_contents($filepath), true);
-
-            }
-            if(isset($config['db'])){
-                $this->conn = [
-                    "host" => $config['host'],
-                    "dbname" => $config['db'],
-                    "user" => $config['user'],
-                    "pass" => $config['password']          
-                ];
-            }
+        
+            $this->conn = [
+                "host" => $this->config['host'],
+                "dbname" => $this->config['db'],
+                "user" => $this->config['user'],
+                "pass" => $this->config['password']          
+            ];
+        
             if($this->conn === null){
                 throw new Exception("Something wrong with db config");
             }
 
-            $dsn = 'mysql:host='.$this->conn['host'].';dbname='.$this->conn['dbname'];
+            if($this->config['enabled']){
+                
+                $dsn = 'mysql:host='.$this->conn['host'].';';
+            }else{
+    
+                $dsn = 'mysql:host='.$this->conn['host'].';dbname='.$this->conn['dbname'];
+            }
 
             //  Create PDO instance.
             $this->pdo = new PDO($dsn, $this->conn['user'], $this->conn['pass']);
