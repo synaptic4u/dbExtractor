@@ -86,50 +86,46 @@ class App
             print_r(PHP_EOL."Application has exited.".PHP_EOL);
         }
     }
-
+    
     private function runBatch()
     {
-        try{
-            $size = sizeof($this->vhost_list);
-
-            for($cnt = 0; $cnt < $size; $cnt++){
-
-                $this->vhost_detail_list = $this->parseVHostFiles();
-          
-                if(($this->vhost_detail_list === null) || (sizeof($this->vhost_detail_list) < 1)){
-                    $error = "ERROR: The Virtual Host Detailed List could not be compiled!".PHP_EOL;
-                    throw new Exception($error);
-                }
-
-                $this->vhost_detail_list = $this->confirmVHostFiles();
-
-                $this->prepDodgyVHostDetailReport();
-                
-                $this->writeToFileJSON('/reports/vhost_detail_list.txt', $this->vhost_detail_list);
-                
-                $this->vhost_detail_list = $this->getDataDetails();
-
-                $this->writeToFileJSON('/reports/vhost_detail_data_list.txt', $this->vhost_detail_list);
-                
-                $this->vhost_detail_list = $this->dumpDBs();
-
-                $this->writeToFileJSON('/reports/vhost_detail_data_list.txt', $this->vhost_detail_list);
-                
-                $this->vhost_detail_list = $this->insertDBs();
-
-                $this->log([
-                    'Location' => __METHOD__.' 4',
-                    'vhost_detail_list' => json_encode($this->vhost_detail_list, JSON_PRETTY_PRINT),
-                ]);
-
-                // Batch Summary
-                if(($cnt % $this->config->report->batch_size) === 0){                  
-                    $this->batchSummary();
-                }
+    try{
+            $this->vhost_detail_list = $this->parseVHostFiles();
+        
+            if(($this->vhost_detail_list === null) || (sizeof($this->vhost_detail_list) < 1)){
+                $error = "ERROR: The Virtual Host Detailed List could not be compiled!".PHP_EOL;
+                throw new Exception($error);
             }
 
+            $this->vhost_detail_list = $this->confirmVHostFiles();
+
+            $this->prepDodgyVHostDetailReport();
+            
+            $this->writeToFileJSON('/reports/vhost_detail_list.txt', $this->vhost_detail_list);
+            
+            $this->vhost_detail_list = $this->getDataDetails();
+
+            $this->writeToFileJSON('/reports/vhost_detail_data_list.txt', $this->vhost_detail_list);
+            
+            $this->vhost_detail_list = $this->dumpDBs();
+
+            $this->writeToFileJSON('/reports/vhost_detail_data_list.txt', $this->vhost_detail_list);
+            
+            $this->vhost_detail_list = $this->insertDBs();
+
+            $this->log([
+                'Location' => __METHOD__.' 4',
+                'vhost_detail_list' => json_encode($this->vhost_detail_list, JSON_PRETTY_PRINT),
+            ]);
+
+            // Batch Summary
+            // if(($cnt % $this->config->report->batch_size) === 0){                  
+            //     $this->batchSummary();
+            // }
+        
+
             // Total Summary
-            $this->totalSummary();
+            // $this->totalSummary();
         }catch(Exception $e){
             
             $this->error([
