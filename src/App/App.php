@@ -103,10 +103,10 @@ class App
             $this->prepDodgyVHostDetailReport();
             $this->writeToFileJSON('/reports/vhost_detail_list.txt', $this->vhost_detail_list);
             
-            $this->log([
-                'Location' => __METHOD__.' 1',
-                'vhost_detail_list' => json_encode($this->vhost_detail_list, JSON_PRETTY_PRINT),
-            ]);
+            // $this->log([
+            //     'Location' => __METHOD__.' 1',
+            //     'vhost_detail_list' => json_encode($this->vhost_detail_list, JSON_PRETTY_PRINT),
+            // ]);
 
             $this->vhost_detail_list = $this->getDataDetails();
 
@@ -121,12 +121,17 @@ class App
 
             $this->writeToFileJSON('/reports/vhost_detail_data_list.txt', $this->vhost_detail_list);
             
-            $this->log([
-                'Location' => __METHOD__.' 3',
-                'vhost_detail_list' => json_encode($this->vhost_detail_list, JSON_PRETTY_PRINT),
-            ]);
+            // $this->log([
+            //     'Location' => __METHOD__.' 3',
+            //     'vhost_detail_list' => json_encode($this->vhost_detail_list, JSON_PRETTY_PRINT),
+            // ]);
 
             $this->vhost_detail_list = $this->insertDBs();
+
+            $this->log([
+                'Location' => __METHOD__.' 4',
+                'vhost_detail_list' => json_encode($this->vhost_detail_list, JSON_PRETTY_PRINT),
+            ]);
         }catch(Exception $e){
             
             $this->error([
