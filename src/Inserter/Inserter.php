@@ -99,6 +99,28 @@ class Inserter
                 "Location" => __METHOD__,
                 "vhost_detail_list" => json_encode($vhost_detail_list, JSON_PRETTY_PRINT),
             ]);
+
+
+            $this->db = new DB($this->config->db->mysql_server_creds_target);
+                   
+            if($this->db->getError() != null){
+
+                $table_list = $this->db->getTablesList();
+                
+                $vhost_detail_list[$name]['db_details_target']['table_count'] = sizeof($table_list);
+                $vhost_detail_list[$name]['db_details_target']['table_list'] = $table_list;
+
+                foreach($table_list as $table){
+
+                    $row_count = $this->db->getTableRowCount($table);
+
+                    $vhost_detail_list[$name]['db_details_target']['tables'][] = [
+                        "name" => $table,
+                        "row_count" => $row_count,
+                    ];
+                }
+            }
+
         }catch(Exception $e){
 
             $this->error([
@@ -112,7 +134,7 @@ class Inserter
         }
     }
 
-    public function createDB()
+    public function confirm()
     {
         //
     }
