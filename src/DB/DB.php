@@ -39,15 +39,9 @@ class DB
                 throw new Exception("Something wrong with db config");
             }
 
-            if(isset($this->config->enabled)){
-                
-                $dsn = 'mysql:host='.$this->conn['host'].';';
-            }
-            if(!isset($this->config->enabled)){
-    
-                $dsn = 'mysql:host='.$this->conn['host'].';dbname='.$this->conn['dbname'];
-            }
-
+            $dsn = 'mysql:host='.$this->conn['host'];
+            $dsn .= ($this->conn['dbname'] === null) ? '' : ';dbname='.$this->conn['dbname'];
+            
             //  Create PDO instance.
             $this->pdo = new PDO($dsn, $this->conn['user'], $this->conn['pass']);
 

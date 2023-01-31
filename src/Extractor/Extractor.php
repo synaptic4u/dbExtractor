@@ -50,12 +50,10 @@ class Extractor
                     $vhost_detail_list[$name]['db_connect_error'] .= $this->db->getError();
                 }else{
                     
-                    $timestamp = microtime(true);
-                    
                     $vhost_detail_list[$name]['db_connect_success'] = true;
 
-                    $vhost_detail_list[$name]['db_dump_log_path'] = dirname(__FILE__, 2).'/logs/mysql_logs/'.str_replace("-","_", $name).'_'.$timestamp.'_mysql_dump.txt';
-                    $vhost_detail_list[$name]['db_dump_path'] = dirname(__FILE__, 3).'/mysql_dumps/'.str_replace("-","_", $name).'_'.$timestamp.'_mysql_dump.sql';
+                    $vhost_detail_list[$name]['db_dump_log_path'] = dirname(__FILE__, 2).'/logs/mysql_logs/'.str_replace("-","_", $name).'_mysql_dump.txt';
+                    $vhost_detail_list[$name]['db_dump_path'] = dirname(__FILE__, 3).'/mysql_dumps/'.str_replace("-","_", $name).'_mysql_dump.sql';
                     
                     $cli_cmd = 'mysqldump -h'.$this->config->db->mysql_server_creds_source->host.' -u'.$this->config->db->mysql_server_creds_source->user.' -p'.$this->config->db->mysql_server_creds_source->password.'  '.$vhost['vhost_web_config']['db'].' > '.$vhost_detail_list[$name]['db_dump_path'].'';
 
