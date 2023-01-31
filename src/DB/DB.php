@@ -25,7 +25,6 @@ class DB
         
         try {
             
-            
             $this->config = $config;
             $this->error = null;
 

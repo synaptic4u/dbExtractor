@@ -14,7 +14,7 @@ class Extractor
     private $db;
     private $config;
     
-    public function __construct(stdClass $config)
+    public function __construct($config)
     {
         try {
             $this->config = $config;

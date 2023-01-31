@@ -104,6 +104,7 @@ class App
                 $this->vhost_detail_list = $this->confirmVHostFiles();
 
                 $this->prepDodgyVHostDetailReport();
+                
                 $this->writeToFileJSON('/reports/vhost_detail_list.txt', $this->vhost_detail_list);
                 
                 $this->vhost_detail_list = $this->getDataDetails();

@@ -73,7 +73,6 @@ class Inserter
                     ]);
 
                     $cli_cmd = 'mysql -h'.$this->config->db->mysql_server_creds_target->host.' -u'.$this->config->db->mysql_server_creds_target->user.' -p'.$this->config->db->mysql_server_creds_target->password.' -e \' GRANT ALL PRIVILEGES ON '.$vhost['vhost_web_config']['db'].'.* TO "'.$vhost['vhost_web_config']['user'].'"@'.$vhost['vhost_web_config']['db'].' WITH GRANT OPTION;\';';
-                    print_r($cli_cmd.PHP_EOL);
                     exec($cli_cmd, $output, $returnVar);
 
                     
