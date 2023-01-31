@@ -31,6 +31,10 @@ class Inserter
     public function insertDBs(array $vhost_detail_list)
     {
 
+        $this->log([
+            "Location" => __METHOD__,
+        ]);
+
         try{
 
             foreach($vhost_detail_list as $name => $vhost){
@@ -43,8 +47,12 @@ class Inserter
                 }else{
 
                     $timestamp = microtime(true);
+                    
+                    $this->log([
+                        "Location" => __METHOD__,
+                    ]);
 
-                    $cli_cmd = 'mysql -h'.$this->config->db->mysql_server_creds_target->sitename.' -u'.$this->config->db->mysql_server_creds_target->user.' -p'.$this->config->db->mysql_server_creds_target['password'].' -e \'create USER "'.$vhost['vhost_web_config']['user'].'"@'.$vhost['vhost_web_config']['db'].' IDENTIFIED BY "'.$vhost['vhost_web_config']['user'].'";\';';
+                    $cli_cmd = 'mysql -h'.$this->config->db->mysql_server_creds_target->host.' -u'.$this->config->db->mysql_server_creds_target->user.' -p'.$this->config->db->mysql_server_creds_target->password.' -e \'create USER "'.$vhost['vhost_web_config']['user'].'"@'.$vhost['vhost_web_config']['db'].' IDENTIFIED BY "'.$vhost['vhost_web_config']['user'].'";\';';
                     exec($cli_cmd, $output, $returnVar);
                     
                     if($returnVar === 0){
@@ -64,8 +72,10 @@ class Inserter
                         "returnVar" => json_encode($returnVar, JSON_PRETTY_PRINT),
                     ]);
 
-                    $cli_cmd = 'mysql -h'.$this->config->db->mysql_server_creds_target->sitename.' -u'.$this->config->db->mysql_server_creds_target->user.' -p'.$this->config->db->mysql_server_creds_target['password'].' -e \' GRANT ALL PRIVILEGES ON '.$vhost['vhost_web_config']['db'].'.* TO "'.$vhost['vhost_web_config']['user'].'"@'.$vhost['vhost_web_config']['db'].' WITH GRANT OPTION;\';';
+                    $cli_cmd = 'mysql -h'.$this->config->db->mysql_server_creds_target->host.' -u'.$this->config->db->mysql_server_creds_target->user.' -p'.$this->config->db->mysql_server_creds_target->password.' -e \' GRANT ALL PRIVILEGES ON '.$vhost['vhost_web_config']['db'].'.* TO "'.$vhost['vhost_web_config']['user'].'"@'.$vhost['vhost_web_config']['db'].' WITH GRANT OPTION;\';';
+                    print_r($cli_cmd.PHP_EOL);
                     exec($cli_cmd, $output, $returnVar);
+
                     
                     if($returnVar === 0){
                     
@@ -85,7 +95,8 @@ class Inserter
                     ]);
                     
 
-                    $cli_cmd = 'mysql -h'.$this->config->db->mysql_server_creds_target->sitename.' -u'.$this->config->db->mysql_server_creds_target->user.' -p'.$this->config->db->mysql_server_creds_target['password'].' -e \'FLUSH PRIVILEGES;\';';
+                    $cli_cmd = 'mysql -h'.$this->config->db->mysql_server_creds_target->host.' -u'.$this->config->db->mysql_server_creds_target->user.' -p'.$this->config->db->mysql_server_creds_target->password.' -e \'FLUSH PRIVILEGES;\';';
+                    print_r($cli_cmd.PHP_EOL);
                     exec($cli_cmd, $output, $returnVar);
                     
                     if($returnVar === 0){
@@ -106,7 +117,7 @@ class Inserter
                     
                     $vhost_detail_list[$name]['db_insert_dump_log_path'] = dirname(__FILE__, 2).'/logs/mysql_logs/'.str_replace("-","_", $name).'_'.$timestamp.'_mysql_insert_dump.txt';
                     
-                    $cli_cmd = 'mysql -h'.$this->config->db->mysql_server_creds_target->sitename.' -u'.$this->config->db->mysql_server_creds_target->user.' -p'.$this->config->db->mysql_server_creds_target['password'].' --log-error='.$vhost_detail_list[$name]['db_insert_dump_log_path'].' '.$vhost['vhost_web_config']['db'].' < '.$vhost_detail_list[$name]['db_dump_path'].' ;';
+                    $cli_cmd = 'mysql -h'.$this->config->db->mysql_server_creds_target->host.' -u'.$this->config->db->mysql_server_creds_target->user.' -p'.$this->config->db->mysql_server_creds_target->password.' --log-error='.$vhost_detail_list[$name]['db_insert_dump_log_path'].' '.$vhost['vhost_web_config']['db'].' < '.$vhost_detail_list[$name]['db_dump_path'].' ;';
                     exec($cli_cmd, $output, $returnVar);
                     
                     if($returnVar === 0){

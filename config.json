@@ -22,16 +22,16 @@
     "db": {
         "mysql_server_creds_source": {
             "Description": "Using Sitename here to make it easier to use with settings in web dir config file. MySQL ONLY! Root Database Login credentials. If you want to compare db's from vhosts to actual databases in the server.",
-            "enabled": false,
-            "sitename": "omnicasa-mysql-v2",
-            "port": null,
-            "username": null,
-            "password": null
+            "enabled": true,
+            "host": "omnicasa-mysql",
+            "port": 3306,
+            "username": "root",
+            "password": "vMsS3xkD189VRy"
         },
         "mysql_server_creds_target": {
             "Description": "Using Sitename here to make it easier to use with settings in web dir config file. The target server where the db's will be inserted. Direct transport to Mysql Server.",
             "enabled": true,
-            "sitename": "omnicasa-mysql-v2",
+            "host": "omnicasa-mysql-v2",
             "port": 3306,
             "username": "root",
             "password": "r7Xl5GRNhXVlMmcF"
