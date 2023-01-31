@@ -6,7 +6,9 @@ docker exec -it $(docker ps -aqf "name=^omnicasa-nginx$") bash
 
 
 cd /
-yum update -y && yum upgrade && yum install git nano tree locate
+yum update -y && yum upgrade
+
+yum install git nano tree locate
  
  
   git clone https://synaptic4u@github.com/synaptic4u/dbExtractor.git

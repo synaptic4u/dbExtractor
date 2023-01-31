@@ -50,14 +50,16 @@ class Extractor
                     $vhost_detail_list[$name]['db_connect_success'] = $this->db->getError();
                 }else{
                     
-                    $timestamp = microtime(true);
+                    // $timestamp = microtime(true);
+                    $timestamp = '';
 
                     $vhost_detail_list[$name]['db_connect_success'] = true;
 
                     $vhost_detail_list[$name]['db_dump_log_path'] = dirname(__FILE__, 2).'/logs/mysql_logs/'.str_replace("-","_", $name).'_'.$timestamp.'_mysql_dump.txt';
                     $vhost_detail_list[$name]['db_dump_path'] = dirname(__FILE__, 3).'/mysql_dumps/'.str_replace("-","_", $name).'_'.$timestamp.'_mysql_dump.sql';
                     
-                    $cli_cmd = 'mysqldump -u'.$vhost['vhost_web_config']['user'].' -p'.$vhost['vhost_web_config']['password'].' --opt --comments --hex-blob --tz-utc --events --routines --force --log-error='.$vhost_detail_list[$name]['db_dump_log_path'].' '.$vhost['vhost_web_config']['db'].' > '.$vhost_detail_list[$name]['db_dump_path'].'';
+                    $cli_cmd = 'mysqldump -h localhost -u"'.$vhost['vhost_web_config']['user'].'" -p'.$vhost['vhost_web_config']['password'].' --opt --comments --hex-blob --tz-utc --events --routines --force --log-error='.$vhost_detail_list[$name]['db_dump_log_path'].' '.$vhost['vhost_web_config']['db'].' > '.$vhost_detail_list[$name]['db_dump_path'].'';
+                    // mysqldump -h omnicasa-mysql -u"omni-joomla1" -p"omni-joomla1" --opt --comments --hex-blob --tz-utc --events --routines --force omnicasa_joomla1 > /dbExtractor/mysql_dumps/omnicasa_joomla1.sql
                     
                     exec($cli_cmd, $output, $returnVar);
 
