@@ -1,5 +1,4 @@
 docker-compose down
-sleep 30
 docker-compose build
 docker-compose up -d
 docker ps
@@ -8,12 +7,49 @@ docker exec -it $(docker ps -aqf "name=^omnicasa-nginx$") bash
 
 cd /
 yum update -y && yum upgrade && yum install git nano tree locate
- && git clone https://synaptic4u@github.com/synaptic4u/dbExtractor.git
+ 
+ 
+  git clone https://synaptic4u@github.com/synaptic4u/dbExtractor.git
 
 
 
 mysqldump -uUser -pPassword --opt --comments --hex-blob --tz-utc --events --routines --force
---log-error=/home/mila/Downloads/test_log.txt Database | mysql --host=Target_URL -C New_Database
+--log-error=test_log.txt Database | mysql --host=Target_URL -C New_Database
 
+
+--  Dumps 
+mysqldump -homnicasa-mysql -uomni-joomla1 -pomni-joomla1  --opt --comments --hex-blob --tz-utc --events --routines --force --log-error=test_log.txt omnicasa_joomla1 > omni.sql
+
+--  Create DB
+mysql -homnicasa-mysql-v2 -uroot -pr7Xl5GRNhXVlMmcF -e "CREATE DATABASE IF NOT EXISTS omnicasa_joomla1 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;";
+
+--  Create user
+mysql -homnicasa-mysql-v2 -uroot -pr7Xl5GRNhXVlMmcF -e 'create USER "omni-joomla1"@"omnicasa-mysql-v2" IDENTIFIED BY "omni-joomla1";';
+
+-- Grant Priv
+mysql -homnicasa-mysql-v2 -uroot -pr7Xl5GRNhXVlMmcF -e ' GRANT ALL PRIVILEGES ON omnicasa_joomla1.* TO "omni-joomla1"@"omnicasa-mysql-v2" WITH GRANT OPTION;';
+mysql -homnicasa-mysql-v2 -uroot -pr7Xl5GRNhXVlMmcF -e 'FLUSH PRIVILEGES;';
+
+
+
+
+
+
+
+----------------
+CREATE DATABASE IF NOT EXISTS omnicasa_joomla1 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;create USER omni-joomla1@localhost IDENTIFIED BY omni-joomla1; GRANT ALL PRIVILEGES ON omnicasa_joomla1.* TO omni-joomla1@localhost WITH GRANT OPTION;FLUSH PRIVILEGES;
+
+
+
+$cli_cmd = 'mysqldump -u'.$vhost['vhost_web_config']['user'].' -p'.$vhost['vhost_web_config']['password'].' --opt --comments --hex-blob --tz-utc --events --routines --force --log-error='.$vhost_detail_list[$name]['db_dump_log_path'].' '.$vhost['vhost_web_config']['db'].' > '.$vhost_detail_list[$name]['db_dump_path'].'';
+                   
+
+
+
+
+"sitename": "omnicasa-mysql-v2",
+"port": 3306,
+"username": "root",
+"password": "r7Xl5GRNhXVlMmcF"
 
 

@@ -19,11 +19,6 @@ class Inserter
             $this->config = $config;
 
             $this->db = null;
-
-            if($this->config->db->mysql_server_creds_source->enabled === true){
-
-                $this->db = new DB($this->config->db->mysql_server_creds_source);
-            }
         } catch (Exception $e) {
 
             $this->error([
@@ -40,7 +35,7 @@ class Inserter
 
             foreach($vhost_detail_list as $name => $vhost){
 
-                $this->db = new DB($vhost['vhost_web_config']);
+                $this->db = new DB($this->config->db->mysql_server_creds_target);
 
                 // var_dump(get_class($this->db));
                 // var_dump($this->db->getError());
@@ -49,38 +44,66 @@ class Inserter
                 
                     $vhost_detail_list[$name]['db_connect_success'] = $this->db->getError();
                 }else{
-                    
-                    $timestamp = microtime(true);
 
-                    $vhost_detail_list[$name]['db_connect_success'] = true;
-                    
-                    $cli_cmd = 'mysqldump -u'.$vhost['vhost_web_config']['user'].' -p'.$vhost['vhost_web_config']['password'].' --opt --comments --hex-blob --tz-utc --events --routines --force --log-error='.$vhost_detail_list[$name]['db_dump_log_path'].' '.$vhost['vhost_web_config']['db'].' | mysql -u'.$this->config->db->mysql_server_creds_target->username.' -p'.$this->config->db->mysql_server_creds_target->password.' --host='.$this->config->db->mysql_server_creds_target->sitename.' -C  ';
-                    // $cli_cmd = 'mysqldump -u'.$vhost['vhost_web_config']['user'].' -p'.$vhost['vhost_web_config']['password'].' --opt --comments --hex-blob --tz-utc --events --routines --force --log-error='.$vhost_detail_list[$name]['db_dump_log_path'].' '.$vhost['vhost_web_config']['db'].' > '.$vhost_detail_list[$name]['db_dump_path'].'';
-
+                    $cli_cmd = 'mysql -h'.$this->config->db->mysql_server_creds_target->sitename.' -u'.$this->config->db->mysql_server_creds_target->user.' -p'.$this->config->db->mysql_server_creds_target['password'].' -e \'create USER "'.$vhost['vhost_web_config']['user'].'"@'.$vhost['vhost_web_config']['db'].' IDENTIFIED BY "'.$vhost['vhost_web_config']['user'].'";\';';
                     exec($cli_cmd, $output, $returnVar);
-
-                    if(file_exists($vhost_detail_list[$name]['db_dump_path'])){
-                        $vhost_detail_list[$name]['db_dump_success'] = true;
-                    }
-                    if(file_exists($vhost_detail_list[$name]['db_dump_log_path'])){
-                        $vhost_detail_list[$name]['db_dump_log_success'] = true;
-                    }
-                    
                     $this->log([
                         "Location" => __METHOD__,
-                        "vhost" => $name,
-                        "mysql_log_file" => $vhost_detail_list[$name]['db_dump_log_path'],
-                        "mysql_dump_file" => $vhost_detail_list[$name]['db_dump_path'],
                         "cli_cmd" => $cli_cmd,
                         "output" => json_encode($output, JSON_PRETTY_PRINT),
                         "returnVar" => json_encode($returnVar, JSON_PRETTY_PRINT),
                     ]);
+                    if($returnVar === 0){
+                        $vhost_detail_list[$name]['db_insert_success_create_user'] = true;
+                    }
+
+                    $cli_cmd = 'mysql -h'.$this->config->db->mysql_server_creds_target->sitename.' -u'.$this->config->db->mysql_server_creds_target->user.' -p'.$this->config->db->mysql_server_creds_target['password'].' -e \' GRANT ALL PRIVILEGES ON '.$vhost['vhost_web_config']['db'].'.* TO "'.$vhost['vhost_web_config']['user'].'"@'.$vhost['vhost_web_config']['db'].' WITH GRANT OPTION;\';';
+                    exec($cli_cmd, $output, $returnVar);
+                    $this->log([
+                        "Location" => __METHOD__,
+                        "cli_cmd" => $cli_cmd,
+                        "output" => json_encode($output, JSON_PRETTY_PRINT),
+                        "returnVar" => json_encode($returnVar, JSON_PRETTY_PRINT),
+                    ]);
+                    if($returnVar === 0){
+                        $vhost_detail_list[$name]['db_insert_success_priv_user'] = true;
+                    }
+
+                    $cli_cmd = 'mysql -h'.$this->config->db->mysql_server_creds_target->sitename.' -u'.$this->config->db->mysql_server_creds_target->user.' -p'.$this->config->db->mysql_server_creds_target['password'].' -e \'FLUSH PRIVILEGES;\';';
+                    exec($cli_cmd, $output, $returnVar);
+                    $this->log([
+                        "Location" => __METHOD__,
+                        "cli_cmd" => $cli_cmd,
+                        "output" => json_encode($output, JSON_PRETTY_PRINT),
+                        "returnVar" => json_encode($returnVar, JSON_PRETTY_PRINT),
+                    ]);
+                    if($returnVar === 0){
+                        $vhost_detail_list[$name]['db_insert_success_priv_flush'] = true;
+                    }
+                    
+                    $cli_cmd = 'mysql -h'.$this->config->db->mysql_server_creds_target->sitename.' -u'.$this->config->db->mysql_server_creds_target->user.' -p'.$this->config->db->mysql_server_creds_target['password'].' --log-error='.$vhost_detail_list[$name]['db_dump_log_path'].' '.$vhost['vhost_web_config']['db'].' < '.$vhost_detail_list[$name]['db_dump_path'].' ;';
+                    exec($cli_cmd, $output, $returnVar);
+                    $this->log([
+                        "Location" => __METHOD__,
+                        "cli_cmd" => $cli_cmd,
+                        "output" => json_encode($output, JSON_PRETTY_PRINT),
+                        "returnVar" => json_encode($returnVar, JSON_PRETTY_PRINT),
+                    ]);
+                    if($returnVar === 0){
+                        $vhost_detail_list[$name]['db_insert_success_dump'] = true;
+                    }
                 }
             }
+     
+            $this->log([
+                "Location" => __METHOD__,
+                "vhost_detail_list" => json_encode($vhost_detail_list, JSON_PRETTY_PRINT),
+            ]);
         }catch(Exception $e){
 
             $this->error([
                 'Location' => __METHOD__,
+                "vhost_detail_list" => json_encode($vhost_detail_list, JSON_PRETTY_PRINT),
                 'error' => $e->__toString(),
             ]);
         }finally{

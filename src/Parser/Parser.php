@@ -146,7 +146,10 @@ class Parser
                         "table_list" => null,
                         "tables" => [],
                     ],
-                    "db_insert_success" => null,   
+                    "db_insert_success_dump" => null,
+                    "db_insert_success_create_user" => null,
+                    "db_insert_success_priv_user" => null,
+                    "db_insert_success_priv_flush" => null,
                     "db_details_target" => [
                         "table_count" => null,
                         "table_list" => null,
