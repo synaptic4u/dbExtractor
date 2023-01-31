@@ -124,12 +124,12 @@ class App
 
                 // Batch Summary
                 if(($cnt % $this->config->report->batch_size) === 0){                  
-                    
+                    $this->batchSummary();
                 }
             }
 
             // Total Summary
-            
+            $this->totalSummary();
         }catch(Exception $e){
             
             $this->error([
@@ -140,6 +140,10 @@ class App
 
         }
     }
+
+    private function batchSummary(){}
+
+    private function totalSummary(){}
 
     private function insertDBs()
     {

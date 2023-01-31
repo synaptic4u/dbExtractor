@@ -95,7 +95,6 @@ class Inserter
                     
 
                     $cli_cmd = 'mysql -h'.$this->config->db->mysql_server_creds_target->host.' -u'.$this->config->db->mysql_server_creds_target->user.' -p'.$this->config->db->mysql_server_creds_target->password.' -e \'FLUSH PRIVILEGES;\';';
-                    print_r($cli_cmd.PHP_EOL);
                     exec($cli_cmd, $output, $returnVar);
                     
                     if($returnVar === 0){
@@ -116,10 +115,11 @@ class Inserter
                     
                     $vhost_detail_list[$name]['db_insert_dump_log_path'] = dirname(__FILE__, 2).'/logs/mysql_logs/'.str_replace("-","_", $name).'_'.$timestamp.'_mysql_insert_dump.txt';
                     
-                    $cli_cmd = 'mysql -h'.$this->config->db->mysql_server_creds_target->host.' -u'.$this->config->db->mysql_server_creds_target->user.' -p'.$this->config->db->mysql_server_creds_target->password.' --log-error='.$vhost_detail_list[$name]['db_insert_dump_log_path'].' '.$vhost['vhost_web_config']['db'].' < '.$vhost_detail_list[$name]['db_dump_path'].' ;';
+                    $cli_cmd = 'mysql -h'.$this->config->db->mysql_server_creds_target->host.' -u'.$this->config->db->mysql_server_creds_target->user.' -p'.$this->config->db->mysql_server_creds_target->password.' '.$vhost['vhost_web_config']['db'].' < '.$vhost_detail_list[$name]['db_dump_path'].' ;';
                     exec($cli_cmd, $output, $returnVar);
                     
                     if($returnVar === 0){
+                        
                         $vhost_detail_list[$name]['db_insert_success_dump'] = true;
                     }
                     

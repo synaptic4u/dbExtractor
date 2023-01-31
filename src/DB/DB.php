@@ -29,21 +29,21 @@ class DB
             $this->error = null;
 
             $this->conn = [
-                "host" => $this->config['host'],
-                "dbname" => $this->config['db'],
-                "user" => $this->config['user'],
-                "pass" => $this->config['password']          
+                "host" => $this->config->host,
+                "dbname" => $this->config->db,
+                "user" => $this->config->user,
+                "pass" => $this->config->password
             ];
         
             if($this->conn === null){
                 throw new Exception("Something wrong with db config");
             }
 
-            if(isset($this->config['enabled'])){
+            if(isset($this->config->enabled)){
                 
                 $dsn = 'mysql:host='.$this->conn['host'].';';
             }
-            if(!isset($this->config['enabled'])){
+            if(!isset($this->config->enabled)){
     
                 $dsn = 'mysql:host='.$this->conn['host'].';dbname='.$this->conn['dbname'];
             }

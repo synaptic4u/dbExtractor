@@ -43,7 +43,7 @@ class Extractor
 
             foreach($vhost_detail_list as $name => $vhost){
 
-                $this->db = new DB($vhost['vhost_web_config']);
+                $this->db = new DB((object) $vhost['vhost_web_config']);
 
                 if($this->db->getError() != null){
                 
@@ -57,15 +57,7 @@ class Extractor
                     $vhost_detail_list[$name]['db_dump_log_path'] = dirname(__FILE__, 2).'/logs/mysql_logs/'.str_replace("-","_", $name).'_'.$timestamp.'_mysql_dump.txt';
                     $vhost_detail_list[$name]['db_dump_path'] = dirname(__FILE__, 3).'/mysql_dumps/'.str_replace("-","_", $name).'_'.$timestamp.'_mysql_dump.sql';
                     
-                    // $cli_cmd = 'mysqldump -homnicasa-mysql -u'.$vhost['vhost_web_config']['user'].' -p'.$vhost['vhost_web_config']['password'].' --opt --comments --hex-blob --tz-utc --events --routines --force --log-error='.$vhost_detail_list[$name]['db_dump_log_path'].' '.$vhost['vhost_web_config']['db'].' > '.$vhost_detail_list[$name]['db_dump_path'].'';
                     $cli_cmd = 'mysqldump -h'.$this->config->db->mysql_server_creds_source->host.' -u'.$this->config->db->mysql_server_creds_source->user.' -p'.$this->config->db->mysql_server_creds_source->password.'  '.$vhost['vhost_web_config']['db'].' > '.$vhost_detail_list[$name]['db_dump_path'].'';
-
-
-                    // mysqldump -hlocalhost -uomni-joomla1 -pomni-joomla1 omnicasa_joomla1 > /omnicasa_joomla1.sql
-                    // mysqldump -homnicasa-mysql -uomni-joomla1 -pomni-joomla1 omnicasa_joomla1 > omnicasa_joomla1.sql
-                    // mysqldump -homnicasa-mysql -uomni-joomla1 -pomni-joomla1 omnicasa_joomla1 > /omni.sql
-                    // mysqldump -homnicasa-mysql -uomni-joomla1 -pomni-joomla1 --opt --comments --hex-blob --tz-utc --events --routines --force --log-error=test_log.txt omnicasa_joomla1 > omni.sql
-                    // mysqldump -homnicasa-mysql -uomni-joomla1 -pomni-joomla1  omnicasa_joomla1 > omni.sql
 
                     exec($cli_cmd, $output, $returnVar);
 
@@ -81,10 +73,10 @@ class Extractor
                             $vhost_detail_list[$name]['db_dump_success'] = true;
                         }
                     }
-                    if(file_exists($vhost_detail_list[$name]['db_dump_log_path'])){
+                    // if(file_exists($vhost_detail_list[$name]['db_dump_log_path'])){
                         
-                        $vhost_detail_list[$name]['db_dump_log_success'] = true;
-                    }
+                    //     $vhost_detail_list[$name]['db_dump_log_success'] = true;
+                    // }
                     
                     $this->log([
                         "Location" => __METHOD__,
@@ -116,9 +108,6 @@ class Extractor
             foreach($vhost_detail_list as $name => $vhost){
 
                 $this->db = new DB($vhost['vhost_web_config']);
-
-                // var_dump(get_class($this->db));
-                // var_dump($this->db->getError());
 
                 if($this->db->getError() != null){
                 

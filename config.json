@@ -25,6 +25,7 @@
             "enabled": true,
             "host": "omnicasa-mysql",
             "port": 3306,
+            "db": null,
             "user": "root",
             "password": "vMsS3xkD189VRy"
         },
@@ -33,6 +34,7 @@
             "enabled": true,
             "host": "omnicasa-mysql-v2",
             "port": 3306,
+            "db": null,
             "user": "root",
             "password": "r7Xl5GRNhXVlMmcF"
         }
