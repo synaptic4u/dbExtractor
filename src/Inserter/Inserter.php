@@ -53,7 +53,7 @@ class Inserter
                     ]);
 
                     // CREATE USER
-                    $cli_cmd = 'mysql -h'.$this->config->db->mysql_server_creds_target->host.' -u'.$this->config->db->mysql_server_creds_target->user.' -p'.$this->config->db->mysql_server_creds_target->password.' -e \'create USER "'.$vhost['vhost_web_config']['user'].'"@"'.$vhost['vhost_web_config']['db'].'" IDENTIFIED BY "'.$vhost['vhost_web_config']['user'].'";\';';
+                    $cli_cmd = 'mysql -h'.$this->config->db->mysql_server_creds_target->host.' -u'.$this->config->db->mysql_server_creds_target->user.' -p'.$this->config->db->mysql_server_creds_target->password.' -e \'create USER "'.$vhost['vhost_web_config']['user'].'"@"'.$this->config->db->mysql_server_creds_target->host.'" IDENTIFIED BY "'.$vhost['vhost_web_config']['password'].'";\';';
                     exec($cli_cmd, $output, $returnVar);
                     
                     if($returnVar === 0){
