@@ -53,7 +53,7 @@ class Inserter
                     ]);
 
                     // CREATE USER
-                    $cli_cmd = 'mysql -h'.$this->config->db->mysql_server_creds_target->host.' -u'.$this->config->db->mysql_server_creds_target->user.' -p'.$this->config->db->mysql_server_creds_target->password.' -e \'create USER `'.$vhost['vhost_web_config']['user'].'`@`'.$vhost['vhost_web_config']['db'].'` IDENTIFIED BY `'.$vhost['vhost_web_config']['user'].'`;\';';
+                    $cli_cmd = 'mysql -h'.$this->config->db->mysql_server_creds_target->host.' -u'.$this->config->db->mysql_server_creds_target->user.' -p'.$this->config->db->mysql_server_creds_target->password.' -e \'create USER "'.$vhost['vhost_web_config']['user'].'"@"'.$vhost['vhost_web_config']['db'].'" IDENTIFIED BY "'.$vhost['vhost_web_config']['user'].'";\';';
                     exec($cli_cmd, $output, $returnVar);
                     
                     if($returnVar === 0){
@@ -63,7 +63,7 @@ class Inserter
                     
                     if($returnVar !== 0){
                         
-                        $vhost_detail_list[$name]['db_connect_error'] .= ' -> Status: '.$returnVar.' Output: '.$output;
+                        $vhost_detail_list[$name]['db_connect_error'] .= ' -> Status: '.$returnVar.' Output: '.json_encode($output, JSON_PRETTY_PRINT);
                     }
                     
                     $this->log([

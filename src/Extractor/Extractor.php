@@ -43,7 +43,17 @@ class Extractor
 
             foreach($vhost_detail_list as $name => $vhost){
 
-                $this->db = new DB((object) $vhost['vhost_web_config']);
+                $conn1 = json_decode(json_encode($vhost['vhost_web_config']), false);
+                $conn = (object) $vhost['vhost_web_config'];
+
+                    $this->log([
+                        "Location" => __METHOD__,
+                        "conn" => get_class($conn),
+                        "conn1" => get_class($conn1),
+                        "conn1" => json_encode($conn1, JSON_PRETTY_PRINT),
+                        "conn" => json_encode($conn, JSON_PRETTY_PRINT),
+                    ]);
+                $this->db = new DB($conn);
 
                 if($this->db->getError() != null){
                 
