@@ -5,7 +5,7 @@
     },
     "vhost": {
         "Description": "Nginx Virtual Hosts Base Directory path: Include a trailing forward slash. Include the suffix to search for passed as an array.",
-        "dir_path": "/home/mila/Repos/dbExtractor/testdir/etc/nginx/conf.d/",
+        "dir_path": "/etc/nginx/conf.d/",
         "search_suffix": [
             "conf",
             "xxxxxx"
@@ -23,7 +23,7 @@
         "mysql_server_creds_source": {
             "Description": "Using Sitename here to make it easier to use with settings in web dir config file. MySQL ONLY! Root Database Login credentials. If you want to compare db's from vhosts to actual databases in the server.",
             "enabled": false,
-            "sitename": null,
+            "sitename": "omnicasa-mysql-v2",
             "port": null,
             "username": null,
             "password": null

@@ -38,34 +38,48 @@ class Extractor
     {
         try{
 
+            $output = null;
+            $returnVar = null;
+
             foreach($vhost_detail_list as $name => $vhost){
 
                 $this->db = new DB($vhost['vhost_web_config']);
 
-                // var_dump(get_class($this->db));
-                // var_dump($this->db->getError());
-
                 if($this->db->getError() != null){
                 
-                    $vhost_detail_list[$name]['db_connect_success'] = $this->db->getError();
+                    $vhost_detail_list[$name]['db_connect_error'] .= $this->db->getError();
                 }else{
                     
-                    // $timestamp = microtime(true);
-                    $timestamp = '';
-
+                    $timestamp = microtime(true);
+                    
                     $vhost_detail_list[$name]['db_connect_success'] = true;
 
                     $vhost_detail_list[$name]['db_dump_log_path'] = dirname(__FILE__, 2).'/logs/mysql_logs/'.str_replace("-","_", $name).'_'.$timestamp.'_mysql_dump.txt';
                     $vhost_detail_list[$name]['db_dump_path'] = dirname(__FILE__, 3).'/mysql_dumps/'.str_replace("-","_", $name).'_'.$timestamp.'_mysql_dump.sql';
                     
-                    $cli_cmd = 'mysqldump -h '.$vhost['vhost_web_config']['host'].' -u"'.$vhost['vhost_web_config']['user'].'" -p'.$vhost['vhost_web_config']['password'].' --opt --comments --hex-blob --tz-utc --events --routines --force --log-error='.$vhost_detail_list[$name]['db_dump_log_path'].' '.$vhost['vhost_web_config']['db'].' > '.$vhost_detail_list[$name]['db_dump_path'].'';
-                    // mysqldump -h localhost -u"omni-joomla1" -p"omni-joomla1"  --force omnicasa_joomla1 > /omnicasa_joomla1.sql
-                    
+                    // $cli_cmd = 'mysqldump -homnicasa-mysql -u'.$vhost['vhost_web_config']['user'].' -p'.$vhost['vhost_web_config']['password'].' --opt --comments --hex-blob --tz-utc --events --routines --force --log-error='.$vhost_detail_list[$name]['db_dump_log_path'].' '.$vhost['vhost_web_config']['db'].' > '.$vhost_detail_list[$name]['db_dump_path'].'';
+                    $cli_cmd = 'mysqldump -homnicasa-mysql -u'.$vhost['vhost_web_config']['user'].' -p'.$vhost['vhost_web_config']['password'].' --opt --comments --hex-blob --tz-utc --events --routines --force --log-error='.$vhost_detail_list[$name]['db_dump_log_path'].' '.$vhost['vhost_web_config']['db'].' > '.$vhost_detail_list[$name]['db_dump_path'].'';
+
+
+                    // mysqldump -hlocalhost -uomni-joomla1 -pomni-joomla1 omnicasa_joomla1 > /omnicasa_joomla1.sql
+                    // mysqldump -homnicasa-mysql -uomni-joomla1 -pomni-joomla1 omnicasa_joomla1 > omnicasa_joomla1.sql
+                    // mysqldump -homnicasa-mysql -uomni-joomla1 -pomni-joomla1 omnicasa_joomla1 > /omni.sql
+                    // mysqldump -homnicasa-mysql -uomni-joomla1 -pomni-joomla1 --opt --comments --hex-blob --tz-utc --events --routines --force --log-error=test_log.txt omnicasa_joomla1 > omni.sql
+                    // mysqldump -homnicasa-mysql -uomni-joomla1 -pomni-joomla1  omnicasa_joomla1 > omni.sql
+
                     exec($cli_cmd, $output, $returnVar);
+
+                    if($returnVar !== 0){
+                        
+                        $vhost_detail_list[$name]['db_connect_error'] .= ' -> Status: '.$returnVar.' Output: '.$output;
+                    }
 
                     if(file_exists($vhost_detail_list[$name]['db_dump_path'])){
 
-                        $vhost_detail_list[$name]['db_dump_success'] = true;
+                        if(filesize($vhost_detail_list[$name]['db_dump_path']) > 1){
+
+                            $vhost_detail_list[$name]['db_dump_success'] = true;
+                        }
                     }
                     if(file_exists($vhost_detail_list[$name]['db_dump_log_path'])){
                         
@@ -108,7 +122,7 @@ class Extractor
 
                 if($this->db->getError() != null){
                 
-                    $vhost_detail_list[$name]['db_connect_success'] = $this->db->getError();
+                    $vhost_detail_list[$name]['db_connect_error'] .= $this->db->getError();
                 }else{
                     
                     $vhost_detail_list[$name]['db_connect_success'] = true;

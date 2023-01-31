@@ -14,11 +14,6 @@ yum install git nano tree locate
   git clone https://synaptic4u@github.com/synaptic4u/dbExtractor.git
 
 
-
-mysqldump -uUser -pPassword --opt --comments --hex-blob --tz-utc --events --routines --force
---log-error=test_log.txt Database | mysql --host=Target_URL -C New_Database
-
-
 --  Dumps 
 mysqldump -homnicasa-mysql -uomni-joomla1 -pomni-joomla1  --opt --comments --hex-blob --tz-utc --events --routines --force --log-error=test_log.txt omnicasa_joomla1 > omni.sql
 
