@@ -90,48 +90,45 @@ class App
     private function runBatch()
     {
         try{
+            $size = sizeof($this->vhost_list);
 
-            $this->vhost_detail_list = $this->parseVHostFiles();
-            
-            if(($this->vhost_detail_list === null) || (sizeof($this->vhost_detail_list) < 1)){
-                $error = "ERROR: The Virtual Host Detailed List could not be compiled!".PHP_EOL;
-                throw new Exception($error);
+            for($cnt = 0; $cnt < $size; $cnt++){
+
+                $this->vhost_detail_list = $this->parseVHostFiles();
+          
+                if(($this->vhost_detail_list === null) || (sizeof($this->vhost_detail_list) < 1)){
+                    $error = "ERROR: The Virtual Host Detailed List could not be compiled!".PHP_EOL;
+                    throw new Exception($error);
+                }
+
+                $this->vhost_detail_list = $this->confirmVHostFiles();
+
+                $this->prepDodgyVHostDetailReport();
+                $this->writeToFileJSON('/reports/vhost_detail_list.txt', $this->vhost_detail_list);
+                
+                $this->vhost_detail_list = $this->getDataDetails();
+
+                $this->writeToFileJSON('/reports/vhost_detail_data_list.txt', $this->vhost_detail_list);
+                
+                $this->vhost_detail_list = $this->dumpDBs();
+
+                $this->writeToFileJSON('/reports/vhost_detail_data_list.txt', $this->vhost_detail_list);
+                
+                $this->vhost_detail_list = $this->insertDBs();
+
+                $this->log([
+                    'Location' => __METHOD__.' 4',
+                    'vhost_detail_list' => json_encode($this->vhost_detail_list, JSON_PRETTY_PRINT),
+                ]);
+
+                // Batch Summary
+                if(($cnt % $this->config->report->batch_size) === 0){                  
+                    
+                }
             }
 
-            $this->vhost_detail_list = $this->confirmVHostFiles();
-
-            $this->prepDodgyVHostDetailReport();
-            $this->writeToFileJSON('/reports/vhost_detail_list.txt', $this->vhost_detail_list);
+            // Total Summary
             
-            // $this->log([
-            //     'Location' => __METHOD__.' 1',
-            //     'vhost_detail_list' => json_encode($this->vhost_detail_list, JSON_PRETTY_PRINT),
-            // ]);
-
-            $this->vhost_detail_list = $this->getDataDetails();
-
-            $this->writeToFileJSON('/reports/vhost_detail_data_list.txt', $this->vhost_detail_list);
-            
-            // $this->log([
-            //     'Location' => __METHOD__.' 2',
-            //     'vhost_detail_list' => json_encode($this->vhost_detail_list, JSON_PRETTY_PRINT),
-            // ]);
-
-            $this->vhost_detail_list = $this->dumpDBs();
-
-            $this->writeToFileJSON('/reports/vhost_detail_data_list.txt', $this->vhost_detail_list);
-            
-            // $this->log([
-            //     'Location' => __METHOD__.' 3',
-            //     'vhost_detail_list' => json_encode($this->vhost_detail_list, JSON_PRETTY_PRINT),
-            // ]);
-
-            $this->vhost_detail_list = $this->insertDBs();
-
-            $this->log([
-                'Location' => __METHOD__.' 4',
-                'vhost_detail_list' => json_encode($this->vhost_detail_list, JSON_PRETTY_PRINT),
-            ]);
         }catch(Exception $e){
             
             $this->error([
