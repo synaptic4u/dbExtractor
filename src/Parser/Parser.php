@@ -147,6 +147,8 @@ class Parser
                         "table_list" => null,
                         "tables" => [],
                     ],
+                    "db_insert_connect_error" => null,
+                    "db_insert_connect_confirm" => null,
                     "db_insert_success_dump" => null,
                     "db_insert_dump_log_path" => null,
                     "db_insert_dump_log_success" => null,  

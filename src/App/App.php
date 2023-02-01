@@ -89,7 +89,7 @@ class App
     
     private function runBatch()
     {
-    try{
+        try{
             $this->vhost_detail_list = $this->parseVHostFiles();
         
             if(($this->vhost_detail_list === null) || (sizeof($this->vhost_detail_list) < 1)){
@@ -103,7 +103,7 @@ class App
             
             $this->writeToFileJSON('/reports/vhost_detail_list.txt', $this->vhost_detail_list);
             
-            $this->vhost_detail_list = $this->getDataDetails();
+            $this->vhost_detail_list = $this->getSourceDetails();
 
             $this->writeToFileJSON('/reports/vhost_detail_data_list.txt', $this->vhost_detail_list);
             
@@ -114,7 +114,14 @@ class App
             $this->vhost_detail_list = $this->insertDBs();
 
             $this->log([
-                'Location' => __METHOD__.' 4',
+                'Location' => __METHOD__.'',
+                'vhost_detail_list' => json_encode($this->vhost_detail_list, JSON_PRETTY_PRINT),
+            ]);
+
+            $this->vhost_detail_list = $this->getTargetDetails();
+
+            $this->log([
+                'Location' => __METHOD__.'',
                 'vhost_detail_list' => json_encode($this->vhost_detail_list, JSON_PRETTY_PRINT),
             ]);
 
@@ -122,7 +129,6 @@ class App
             // if(($cnt % $this->config->report->batch_size) === 0){                  
             //     $this->batchSummary();
             // }
-        
 
             // Total Summary
             // $this->totalSummary();
@@ -135,35 +141,6 @@ class App
         }finally{
 
         }
-    }
-
-    private function batchSummary(){}
-
-    private function totalSummary(){}
-
-    private function insertDBs()
-    {
-        return (new Inserter($this->config))->insertDBs($this->vhost_detail_list);
-    }
-
-    private function dumpDBs()
-    {
-        return (new Extractor($this->config))->dumpDBs($this->vhost_detail_list);
-    }
-
-    private function getDataDetails()
-    {
-        return (new Extractor($this->config))->getDataDetails($this->vhost_detail_list);
-    }
-
-    private function confirmVHostFiles()
-    {
-        return (new Parser($this->config))->confirmVHostFiles($this->vhost_detail_list);
-    }
-
-    private function parseVHostFiles()
-    {  
-        return (new Parser($this->config))->parseVHostFiles($this->vhost_list);
     }
 
     private function parseVHosts()
@@ -257,6 +234,40 @@ class App
             
             return $config;
         }
+    }
+
+    private function batchSummary(){}
+
+    private function totalSummary(){}
+
+    private function insertDBs()
+    {
+        return (new Inserter($this->config))->insertDBs($this->vhost_detail_list);
+    }
+
+    private function dumpDBs()
+    {
+        return (new Extractor($this->config))->dumpDBs($this->vhost_detail_list);
+    }
+
+    private function getSourceDetails()
+    {
+        return (new Extractor($this->config))->getSourceDetails($this->vhost_detail_list);
+    }
+
+    private function getTargetDetails()
+    {
+        return (new Extractor($this->config))->getTargetDetails($this->vhost_detail_list);
+    }
+
+    private function confirmVHostFiles()
+    {
+        return (new Parser($this->config))->confirmVHostFiles($this->vhost_detail_list);
+    }
+
+    private function parseVHostFiles()
+    {  
+        return (new Parser($this->config))->parseVHostFiles($this->vhost_list);
     }
 
     private function writeToFileJSON(string $filename, mixed $content)

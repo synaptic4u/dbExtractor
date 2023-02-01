@@ -109,7 +109,50 @@ class Extractor
         }
     }
 
-    public function getDataDetails(array $vhost_detail_list)
+    public function getTargetDetails(array $vhost_detail_list)
+    {
+        try{
+
+            foreach($vhost_detail_list as $name => $vhost){
+
+                $this->db = new DB((object) $vhost['vhost_web_config']);
+                
+                if($this->db->getError() != null){
+                
+                    $vhost_detail_list[$name]['db_insert_connect_error'] .= $this->db->getError();
+                }else{
+                    
+                    $vhost_detail_list[$name]['db_insert_connect_confirm'] = true;
+                    
+                    $table_list = $this->getTablesList();
+                    
+                    $vhost_detail_list[$name]['db_details_target']['table_count'] = sizeof($table_list);
+                    $vhost_detail_list[$name]['db_details_target']['table_list'] = $table_list;
+
+                    foreach($table_list as $table){
+
+                        $row_count = $this->getTableRowCount($table);
+
+                        $vhost_detail_list[$name]['db_details_target']['tables'][] = [
+                            "name" => $table,
+                            "row_count" => $row_count,
+                        ];
+                    }
+                }
+            }
+        }catch(Exception $e){
+
+            $this->error([
+                'Location' => __METHOD__,
+                'error' => $e->__toString(),
+            ]);
+        }finally{
+            
+            return $vhost_detail_list;
+        }
+    }
+
+    public function getSourceDetails(array $vhost_detail_list)
     {
         try{
 
