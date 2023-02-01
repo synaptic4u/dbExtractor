@@ -111,17 +111,17 @@ class App
 
             $this->writeToFileJSON('/reports/vhost_detail_data_list.txt', $this->vhost_detail_list);
             
-            $this->vhost_detail_list = $this->insertDBs();
-
             $this->log([
-                'Location' => __METHOD__.'',
+                'Location' => __METHOD__.'1',
                 'vhost_detail_list' => json_encode($this->vhost_detail_list, JSON_PRETTY_PRINT),
             ]);
+
+            $this->vhost_detail_list = $this->insertDBs();
 
             $this->vhost_detail_list = $this->getTargetDetails();
 
             $this->log([
-                'Location' => __METHOD__.'',
+                'Location' => __METHOD__.'2',
                 'vhost_detail_list' => json_encode($this->vhost_detail_list, JSON_PRETTY_PRINT),
             ]);
 
