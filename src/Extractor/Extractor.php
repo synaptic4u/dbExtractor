@@ -158,7 +158,7 @@ class Extractor
 
             foreach($vhost_detail_list as $name => $vhost){
 
-                $this->db = new DB($vhost['vhost_web_config']);
+                $this->db = new DB((object)$vhost['vhost_web_config']);
 
                 if($this->db->getError() != null){
                 
