@@ -55,8 +55,8 @@ class DB
 
             $this->error([
                 'Location' => __METHOD__,
-                'conn' => $this->conn,
-                'config' => $this->config,
+                'conn' => json_encode($this->conn),
+                'config' => json_encode($this->config),
                 'error' => $e->__toString(),
             ]);
         }

@@ -29,6 +29,7 @@ class App
 
     // Data Structs
     private $vhost_list;
+    private $vhost_batch_list;
     private $vhost_detail_list;
     private $config;
     
@@ -72,8 +73,7 @@ class App
                 throw new Exception($error);
             }
             
-            $this->runBatch();
-
+            $this->extractBatch();
         } catch (Exception $e) {
             
             $this->error([
@@ -86,13 +86,43 @@ class App
             print_r(PHP_EOL."Application has exited.".PHP_EOL);
         }
     }
+
+    private function extractBatch()
+    {
+        $size = sizeof($this->vhost_list);
+
+        $config_batch = $this->config->report->batch_size;
+
+        $start = 0;
+        
+        do{
+
+            $size = $size - $config_batch;
+
+            $this->vhost_batch_list = array_slice($this->vhost_list, $start, $config_batch, true);
+            
+            $this->runBatch();
+
+            $start += $config_batch;
+        }while($size > $config_batch);
+
+        $this->log([
+            'Location' => __METHOD__,
+            'size' => $size,
+            'config_batch' => $config_batch,
+            'vhost_list' => json_encode($this->vhost_list, JSON_PRETTY_PRINT),
+            'vhost_batch_list' => json_encode($this->vhost_batch_list, JSON_PRETTY_PRINT),
+        ]);
+    }
     
     private function runBatch()
     {
         try{
+            
             $this->vhost_detail_list = $this->parseVHostFiles();
         
             if(($this->vhost_detail_list === null) || (sizeof($this->vhost_detail_list) < 1)){
+                
                 $error = "ERROR: The Virtual Host Detailed List could not be compiled!".PHP_EOL;
                 throw new Exception($error);
             }
@@ -183,6 +213,7 @@ class App
     private function readConfig()
     {
         try{
+            $dev = 0;
 
             $error = null;
             $config = null;
@@ -191,16 +222,18 @@ class App
 
             $config = $this->file_reader->readJSONFile($config_path, 1);
             
-            // $this->log([
-            //     'Location' => __METHOD__.' DEBUG',
-            //     'config_path' => $config_path,
-            //     'config' => json_encode($config, JSON_PRETTY_PRINT)
-            //     'dir path = null' => ($config->vhost->dir_path === null) ? "true":"false",
-            //     'dir path length check' => (strlen($config->vhost->dir_path) > 0) ? "true":"false",
-            //     'dir path length' => strlen($config->vhost->dir_path),
-            //     'suffix length check' => (sizeof($config->vhost->search_suffix) === 0) ? "true":"false",
-            //     'suffix length' => sizeof($config->vhost->search_suffix),
-            // ]);
+            $this->log([
+                'Location' => __METHOD__.' DEBUG',
+                'config_path' => $config_path,
+                'config' => json_encode($config, JSON_PRETTY_PRINT),
+                'is config object' => (is_object($config)) ? 'true' : 'false',
+                'dir path = null' => ($config->vhost->dir_path === null) ? "true":"false",
+                'dir path length check' => (strlen($config->vhost->dir_path) > 0) ? "true":"false",
+                'dir path length' => strlen($config->vhost->dir_path),
+                'suffix length check' => (sizeof($config->vhost->search_suffix) === 0) ? "true":"false",
+                'suffix length' => sizeof($config->vhost->search_suffix),
+            ]);
+
 
             if(($config->vhost->dir_path === null) || (strlen($config->vhost->dir_path) < 2)){
                 
@@ -213,6 +246,20 @@ class App
                 $error = "The configuration file is faulty!".PHP_EOL.
                          "       VHost search suffix cannot be empty.";
                 throw new Exception($error);
+            }
+
+            if($dev === 1){
+                $config->vhost->dir_path = "/home/mila/Repos/dbExtractor/testdir/etc/nginx/conf.d/";
+                $config->db->mysql_server_creds_source->host = "localhost";
+                $config->db->mysql_server_creds_source->db = null;
+                $config->db->mysql_server_creds_source->user = "root";
+                $config->db->mysql_server_creds_source->password = "Dracut_Daemon_Init_Mila)**(";
+
+                $config->db->mysql_server_creds_target->host = "localhost";
+                $config->db->mysql_server_creds_target->db = null;
+                $config->db->mysql_server_creds_target->user = "root";
+                $config->db->mysql_server_creds_target->password = "Dracut_Daemon_Init_Mila)**(";
+
             }
 
             $this->log([
@@ -267,7 +314,7 @@ class App
 
     private function parseVHostFiles()
     {  
-        return (new Parser($this->config))->parseVHostFiles($this->vhost_list);
+        return (new Parser($this->config))->parseVHostFiles($this->vhost_batch_list);
     }
 
     private function writeToFileJSON(string $filename, mixed $content)

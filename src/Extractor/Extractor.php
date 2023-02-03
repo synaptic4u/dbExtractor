@@ -23,7 +23,7 @@ class Extractor
 
             if($this->config->db->mysql_server_creds_source->enabled == true){
 
-                $this->db = new DB($this->config->db->mysql_server_creds_source);
+                $this->db = new DB( $this->config->db->mysql_server_creds_source);
             }
         } catch (Exception $e) {
 
@@ -46,13 +46,14 @@ class Extractor
                 $conn1 = json_decode(json_encode($vhost['vhost_web_config']), false);
                 $conn = (object) $vhost['vhost_web_config'];
 
-                    $this->log([
-                        "Location" => __METHOD__,
-                        "conn" => get_class($conn),
-                        "conn1" => get_class($conn1),
-                        "conn1" => json_encode($conn1, JSON_PRETTY_PRINT),
-                        "conn" => json_encode($conn, JSON_PRETTY_PRINT),
-                    ]);
+                $this->log([
+                    "Location" => __METHOD__,
+                    "conn" => get_class($conn),
+                    "conn1" => get_class($conn1),
+                    "conn1" => json_encode($conn1, JSON_PRETTY_PRINT),
+                    "conn" => json_encode($conn, JSON_PRETTY_PRINT),
+                ]);
+                
                 $this->db = new DB($conn);
 
                 if($this->db->getError() != null){
@@ -63,17 +64,15 @@ class Extractor
                     $vhost_detail_list[$name]['db_connect_success'] = true;
 
                     $vhost_detail_list[$name]['db_dump_log_path'] = dirname(__FILE__, 2).'/logs/mysql_logs/'.str_replace("-","_", $name).'_mysql_dump.txt';
+                
                     $vhost_detail_list[$name]['db_dump_path'] = dirname(__FILE__, 3).'/mysql_dumps/'.str_replace("-","_", $name).'_mysql_dump.sql';
                     
-                    $cli_cmd = 'mysqldump -h'.$this->config->db->mysql_server_creds_source->host.' -u'.$this->config->db->mysql_server_creds_source->user.' -p'.$this->config->db->mysql_server_creds_source->password.'  '.$vhost['vhost_web_config']['db'].' > '.$vhost_detail_list[$name]['db_dump_path'].'';
+                    $cli_cmd = 'mysqldump -h'.$this->config->db->mysql_server_creds_source->host.' -u"'.$this->config->db->mysql_server_creds_source->user.'" -p"'.$this->config->db->mysql_server_creds_source->password.'"  '.$vhost['vhost_web_config']['db'].' > '.$vhost_detail_list[$name]['db_dump_path'].'';
 
                     exec($cli_cmd, $output, $returnVar);
 
-                    if($returnVar !== 0){
-                        
-                        $vhost_detail_list[$name]['db_connect_error'] .= ' -> Status: '.$returnVar.' Output: '.$output;
-                    }
-
+                    $vhost_detail_list[$name]['db_connect_error'] .= ' -> Status: '.$returnVar.' Output: '.json_encode($output, JSON_PRETTY_PRINT);
+                
                     if(file_exists($vhost_detail_list[$name]['db_dump_path'])){
 
                         if(filesize($vhost_detail_list[$name]['db_dump_path']) > 1){
@@ -81,10 +80,10 @@ class Extractor
                             $vhost_detail_list[$name]['db_dump_success'] = true;
                         }
                     }
-                    // if(file_exists($vhost_detail_list[$name]['db_dump_log_path'])){
+                    if(file_exists($vhost_detail_list[$name]['db_dump_log_path'])){
                         
-                    //     $vhost_detail_list[$name]['db_dump_log_success'] = true;
-                    // }
+                        $vhost_detail_list[$name]['db_dump_log_success'] = true;
+                    }
                     
                     $this->log([
                         "Location" => __METHOD__,
@@ -94,6 +93,7 @@ class Extractor
                         "cli_cmd" => $cli_cmd,
                         "output" => json_encode($output, JSON_PRETTY_PRINT),
                         "returnVar" => json_encode($returnVar, JSON_PRETTY_PRINT),
+                        "vhost_detail_list" => json_encode($vhost_detail_list, JSON_PRETTY_PRINT),
                     ]);
                 }
             }

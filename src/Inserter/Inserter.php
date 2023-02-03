@@ -43,7 +43,7 @@ class Inserter
                 
                 if($this->db->getError() != null){
                 
-                    $vhost_detail_list[$name]['db_connect_error'] .= $this->db->getError();
+                    $vhost_detail_list[$name]['db_insert_connect_error'] .= $this->db->getError();
                 }else{
 
                     $timestamp = microtime(true);
@@ -53,19 +53,13 @@ class Inserter
                     ]);
 
                     // CREATE USER
-                    $cli_cmd = 'mysql -h'.$this->config->db->mysql_server_creds_target->host.' -u'.$this->config->db->mysql_server_creds_target->user.' -p'.$this->config->db->mysql_server_creds_target->password.' -e \'create USER "'.$vhost['vhost_web_config']['user'].'"@"'.$this->config->db->mysql_server_creds_target->host.'" IDENTIFIED BY "'.$vhost['vhost_web_config']['password'].'";\';';
+                    $cli_cmd = 'mysql -h"'.$this->config->db->mysql_server_creds_target->host.'" -u"'.$this->config->db->mysql_server_creds_target->user.'" -p"'.$this->config->db->mysql_server_creds_target->password.'" -e \'create USER "'.$vhost['vhost_web_config']['user'].'"@"'.$this->config->db->mysql_server_creds_target->host.'" IDENTIFIED BY "'.$vhost['vhost_web_config']['password'].'";\';';
                     exec($cli_cmd, $output, $returnVar);
                     
-                    if($returnVar === 0){
-                        
-                        $vhost_detail_list[$name]['db_insert_success_create_user'] = true;
-                    }
+                    $vhost_detail_list[$name]['db_insert_success_create_user'] .= ', '.$returnVar;
                     
-                    if($returnVar !== 0){
-                        
-                        $vhost_detail_list[$name]['db_connect_error'] .= ' -> Status: '.$returnVar.' Output: '.json_encode($output, JSON_PRETTY_PRINT);
-                    }
-                    
+                    $vhost_detail_list[$name]['db_insert_connect_error'] .= ' -> Status: '.$returnVar.' Output: '.json_encode($output, JSON_PRETTY_PRINT);
+                
                     $this->log([
                         "Location" => __METHOD__,
                         "cli_cmd" => $cli_cmd,
@@ -74,19 +68,12 @@ class Inserter
                     ]);
 
                     // GRANT PRIVILEGES
-                    $cli_cmd = 'mysql -h'.$this->config->db->mysql_server_creds_target->host.' -u'.$this->config->db->mysql_server_creds_target->user.' -p'.$this->config->db->mysql_server_creds_target->password.' -e \' GRANT ALL PRIVILEGES ON '.$vhost['vhost_web_config']['db'].'.* TO "'.$vhost['vhost_web_config']['user'].'"@'.$vhost['vhost_web_config']['db'].' WITH GRANT OPTION;\';';
+                    $cli_cmd = 'mysql -h"'.$this->config->db->mysql_server_creds_target->host.'" -u"'.$this->config->db->mysql_server_creds_target->user.'" -p"'.$this->config->db->mysql_server_creds_target->password.'" -e \' GRANT ALL PRIVILEGES ON '.$vhost['vhost_web_config']['db'].'.* TO "'.$vhost['vhost_web_config']['user'].'"@'.$vhost['vhost_web_config']['db'].' WITH GRANT OPTION;\';';
                     exec($cli_cmd, $output, $returnVar);
 
-                    
-                    if($returnVar === 0){
-                    
-                        $vhost_detail_list[$name]['db_insert_success_priv_user'] = true;
-                    }
-                    
-                    if($returnVar !== 0){
-                        
-                        $vhost_detail_list[$name]['db_connect_error'] .= ' -> Status: '.$returnVar.' Output: '.$output;
-                    }
+                    $vhost_detail_list[$name]['db_insert_success_priv_user'] .= ', '.$returnVar;
+                                        
+                    $vhost_detail_list[$name]['db_insert_connect_error'] .= ' -> Status: '.$returnVar.' Output: '.json_encode($output);
                     
                     $this->log([
                         "Location" => __METHOD__,
@@ -96,18 +83,13 @@ class Inserter
                     ]);
                     
                     // FLUSH
-                    $cli_cmd = 'mysql -h'.$this->config->db->mysql_server_creds_target->host.' -u'.$this->config->db->mysql_server_creds_target->user.' -p'.$this->config->db->mysql_server_creds_target->password.' -e \'FLUSH PRIVILEGES;\';';
+                    $cli_cmd = 'mysql -h"'.$this->config->db->mysql_server_creds_target->host.'" -u"'.$this->config->db->mysql_server_creds_target->user.'" -p"'.$this->config->db->mysql_server_creds_target->password.'" -e \'FLUSH PRIVILEGES;\';';
                     exec($cli_cmd, $output, $returnVar);
                     
-                    if($returnVar === 0){
-                        $vhost_detail_list[$name]['db_insert_success_priv_flush'] = true;
-                    }
+                    $vhost_detail_list[$name]['db_insert_success_priv_flush'] .= ', '.$returnVar;
                     
-                    if($returnVar !== 0){
-                        
-                        $vhost_detail_list[$name]['db_connect_error'] .= ' -> Status: '.$returnVar.' Output: '.$output;
-                    }
-                    
+                    $vhost_detail_list[$name]['db_insert_connect_error'] .= ' -> Status: '.$returnVar.' Output: '.$output;
+                
                     $this->log([
                         "Location" => __METHOD__,
                         "cli_cmd" => $cli_cmd,
@@ -121,15 +103,9 @@ class Inserter
                     $cli_cmd = 'mysql -h'.$this->config->db->mysql_server_creds_target->host.' -u'.$this->config->db->mysql_server_creds_target->user.' -p'.$this->config->db->mysql_server_creds_target->password.' '.$vhost['vhost_web_config']['db'].' < '.$vhost_detail_list[$name]['db_dump_path'].' ;';
                     exec($cli_cmd, $output, $returnVar);
                     
-                    if($returnVar === 0){
-                        
-                        $vhost_detail_list[$name]['db_insert_success_dump'] = true;
-                    }
+                    $vhost_detail_list[$name]['db_insert_success_dump'] .= ', '.$returnVar;
                     
-                    if($returnVar !== 0){
-                        
-                        $vhost_detail_list[$name]['db_connect_error'] .= ' -> Status: '.$returnVar.' Output: '.$output;
-                    }
+                    $vhost_detail_list[$name]['db_insert_connect_error'] .= ' -> Status: '.$returnVar.' Output: '.$output;
                     
                     $this->log([
                         "Location" => __METHOD__,
@@ -145,7 +121,20 @@ class Inserter
                 "vhost_detail_list" => json_encode($vhost_detail_list, JSON_PRETTY_PRINT),
             ]);
 
-            $this->db = new DB($this->config->db->mysql_server_creds_target);
+            // $this->db = new DB($this->config->db->mysql_server_creds_target);
+
+            $conn1 = json_decode(json_encode($vhost['vhost_web_config']), false);
+            $conn = (object) $vhost['vhost_web_config'];
+
+            $this->log([
+                "Location" => __METHOD__,
+                "conn" => get_class($conn),
+                "conn1" => get_class($conn1),
+                "conn1" => json_encode($conn1, JSON_PRETTY_PRINT),
+                "conn" => json_encode($conn, JSON_PRETTY_PRINT),
+            ]);
+            
+            $this->db = new DB($conn);
         
             if($this->db->getError() != null){
 

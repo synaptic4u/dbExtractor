@@ -44,7 +44,9 @@ class Log
         $message = "\n".$date."\n";
 
         foreach ($msg as $key => $value) {
-            $value = (1 == is_array($value)) ? json_encode($value, JSON_PRETTY_PRINT) : $value;
+
+            // var_dump($value);
+            $value = ( (1 == is_array($value)) || (is_object($value) === 1) ) ? json_encode($value, JSON_PRETTY_PRINT) : $value;
             $message .= $key.': '.$value."\n";
         }
 
